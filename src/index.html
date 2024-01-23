@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Energy flow - home</title>
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <load ="partials/header.html" />
+    <load src="./partials/header.html" />
+    <main>
+      <load src="./partials/hero.html" />
+      <load src="./partials/quote-home.html" />
+      <load src="./partials/exercise.html" />
+      <load src="./partials/recomendation.html" />
+    </main>
+    <load src="./partials/footer.html" />
+    <load src="./partials/mobile-menu.html" />
+    <load src="./partials/modal-window.html" />
 
-    <section>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-      <!-- Path to images as from index.html file -->
-      <img src="./img/javascript.svg" alt="" />
-    </section>
-
-    <!-- Loads the specified .html file -->
-    <load ="partials/vite-promo.html" />
-
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./main.js" defer></script>
   </body>
 </html>
