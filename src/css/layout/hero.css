@@ -1,3 +1,4 @@
+/**********************************MOBILE**********************************/
 .hero-container {
   padding-bottom: 10px;
 }
@@ -40,18 +41,17 @@
   color: #1b1b1b;
   font-family: 'DM Sans';
   font-size: 56px;
-  font-style: normal;
   font-weight: 400;
   line-height: 0.9; /* 89.286% */
   letter-spacing: -0.02em;
+  margin-bottom: 20px;
 }
 
 .accent {
-  color: #7e847f;
+  color: var(--slate-gray);
   font-family: 'DM Sans';
   font-size: 56px;
   font-style: italic;
-  font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.02em;
 }
@@ -60,8 +60,11 @@
   color: #1b1b1b;
   font-family: 'DM Sans';
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.29; /* 128.571% */
   letter-spacing: -0.01em;
 }
+/**********************************MOBILE**********************************/
+/**********************************TABLET**********************************/
+/**********************************TABLET**********************************/
+/**********************************DESKTOP**********************************/
+/**********************************DESKTOP**********************************/
