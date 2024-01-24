@@ -2,8 +2,9 @@
 @import url('./base/common.css');
 @import url('./base/container.css');
 
-/* VARIABLES */
+/* UTILS */
 @import url('./utils/variables.css');
+@import url('./utils/fonts.css');
 
 /* LAYOUT - HOME */
 @import url('./layout/header.css');

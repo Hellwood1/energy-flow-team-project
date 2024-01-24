@@ -1,0 +1,10 @@
+:root {
+  --black: #1b1b1b;
+  --white: #ffffff;
+  --accent-color: #f6f6f6;
+  --ligt-gray: #e8e8e8;
+  --transparent-light-gray: rgba(246, 246, 246, 0.6);
+  --slate-gray: #7e847f;
+
+  --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

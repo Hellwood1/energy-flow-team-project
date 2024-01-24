@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('DM Sans'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff) format('woff'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 400;
+  font-style: italic;
+  src: local('DM Sans'),
+    url(/src/fonts/DMSans-Italic-VariableFont_opsz\,wght.woff) format('woff'),
+    url(/src/fonts/DMSans-Italic-VariableFont_opsz\,wght.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('DM Sans'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff) format('woff'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('DM Sans'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff) format('woff'),
+    url(/src/fonts/DMSans-VariableFont_opsz\,wght.woff2) format('woff2');
+}
