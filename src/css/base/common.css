@@ -3,7 +3,7 @@ body {
   font-size: 16px;
   font-weight: 400;
 
-  color: var(--accent-color);
+  color: var(--black);
   background-color: var(--accent-color);
 }
 
@@ -51,4 +51,5 @@ a {
 
 .accent-color {
   color: var(--slate-gray);
+  font-style: italic;
 }
