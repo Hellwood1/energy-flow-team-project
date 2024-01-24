@@ -1,0 +1,59 @@
+.hero-container {
+  padding-bottom: 10px;
+}
+
+.hero-background {
+  background-image: url(../../img/hero/background-img-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-height: 387px;
+  border-radius: 30px;
+}
+
+.hero-tags {
+  color: #f6f6f6;
+  font-family: 'DM Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2; /* 116.667% */
+  display: flex;
+  padding: 4px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(246, 246, 246, 0.3);
+}
+
+.hero-title {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.9; /* 89.286% */
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  color: #7e847f;
+  font-family: 'DM Sans';
+  font-size: 56px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.hero-text {
+  color: #1b1b1b;
+  font-family: 'DM Sans';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+  letter-spacing: -0.01em;
+}
