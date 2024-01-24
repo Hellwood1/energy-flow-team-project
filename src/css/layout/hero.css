@@ -12,6 +12,14 @@
   border-radius: 30px;
 }
 
+@media screen and (min-resolution: 192dpi) and (min-width: 375px),
+  screen and (min-resolution: 2dppx) and (min-width: 375px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
+  .order-background-container {
+    background-image: url(../../img/hero/background-img-mobile@2x.jpg);
+  }
+}
+
 .hero-tags {
   color: #f6f6f6;
   font-family: 'DM Sans';
