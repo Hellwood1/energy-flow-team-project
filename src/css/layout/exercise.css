@@ -89,11 +89,11 @@
   max-width: 96px;
   color: var(--accent-color);
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   line-height: 100%; /* 20px/20 */
   margin-bottom: 2px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .category-filter {
