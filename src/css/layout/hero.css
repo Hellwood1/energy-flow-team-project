@@ -62,7 +62,6 @@
   font-family: 'DM Sans';
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
   line-height: 1.29;
   letter-spacing: -0.01em;
   padding-right: 20px;
@@ -83,6 +82,19 @@
 
   .hero-container {
     display: flex;
+  }
+
+  .hero-list {
+    width: 196px;
+    gap: 8px;
+    padding-left: 20px;
+    padding-bottom: 64px;
+  }
+
+  .hero-tags {
+    padding: 4px 16px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   .hero-title-wrap {
@@ -119,4 +131,18 @@
 /**********************************TABLET**********************************/
 
 /**********************************DESKTOP**********************************/
+@media screen and (min-width: 1440px) {
+  .hero-background {
+    width: 704px;
+    min-height: 884px;
+    background-image: url(../../img/hero/background-img-desktop.jpg);
+  }
+}
+@media screen and (min-resolution: 192dpi) and (min-width: 1440px),
+  screen and (min-resolution: 2dppx) and (min-width: 1440px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
+  .order-background-container {
+    background-image: url(../../img/hero/background-img-desktop@2x.jpg);
+  }
+}
 /**********************************DESKTOP**********************************/
