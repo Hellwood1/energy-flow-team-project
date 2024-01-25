@@ -1,12 +1,23 @@
-const closeModalBtn = document.querySelector('.exercise-modal-close-btn');
+const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
+const closeModealBtn = document.querySelector('.exercise-modal-close-btn');
 
 const closeModal = () => {
-  const backdropExercise = document.querySelector('.exercise-modal-backdrop');
   const modalExercise = document.querySelector('.exercise-modal');
-  backdropExercise.classList.add('backdrop-is-hidden');
+  modalBackdrop.classList.add('backdrop-is-hidden');
   modalExercise.classList.add('modal-is-hidden');
 };
 
-closeModalBtn.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', e => {
+  if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
+    return;
+  }
+  closeModal();
+});
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
 
 export { closeModal };
