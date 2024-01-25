@@ -1,64 +1,52 @@
+import axios from 'axios';
+
 export default class EnergyFlowApiSevice {
   constructor() {
+    axios.defaults.headers.common['Content-type'] = 'application/json';
     this.BASE_URL = 'https://energyflow.b.goit.study/api';
-    this.getOptions = {
-      headers: {
-        'Content-type': 'application/json',
-      },
-    };
   }
+
   getCategoriesByFilter(filterName, page, perPage) {
-    const url = `${this.BASE_URL}/filters?filter=${filterName}&page=${page}&limit=${perPage}`;
-    return fetch(url, this.getOptions).then(r => {
-      return r.json();
+    const searchParams = new URLSearchParams({
+      filter: filterName,
+      page: page,
+      limit: perPage,
     });
+    return axios.get(`${this.BASE_URL}/filters?${searchParams}`);
   }
   getExercisesByCategory(filter, category, page, perPage) {
-    const url = `${this.BASE_URL}/exercises?${filter}=${category}&page=${page}&limit=${perPage}`;
-    return fetch(url, this.getOptions).then(r => {
-      return r.json();
+    const searchParams = new URLSearchParams({
+      [filter]: category,
+      page: page,
+      limit: perPage,
     });
+    return axios.get(`${this.BASE_URL}/exercises?${searchParams}`);
   }
   getExercisesByKeyWord(filter, category, keyword, page, perPage) {
-    const url = `${this.BASE_URL}/exercises?${filter}=${category}&keyword=${keyword}&page=${page}&limit=${perPage}`;
-    return fetch(url, this.getOptions).then(r => {
-      return r.json();
+    const searchParams = new URLSearchParams({
+      [filter]: category,
+      keyword: keyword,
+      page: page,
+      limit: perPage,
     });
+    return axios.get(`${this.BASE_URL}/exercises?${searchParams}`);
   }
   getExerciseInfoById(id) {
-    const url = `${this.BASE_URL}/exercises/${id}`;
-    return fetch(url, this.getOptions).then(r => {
-      return r.json();
-    });
+    return axios.get(`${this.BASE_URL}/exercises/${id}`);
   }
   getAllExercises() {
-    const url = `${this.BASE_URL}/exercises?&limit=9999`;
-    const options = {
-      'Content-type': 'application/json',
-    };
-    return fetch(url, options).then(r => {
-      return r.json();
-    });
+    return axios.get(`${this.BASE_URL}/exercises?&limit=9999`);
   }
   getQuote() {
-    const url = `${this.BASE_URL}/quote `;
-    return fetch(url, this.getOptions).then(r => {
-      return r.json();
-    });
+    return axios.get(`${this.BASE_URL}/quote`);
   }
   sendSubscription(email) {
-    const url = `${this.BASE_URL}/subscription `;
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({
+    return axios({
+      method: 'post',
+      url: `${this.BASE_URL}/subscription`,
+      data: {
         email: email,
-      }),
-      headers: {
-        'Content-type': 'application/json',
       },
-    };
-    return fetch(url, options).then(r => {
-      return r.json();
     });
   }
 }
