@@ -1,38 +1,62 @@
-<!-- <header class="header-section">Vladyslav Sahaidak</header> -->
-<div class="header__container container">
-    <p class="header--label">energy.flow</p>
-    <svg>
-        <use></use>
-    </svg>
-
-</div>
-<div class="modal">
-    <p class="header--modal--label">energy.flow</p>
-    <svg>
-        <use></use>
-    </svg>
-    <a class="modal--link" href="#" target="_blank" rel="noopener noreferrer">Home</a>
-    <a class="modal--link" href="#" target="_blank" rel="noopener noreferrer">Favorites</a>
-
-    <ul class="modal__list">
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
+<header class="header">
+    <!-- <header class="header-section">Vladyslav Sahaidak</header> -->
+    <div class="header__container container">
+        <p class="header--label">
+            energy.flow
+        </p>
+        <button class="header__btn" type="button" data-modal-open>
+            <svg class="header--svg--btn">
+                <use href="../images/sprite.svg.svg#icon-mobile-menu-open" width="36px" heigth="16px"></use>
+            </svg>
+    
+    </div>
+    
+    <div class="header__modal none">
+        <p class="header--modal--label">
+            energy.flow
+        </p>
+        <button class="modal__btn" type="button" data-modal-close>
+            зачини мене будь ласка
+            <svg class="modal--svg--btn">
+                <use href="../images/sprite.svg.svg#icon-close-modal" width="20px" heigth="20px"></use>
+            </svg>
+        </button>
+        <a class="modal--link" href="#" rel="noopener noreferrer">
+            Home
         </a>
-    <svg>
-        <use></use>
-    </svg></li>
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
+        <a class="modal--link" href="#" rel="noopener noreferrer">
+            Favorites
         </a>
-    <svg>
-        <use></use>
-    </svg></li>
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
-        </a>
-    <svg>
-        <use></use>
-    </svg></li>
-    </ul>
-
-</div>
+    
+        <ul cl ass="modal__list">
+            <li class="modal__item">
+                <a class="modal--network" href="#" rel="noopener noreferrer" title="facebook link">
+                    <svg class="modal--svg">
+                        <use href="../images/sprite.svg.svg#icon-facebook" width="20px" heigth="18px"></use>
+                    </svg>
+                    facebook
+                </a>
+    
+            </li>
+            <li class="modal__item">
+                <a class="modal--network" href="#" rel="noopener noreferrer" title="instagram link">
+                    <svg class="modal--svg">
+                        <use href="../images/sprite.svg.svg#icon-instagram" width="25px" heigth="25px"></use>
+                    </svg>
+                    instagram
+                </a>
+    
+            </li>
+            <li class="modal__item">
+                <a class="modal--network" href="#" rel="noopener noreferrer" title="youtube link">
+                    <svg class="modal--svg">
+                        <use href="../images/sprite.svg.svg#icon-youtube" width="25px" heigth="25px"></use>
+                    </svg>
+                    youtube
+                </a>
+    
+            </li>
+        </ul>
+    
+    </div>
+</header>

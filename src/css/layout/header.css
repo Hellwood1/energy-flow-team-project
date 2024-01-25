@@ -1,27 +1,32 @@
 /* MOBILE */
-.header--label {
-    color: #1B1B1B;
-}
-.header--modal--label{
-    color: #F6F6F6;
-}
-.modal--link {
-    color: #1B1B1B;
-}
-body {
-    background-color: tomato;
-}
-/* general */
-.header__container {
-    background-color: yellow;
+
+.header {
+    position: absolute;
 }
 
+.header--label {
+    color: var(--black);
+}
+.header--modal--label{
+    color: var(--white);
+}
+.modal--link {
+    color: var(--black);
+}
+.none {
+    display: none;
+}
+  .header__btn {
+      max-width: 32px !important;
+      max-height: 16px;
+  }
 @media screen and (min-width: 375px) {
     .container {
         width: 375px;
         margin-left: auto;
         margin-right: auto;
     }
+  
 }
 
 /* TABLET */
