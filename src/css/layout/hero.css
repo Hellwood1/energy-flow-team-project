@@ -31,16 +31,11 @@
 }
 
 .hero-tags {
-  color: #f6f6f6;
+  color: var(--accent-color);
   font-family: 'DM Sans';
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.2;
-  display: flex;
   padding: 4px 10px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   border-radius: 30px;
   border: 1px solid rgba(246, 246, 246, 0.3);
@@ -73,7 +68,7 @@
 }
 
 .hero-text {
-  color: #1b1b1b;
+  color: var(--black);
   font-family: 'DM Sans';
   font-size: 14px;
   font-style: normal;
