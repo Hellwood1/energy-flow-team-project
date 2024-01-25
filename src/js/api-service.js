@@ -6,47 +6,60 @@ export default class EnergyFlowApiSevice {
     this.BASE_URL = 'https://energyflow.b.goit.study/api';
   }
 
-  getCategoriesByFilter(filterName, page, perPage) {
+  async getCategoriesByFilter(filterName, page, perPage) {
     const searchParams = new URLSearchParams({
       filter: filterName,
       page: page,
       limit: perPage,
     });
-    return axios.get(`${this.BASE_URL}/filters?${searchParams}`);
+    const response = await axios.get(
+      `${this.BASE_URL}/filters?${searchParams}`
+    );
+    return response.data;
   }
-  getExercisesByCategory(filter, category, page, perPage) {
+  async getExercisesByCategory(filter, category, page, perPage) {
     const searchParams = new URLSearchParams({
       [filter]: category,
       page: page,
       limit: perPage,
     });
-    return axios.get(`${this.BASE_URL}/exercises?${searchParams}`);
+    const response = await axios.get(
+      `${this.BASE_URL}/exercises?${searchParams}`
+    );
+    return response.data;
   }
-  getExercisesByKeyWord(filter, category, keyword, page, perPage) {
+  async getExercisesByKeyWord(filter, category, keyword, page, perPage) {
     const searchParams = new URLSearchParams({
       [filter]: category,
       keyword: keyword,
       page: page,
       limit: perPage,
     });
-    return axios.get(`${this.BASE_URL}/exercises?${searchParams}`);
+    const response = await axios.get(
+      `${this.BASE_URL}/exercises?${searchParams}`
+    );
+    return response.data;
   }
-  getExerciseInfoById(id) {
-    return axios.get(`${this.BASE_URL}/exercises/${id}`);
+  async getExerciseInfoById(id) {
+    const response = await axios.get(`${this.BASE_URL}/exercises/${id}`);
+    return response.data;
   }
-  getAllExercises() {
-    return axios.get(`${this.BASE_URL}/exercises?&limit=9999`);
+  async getAllExercises() {
+    const response = await axios.get(`${this.BASE_URL}/exercises?&limit=9999`);
+    return response.data;
   }
-  getQuote() {
-    return axios.get(`${this.BASE_URL}/quote`);
+  async getQuote() {
+    const response = await axios.get(`${this.BASE_URL}/quote`);
+    return response.data;
   }
-  sendSubscription(email) {
-    return axios({
+  async sendSubscription(email) {
+    const response = await axios({
       method: 'post',
       url: `${this.BASE_URL}/subscription`,
       data: {
         email: email,
       },
     });
+    return response.data;
   }
 }
