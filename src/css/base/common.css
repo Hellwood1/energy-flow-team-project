@@ -49,6 +49,7 @@ a {
   text-decoration: none;
 }
 
-.accent-color {
+.accent {
+  font-style: italic;
   color: var(--slate-gray);
 }
