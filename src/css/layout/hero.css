@@ -75,6 +75,7 @@
 @media screen and (min-width: 768px) {
   .hero-background {
     width: 248px;
+
     min-height: 900px;
     flex-shrink: 0;
     background-image: url(../../img/hero/background-img-tablet.jpg);
@@ -86,6 +87,7 @@
 
   .hero-title-wrap {
     min-width: 488px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
