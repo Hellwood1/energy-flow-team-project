@@ -1,0 +1,227 @@
+
+.rating-backdrop {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(27, 27, 27, 0.6);
+}
+
+.rating-form-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  border-radius: 20px;
+  background: var(--accent-color);
+  width: 335px;
+  padding: 40px 20px;
+}
+.backdrop-is-hidden {
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+  }
+  
+  .modal-is-hidden {
+    scale: 0.95;
+    transition: all 200ms ease-in-out;
+  }
+.rating-modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: inherit;
+}
+
+.rating-modal-close-icon {
+  stroke: var(--black);
+}
+
+.rating-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 18px;
+  margin-bottom: 20px;
+}
+
+.rating-label {
+  color: rgba(27, 27, 27, 0.4);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  line-height: 150%; /* 18px/12 */
+  margin-bottom: 8px;
+}
+
+.rating-value {
+  color: var(--black);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 12px;
+  line-height: 150%; /* 18px/12 */
+}
+
+.rating-body {
+  position: relative;
+  height: 24px;
+}
+
+.rating-body::before {
+  content: '★★★★★';
+  display: block;
+  color: rgba(27, 27, 27, 0.20);
+  
+}
+.rating-active {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.rating-active::before {
+    content: '★★★★★';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: #EEA10C;
+
+  }
+.rating-items {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.rating-item {
+  flex: 0 0 20%;
+  height: 100%;
+  opacity: 0;
+}
+
+.rating-container.set-rating .rating-active,
+.rating-container.set-rating .rating-item{
+    cursor: pointer;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rating-user-email-input {
+  border-radius: 30px;
+  border: 1px solid rgba(27, 27, 27, 0.4);
+  width: 295px;
+  height: 42px;
+  padding: 12px 14px;
+  color: rgba(27, 27, 27, 0.6);
+  font-size: 14px;
+  line-height: 128.571429%; /* 18px/14 */
+}
+
+.rating-user-comment {
+  resize: none;
+  border-radius: 15px;
+  border: 1px solid rgba(27, 27, 27, 0.4);
+  padding: 12px 14px;
+  width: 295px;
+  height: 92px;
+  color: rgba(27, 27, 27, 0.6);
+  font-size: 14px;
+  line-height: 128.571429%; /* 18px/14 */
+}
+
+.rating-submit-btn {
+  width: 295px;
+  height: 42px;
+  border-radius: 30px;
+  background: var(--slate-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: var(--accent-color);
+  font-size: 14px;
+  line-height: 128.571429%; /* 18px/14 */
+  transition: all var(--timing-function);
+}
+
+.rating-submit-btn:hover,
+.rating-submit-btn:focus {
+  background-color: #5f6560;
+}
+
+.rating-user-comment:focus,
+.rating-user-email-input:focus {
+  border-color: #5f6560;
+  outline: transparent;
+}
+
+/* =======================TABLET===================== */
+
+@media screen and (min-width: 768px) {
+  .rating-form-wrap {
+    width: 450px;
+    padding: 50px;
+  }
+
+  .rating-label {
+    margin-bottom: 10px;
+  }
+
+  .rating-container {
+    margin-bottom: 32px;
+  }
+
+  .inputs-container {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .rating-user-email-input {
+    width: 350px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 150%; /* 24px/16 */
+  }
+
+  .rating-user-comment {
+    width: 350px;
+    height: 106px;
+    font-size: 16px;
+    line-height: 150%; /* 24px/16 */
+  }
+  .rating-submit-btn {
+    width: 350px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 150%; /* 24px/16 */
+  }
+}
