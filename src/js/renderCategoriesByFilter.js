@@ -34,7 +34,14 @@ export const initialRequest = async (filter) => {
   }
 };
 
+
 export const renderCategories = async event => {
   const filter = event.target.textContent.trim();
   initialRequest(filter);
+};
+
+export const addListeners = () => {
+  window.addEventListener('load', addClassToCurrentFilter);
+  window.addEventListener('load', initialRequest);
+  filterButtonsList.addEventListener('click', renderCategories);
 };
