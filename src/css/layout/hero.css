@@ -1,9 +1,13 @@
+@import 'animate.css';
 /**********************************MOBILE**********************************/
+.hero-container {
+  background-repeat: no-repeat;
+}
 
 .hero-background {
   background-image: url(../../img/hero/background-img-mobile.jpg);
   background-repeat: no-repeat;
-  background-position: center;
+  /* background-position: center; */
   background-size: cover;
   width: 100%;
   min-height: 387px;
@@ -11,6 +15,8 @@
   margin-bottom: 20px;
   display: flex;
   align-items: flex-end;
+  background-color: transparent;
+  border-radius: 30px;
 }
 
 @media screen and (min-resolution: 192dpi) and (min-width: 375px),
@@ -36,14 +42,14 @@
   font-size: 12px;
   line-height: 1.2;
   padding: 4px 10px;
-  gap: 10px;
+  /* gap: 10px; */
   border-radius: 30px;
   border: 1px solid rgba(246, 246, 246, 0.3);
 }
 
 .hero-title-wrap {
   border-radius: 30px;
-  background: #fff;
+  background-color: #fff;
   margin-bottom: 10px;
 }
 
@@ -77,6 +83,7 @@
     min-height: 900px;
     flex-shrink: 0;
     background-image: url(../../img/hero/background-img-tablet.jpg);
+    border-radius: 50px;
   }
 
   .hero-container {
@@ -101,6 +108,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .animate__animated.animate__fadeIn {
+    animation-delay: 1s;
   }
 
   .hero-title {
