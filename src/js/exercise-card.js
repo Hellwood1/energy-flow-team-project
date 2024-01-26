@@ -70,4 +70,30 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//--------------------- add to favorites---------------------------
 
+
+const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
+const addToFavoritesButtons = document.querySelectorAll(".exercise-favorite-add-btn");
+
+addToFavoritesButtons.forEach(button => {
+  button.addEventListener("click", async function() {
+    const exerciseId = this.id;
+    console.log(exerciseId);
+
+    const favoriteExerciseIds = getFavoriteExerciseIds();
+
+    if (!favoriteExerciseIds.includes(exerciseId)) {
+      favoriteExerciseIds.push(exerciseId);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseIds));
+    } else {
+      console.log("this exersice is already in favorites")
+    }
+    
+    });
+});
+
+function getFavoriteExerciseIds() {
+  const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return storedIds ? JSON.parse(storedIds) : [];
+}
