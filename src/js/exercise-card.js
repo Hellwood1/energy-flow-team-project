@@ -1,5 +1,4 @@
 
-import axios from 'axios';
 
 const exercisesCardList = document.querySelector(".exercises-list");
 const exerciseCardNameWidth = document.querySelector(".card-exercise-name")
