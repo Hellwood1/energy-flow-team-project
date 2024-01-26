@@ -39,12 +39,15 @@ const initialRequest = async filter => {
   }
 };
 
-const renderCategories = async event => {
+
+export const renderCategories = async event => {
+
   const filter = event.target.textContent.trim();
 
   removeExercisePath();
   initialRequest(filter);
 };
+
 
 function removeExercisePath() {
   if (namePath.textContent === '') {
@@ -61,5 +64,6 @@ export const addListeners = () => {
   window.addEventListener('load', addClassToCurrentFilter);
   window.addEventListener('load', initialRequest);
   filterButtonsList.addEventListener('click', renderCategories);
+
   titlePath.addEventListener('click', renderCategories);
 };
