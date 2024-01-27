@@ -112,6 +112,23 @@
     font-weight: 400;
     line-height: 1.5;
   }
+
+  .rating-icon {
+    fill: #EEA10C;
+  }
+
+  .trash-icon {
+    stroke: var(--black);
+    fill: transparent;
+    border-radius: 5%;
+  }
+
+  .start-icon {
+    stroke: var(--black);
+    fill:var(--black);
+    border-radius: 50%;
+  }
+  
   
   /*----------------- mid part-------------------------- */
   
@@ -131,6 +148,10 @@
     width: 216px;
   }
   
+  .runing-man-icon {
+    background-color: var(--slate-gray);
+    border-radius: 50%;
+  }
   
   /* ----------------lower part------------------ */
   
