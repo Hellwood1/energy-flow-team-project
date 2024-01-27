@@ -1,4 +1,12 @@
 
-import { mobileMenu } from './js/header-modal';
+'use strict';
 
-mobileMenu()
+import { closeModal } from './js/modal';
+
+import { addListeners } from './js/renderCategoriesByFilter';
+import { renderExercises } from './js/render-exercises';
+
+addListeners();
+closeModal();
+
+
