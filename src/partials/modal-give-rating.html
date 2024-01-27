@@ -1,0 +1,76 @@
+<div class="rating-backdrop backdrop-is-hidden">
+  <div class="rating-form-wrap modal-is-hidden">
+    <button class="rating-modal-close-btn" type="button">
+      <svg class="rating-modal-close-icon" width="24" height="24">
+        <use href="../images/sprite.svg#icon-close-modal"></use>
+      </svg>
+    </button>
+    <form class="rating-form">
+      <div class="rating-inputs-container">
+        <p class="rating-label">Rating</p>
+        <div class="rating-container set-rating">
+          <div class="rating-value">0.0</div>
+          <div class="rating-body">
+            <div class="rating-active"></div>
+            <div class="rating-items">
+              <input
+                type="radio"
+                class="rating-item"
+                value="1"
+                name="rating"
+                required
+              />
+              <input
+                type="radio"
+                class="rating-item"
+                value="2"
+                name="rating"
+                required
+              />
+              <input
+                type="radio"
+                class="rating-item"
+                value="3"
+                name="rating"
+                required
+              />
+              <input
+                type="radio"
+                class="rating-item"
+                value="4"
+                name="rating"
+                required
+              />
+              <input
+                type="radio"
+                class="rating-item"
+                value="5"
+                name="rating"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="inputs-container">
+          <input
+            class="rating-user-email-input"
+            type="email"
+            placeholder="Email"
+            name="email"
+            id="email"
+            required
+            pattern="/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/"
+          />
+          <textarea
+            name="comment"
+            id="comment"
+            placeholder="Your comment"
+            class="rating-user-comment"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <button class="rating-submit-btn" type="submit">Send</button>
+    </form>
+  </div>
+</div>
