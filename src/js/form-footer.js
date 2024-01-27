@@ -11,7 +11,7 @@ form.addEventListener('submit', handleFormSubmit);
 
 async function handleFormSubmit(event) {
   event.preventDefault();
-
+ 
   const email = emailInput.value.trim();
   const request = new EnergyFlowApiSevice();
   if (!validateEmail(email)) {
