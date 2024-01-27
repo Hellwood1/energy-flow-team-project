@@ -1,0 +1,176 @@
+/* --------------list of card---------------- */
+
+.favorites-div-with-cards {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 335px;
+    min-height: 450px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: var(--ligt-gray);
+  }
+  
+  .favorites-div-head {
+    margin-top: 40px;
+    margin-left: 20px;
+    color: var(--black);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  
+  .favorites-div-without-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 247px;
+    margin: 80px auto 0 auto;
+    color: var(--black);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.285;
+  }
+  
+  .favorites-div-without-cards-hidden {
+    display: none;
+  }
+  
+  .exercises-card {
+    margin: 0 auto 0 auto;
+    border-radius: 15px;
+    background: var(--white);
+    width: 263px;
+    height: 138px;
+    padding: 16px;
+  }
+  
+  .exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* -----------------upper part----------------- */
+  
+  .exercises-card-upper-part {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .div-rating-or-delete-button {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .workout-text {
+    display: flex;
+    padding: 5px 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: var(--slate-gray);
+    color: var(--accent-color);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .card-delete {
+    border: none;
+    background: none;
+  }
+  
+  .card-delete:hover,
+  .card-start:hover {
+    cursor: pointer;
+  }
+  
+  .card-start {
+    border: none;
+    background: none;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .card-rating {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    color: var(--black);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .rating-icon {
+    fill: #EEA10C;
+  }
+
+  .trash-icon {
+    stroke: var(--black);
+    fill: transparent;
+    border-radius: 5%;
+  }
+
+  .start-icon {
+    stroke: var(--black);
+    fill:var(--black);
+    border-radius: 50%;
+  }
+  
+  
+  /*----------------- mid part-------------------------- */
+  
+  .exercises-card-midle-part{
+    display: flex;
+    gap: 16px;
+    margin-top: 27px;
+    margin-bottom: 18px;
+    white-space: nowrap;       
+  }
+  
+  .card-exercise-name {
+  
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    width: 216px;
+  }
+  
+  .runing-man-icon {
+    background-color: var(--slate-gray);
+    border-radius: 50%;
+  }
+  
+  /* ----------------lower part------------------ */
+  
+  .exercises-card-lower-part {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+  
+  .exercises-card-lower-part p {
+    color: rgba(27, 27, 27, 0.40);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  
+  .exercises-card-lower-part-span {
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }

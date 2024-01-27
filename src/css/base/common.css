@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   font-family: 'DM Sans', Arial, sans-serif;
   font-size: 16px;
@@ -49,7 +55,8 @@ a {
   text-decoration: none;
 }
 
-.accent-color {
+.accent {
+  font-style: italic;
   color: var(--slate-gray);
   font-style: italic;
 }

@@ -11,6 +11,7 @@
 @import url('./layout/hero.css');
 @import url('./layout/quote-home.css');
 @import url('./layout/exercise.css');
+@import url('./layout/exercise-card.css');
 @import url('./layout/recomendation.css');
 @import url('./layout/footer.css');
 
@@ -20,4 +21,5 @@
 
 /* WONDOWS */
 @import url('./layout/modal-window.css');
+@import url('./layout/modal-give-rating.css');
 @import url('./layout/mobile-menu.css');

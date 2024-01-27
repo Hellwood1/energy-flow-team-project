@@ -1,1 +1,57 @@
-<!-- <section class="recomendation-section"> Оксана</section> -->
+<section class="recomendation-section">
+  <div class="container recomendation-container">
+    <div class="recomendation-img-container">
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          srcset="
+            ./images/recomendation/desktop/desktop-1x.jpg 1x,
+            ./images/recomendation/desktop/desktop-2x.jpg 2x
+          "
+        />
+        <source
+          media="(min-width: 768px)"
+          type="image/webp"
+          srcset="
+            ./images/recomendation/tablet/tablet-1x.jpg 1x,
+            ./images/recomendation/tablet/tablet-2x.jpg 2x
+          "
+        />
+        <source
+          media="(max-width: 767px)"
+          type="image/webp"
+          srcset="
+            ./images/recomendation/mobile/mobile-1x.jpg 1x,
+            ./images/recomendation/mobile/mobile-2x.jpg 2x
+          "
+        />
+        <img
+          src="./images/recomendation/mobile/mobile-1x.jpg"
+          srcset="
+            ./images/recomendation/mobile/mobile-1x.jpg 1x,
+            ./images/recomendation/mobile/mobile-2x.jpg 2x
+          "
+          alt="athletic girl"
+          class="recomendation-image"
+          loading="lazy"
+        />
+      </picture>
+    </div>
+
+    <div class="motivation-wrap">
+      <div class="motivation-icon-wrap">
+        <svg class="motivation-icon" width="20" height="20">
+          <use href="./images/sprite.svg#icon-dumbbell"></use>
+        </svg>
+      </div>
+      <h3 class="motivation-sport-title">110 min</h3>
+      <p class="motivation-sport-text">Daily norm of sports</p>
+      <p class="motivation-sport-description">
+        The World Health Organization recommends at least 150 minutes of
+        moderate-intensity aerobic physical activity throughout the week for
+        adults aged 18-64. However, what happens if we adjust that number to 110
+        minutes every day?
+      </p>
+    </div>
+  </div>
+</section>
