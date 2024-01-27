@@ -43,9 +43,9 @@
   gap: 8px;
   border-radius: 10px;
   border: 1px solid rgba(246, 246, 246, 0.2);
-  fill: var(--accent-color);
-  color: var(--accent-color);
 }
+
+
 .social-icon {
   fill: var(--accent-color);
 }
@@ -259,8 +259,7 @@
       background-image: url(../../images/img/footer/bgrimg-desktop-2x.jpg);
     }
   }
-  .footer-container {
-  }
+ 
 
   .footer-group {
     margin-right: 156px;
@@ -270,7 +269,7 @@
     margin-top: 40px;
   }
   .footer-credo {
-    width: 488px;
+    max-width: 488px;
     font-size: 64px;
     line-height: 0.96;
     margin-right: 160px;
