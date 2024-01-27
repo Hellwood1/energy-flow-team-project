@@ -1,0 +1,97 @@
+<div class="footer__background">
+  <div class="footer__box">
+    <div class="footer__left-wrap">
+      <a class="logo footer-logo" id="logo" href="/index.html">energy.flow</a>
+     
+
+      <ul class="soc__list">
+        <li>
+          <a
+            class="soc__link"
+            href="https://www.facebook.com/goITclub/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="facebook icon"
+          >
+            <svg
+              class="soc__icon soc__icon-footer"
+              width="7"
+              height="17"
+            >
+              <use href="../images/sprite.svg.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            class="soc__link"
+            href="https://www.instagram.com/goitclub/"
+            aria-label="instagram icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              class="soc__icon soc__icon-footer"
+              width="24"
+              height="24"
+            >
+              <use href="../images/sprite.svg.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            class="soc__link"
+            href="https://www.youtube.com/c/GoIT"
+            aria-label="youtube icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              class="soc__icon soc__icon-footer"
+              width="24"
+              height="24"
+            >
+              <use href="../images/sprite.svg.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer__right-wrap">
+      <h2 class="footer__title">
+        Transforming your <span class="accent-text">body</span> shape with us
+      </h2>
+      <form class="subscribe__form" id="subscribeForm" autocomplete="on">
+        <h3 class="subscribe__form-title">
+          Subscribe and learn about new exercises!
+        </h3>
+        <input
+          class="subscribe__form-input"
+          type="email"
+          name="email"
+          placeholder="  Email"
+          pattern="^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$"
+          required
+        />
+        <button class="subscribe__form-btn" name="button" type="submit" id="subscribeBtn">
+          Send
+        </button>
+      </form>
+    </div>
+    <div class="footer__text-outer-wrap">
+      <div>
+        <p class="footer__text">Your Energy. All rights reserved.</p>
+      </div>
+      <div class="footer__text-inner-wrap">
+        <p class="footer__text privacy-policy__text">
+          <span>Privacy Policy</span>
+          <span>&sol;</span>
+          <span>Terms of Service</span>
+        </p>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
