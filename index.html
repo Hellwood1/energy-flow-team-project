@@ -14,9 +14,9 @@
     <title>Energy flow - Home</title>
     
     <script type="module" crossorigin src="/energy-flow-team-project/assets/vendor-7af2edd1.js"></script>
-    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-8fb9c748.js"></script>
+    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-a6be6c5c.js"></script>
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-867e880a.css">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-d85619af.css">
   </head>
   <body>
     <!-- <header class="header-section">Vladyslav Sahaidak</header> -->
@@ -89,37 +89,44 @@ sadf
         <span class="quote-author"></span>
     </div>
 </section>
-      <div class="container">
-  <section class="exercises-section">
+      <section class="exercises-section container">
+  <div class="exercises-path">
     <h2 class="exercises-title">Exercises</h2>
-    <div class="category-btns-wrap">
-      <ul class="category-btns-list">
-        <li>
-          <button class="category-btn current-category-btn" type="button">
-            Muscles
-          </button>
-        </li>
-        <li>
-          <button class="category-btn" type="button">Body parts</button>
-        </li>
-        <li>
-          <button class="category-btn" type="button">Equipment</button>
-        </li>
-      </ul>
-      <form class="exercises-search-wrap hidden">
-        <input class="exercises-search" type="text" placeholder="Search" />
-        <button class="exercises-search-submit-btn" type="submit">
-          OK
-          <svg class="exercises-search-icon">
-            <use></use>
+    <h3 class="exercises-path-name hidden"></h3>
+  </div>
+  <div class="category-btns-wrap">
+    <ul class="category-btns-list">
+      <li>
+        <button class="category-btn current-category-btn" type="button">
+          Muscles
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" type="button">Body parts</button>
+      </li>
+      <li>
+        <button class="category-btn" type="button">Equipment</button>
+      </li>
+    </ul>
+    <form class="exercises-search-wrap hidden">
+      <input class="exercises-search" type="text" placeholder="Search" />
+      <div class="exercises-search-buttons">
+        <button type="button" class="exercises-search-close-btn hidden">
+          <svg class="exercises-search-close-icon" width="18" height="18">
+            <use href="../images/sprite.svg#icon-close-modal"></use>
           </svg>
         </button>
-      </form>
-    </div>
-    <ul class="categories-list"></ul>
-    <div class="pagination-btns-list hidden"></div>
-  </section>
-</div>
+        <button class="exercises-search-submit-btn" type="submit">
+          <svg class="exercises-search-icon" width="18" height="18">
+            <use href="../images/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+  <ul class="categories-list"></ul>
+  <div class="pagination-btns-list hidden"></div>
+</section>
 
       <!-- <section class="recomendation-section"> Оксана</section> -->
 
@@ -133,7 +140,7 @@ sadf
   <div class="exercise-modal modal-is-hidden">
     <button type="button" class="exercise-modal-close-btn">
       <svg class="exercise-modal-close-icon" width="24" height="24">
-        <use href="../images/sprite.svg.svg#icon-close-modal"></use>
+        <use href="../images/sprite.svg#icon-close-modal"></use>
       </svg>
     </button>
     <img
@@ -152,27 +159,27 @@ sadf
           </li>
           <li class="exercise-modal-rating-item">
             <svg class="exercise-star-icon" width="18" height="18">
-              <use href="../images/sprite.svg.svg#icon-star"></use>
+              <use href="../images/sprite.svg#icon-star"></use>
             </svg>
           </li>
           <li class="exercise-modal-rating-item">
             <svg class="exercise-star-icon" width="18" height="18">
-              <use href="../images/sprite.svg.svg#icon-star"></use>
+              <use href="../images/sprite.svg#icon-star"></use>
             </svg>
           </li>
           <li class="exercise-modal-rating-item">
             <svg class="exercise-star-icon" width="18" height="18">
-              <use href="../images/sprite.svg.svg#icon-star"></use>
+              <use href="../images/sprite.svg#icon-star"></use>
             </svg>
           </li>
           <li class="exercise-modal-rating-item">
             <svg class="exercise-star-icon" width="18" height="18">
-              <use href="../images/sprite.svg.svg#icon-star"></use>
+              <use href="../images/sprite.svg#icon-star"></use>
             </svg>
           </li>
           <li class="exercise-modal-rating-item">
             <svg class="exercise-star-icon" width="18" height="18">
-              <use href="../images/sprite.svg.svg#icon-star"></use>
+              <use href="../images/sprite.svg#icon-star"></use>
             </svg>
           </li>
         </ul>
@@ -209,7 +216,7 @@ sadf
         <button type="button" class="exercise-favorite-add-btn">
           Add to favorites
           <svg class="exercise-heart-icon" width="18" height="18">
-            <use href="../images/sprite.svg.svg#icon-heart"></use>
+            <use href="../images/sprite.svg#icon-heart"></use>
           </svg>
         </button>
         <button type="button" class="exercise-rating-give-btn">
