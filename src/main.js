@@ -1,5 +1,4 @@
 'use strict';
-
 import { closeModal } from './js/modal';
 import { addListeners } from './js/renderCategoriesByFilter';
 import { checkDate } from './js/quote';
@@ -12,3 +11,4 @@ closeModal();
 checkDate();
 initRatings();
 manageRatingModal();
+

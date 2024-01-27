@@ -5,11 +5,9 @@ const mobileModal = document.querySelector('.header__modal')
 
 const modal = () => {
     btnOpenEl.addEventListener('click', () => {
-        console.log('mambochka')
         mobileModal.classList.toggle('none')
     })
     btnCloseEl.addEventListener('click', () => {
-        console.log('mambochka')
         mobileModal.classList.toggle('none')
     })
 }
