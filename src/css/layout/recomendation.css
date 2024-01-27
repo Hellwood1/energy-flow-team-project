@@ -1,0 +1,156 @@
+/**
+  |============================
+  | Mobile
+  |============================
+*/
+
+/* section */
+.recomendation-section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* img */
+.recomendation-image {
+  min-height: 269px;
+  border-radius: 30px;
+}
+
+/* text */
+.motivation-wrap {
+  width: 335px;
+  height: 269px;
+
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--black);
+}
+
+.motivation-icon-wrap {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+
+  background-color: rgba(246, 246, 246, 0.10);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motivation-icon {
+  fill: var(--accent-color);
+}
+
+.motivation-sport-title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  margin-bottom: 2px;
+  margin-top: 0px;
+  margin-left: 70px;
+  padding-top: 40px;
+  color: var(--accent-color);
+}
+
+.motivation-sport-text {
+  color: var(--transparent-light-gray);
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 400;
+
+  margin-top: 0px;
+  margin-bottom: 14px;
+  margin-left: 70px;
+}
+
+.motivation-sport-description {
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 400;
+
+  margin-left: 70px;
+  margin-right: 20px;
+  margin-top: 0px;
+  color: var(--transparent-light-gray);
+}
+
+/**
+  |============================
+  | Tablet
+  |============================
+*/
+@media screen and (min-width: 768px) {
+  /* section */
+  .recomendation-section {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  /* img */
+  .recomendation-image {
+    min-height: 302px;
+    border-radius: 50px;
+  }
+
+  /* text */
+  .motivation-wrap {
+    width: 736px;
+    height: 302px;
+    border-radius: 50px;
+  }
+
+  .motivation-icon-wrap {
+    position: absolute;
+    top: 65px;
+    left: 64px;
+  }
+
+  .motivation-sport-title {
+    font-size: 24px;
+
+    margin-left: 114px;
+    padding-top: 64px;
+  }
+
+  .motivation-sport-text {
+    margin-top: 0px;
+    margin-bottom: 25px;
+    margin-left: 114px;
+  }
+
+  .motivation-sport-description {
+    font-size: 16px;
+    line-height: 1.5;
+
+    margin-left: 114px;
+    margin-right: 96px;
+  }
+}
+
+/**
+
+  |============================
+  | Desktop
+  |============================
+*/
+@media screen and (min-width: 1440px) {
+
+  /* section */
+  .recomendation-container {
+    display: flex;
+  }
+
+  /* text */
+  .motivation-wrap {
+    width: 704px;
+  }
+
+  .motivation-sport-description {
+    margin-right: 64px
+  }
+
+}
