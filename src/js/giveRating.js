@@ -1,3 +1,9 @@
+import EnergyFlowApiSevice from './api-service';
+import {
+  showMessageBadRequest,
+  showMessageRatingFailed,
+  showMessageRatingSuccess,
+} from './showMessage';
 const ratings = document.querySelectorAll('.rating-container');
 
 export const initRatings = () => {
@@ -49,17 +55,53 @@ export const initRatings = () => {
       });
     }
   }
-//   const form = document.querySelector('.rating-form');
-//   let response = {};
-//   form.addEventListener('submit', e => {
-//     e.preventDefault();
-//     const data = new FormData(form);
-//     data.forEach((value, key) => {
-//       response[key] = value;
-//     });
-//     console.log(response);
-//     ratingValue.innerHTML = 0.0;
-//     setRatingActiveWidth()
-//     form.reset();
-//   });
+
+  const form = document.querySelector('.rating-form');
+  let response = {};
+
+  const sendRating = async e => {
+    e.preventDefault();
+    const id = form.dataset.id;
+    const data = new FormData(e.currentTarget);
+    data.forEach((value, key) => {
+      response[key] = value;
+    });
+    const rating = response.rate;
+    const email = response.email;
+    const comment = response.review;
+    const request = new EnergyFlowApiSevice();
+
+    try {
+      const answer = await request.giveRating(id, rating, email, comment);
+      console.log(answer);
+
+      if (answer.status === 200) {
+        showMessageRatingSuccess(answer.data.message);
+      } else {
+        showMessageRatingFailed(answer.data.message);
+      }
+    } catch (error) {
+      showMessageBadRequest;
+    }
+
+    ratingValue.innerHTML = 0.0;
+    setRatingActiveWidth();
+    form.reset();
+  };
+  form.addEventListener('submit', sendRating);
+};
+
+export const manageRatingModal = () => {
+  const refs = {
+    openModalBtn: document.querySelector('[data-modal-rating-open]'),
+    closeModalBtn: document.querySelector('[data-modal-rating-close]'),
+    modal: document.querySelector('[data-modal-rating]'),
+  };
+
+  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', toggleModal);
+
+  function toggleModal() {
+    refs.modal.classList.toggle('is-hidden');
+  }
 };

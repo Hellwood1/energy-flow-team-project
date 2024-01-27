@@ -44,6 +44,18 @@ export default class EnergyFlowApiSevice {
     const response = await axios.get(`${this.BASE_URL}/exercises/${id}`);
     return response.data;
   }
+  async giveRating(id, rating, email, comment) {
+    const response = await axios({
+      method: 'patch',
+      url: `${this.BASE_URL}/exercises/${id}/rating`,
+      data: {
+        rate: Number(rating),
+        email: email,
+        review: comment,
+      },
+    });
+    return response;
+  }
   async getAllExercises() {
     const response = await axios.get(`${this.BASE_URL}/exercises?&limit=9999`);
     return response.data;
