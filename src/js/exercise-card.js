@@ -1,14 +1,17 @@
 
 
-const exercisesCardList = document.querySelector(".exercises-list");
-const exerciseCardNameWidth = document.querySelector(".card-exercise-name")
+const exercisesCardList = document.querySelector('.exercises-list');
+const exerciseCardNameWidth = document.querySelector('.card-exercise-name');
 
 const energyFlowApiService = new EnergyFlowApiSevice();
-energyFlowApiService.getExercisesByCategory("muscles", "abs", 1, 6)
-  .then((response) => addCardToList(response.data.results));
+energyFlowApiService
+  .getExercisesByCategory('muscles', 'abs', 1, 6)
+  .then(response => addCardToList(response.data.results));
 
 export default function addCardToList(results) {
-  const cardElement = results.map((cardData) => `
+  const cardElement = results
+    .map(
+      cardData => `
     <li class="exercises-card">
       <div class="exercises-card-upper-part">
         <div class="div-rating-or-delete-button">
@@ -32,26 +35,38 @@ export default function addCardToList(results) {
           <svg class="rating-icon" width="24" height="24">
           <use href="../images/sprite.svg#icon-runing-man"></use></svg>
         </div>
-        <p class="card-exercise-name">${capitalizeFirstLetter(cardData.name)}</p>
+        <p class="card-exercise-name">${capitalizeFirstLetter(
+          cardData.name
+        )}</p>
       </div>
       <div class="exercises-card-lower-part">
-        <p>Burned calories: <span class="exercises-card-lower-part-span">${cardData.burnedCalories} / 3 min</span></p>
-        <p>Body part: <span class="exercises-card-lower-part-span">${cardData.bodyPart}</span></p>
-        <p>Target: <span class="exercises-card-lower-part-span">${cardData.target}</span></p>
+        <p>Burned calories: <span class="exercises-card-lower-part-span">${
+          cardData.burnedCalories
+        } / 3 min</span></p>
+        <p>Body part: <span class="exercises-card-lower-part-span">${
+          cardData.bodyPart
+        }</span></p>
+        <p>Target: <span class="exercises-card-lower-part-span">${
+          cardData.target
+        }</span></p>
       </div>
     </li>
-  `).join("");
+  `
+    )
+    .join('');
 
-  exercisesCardList.insertAdjacentHTML("beforeend", cardElement);
+  exercisesCardList.insertAdjacentHTML('beforeend', cardElement);
 
-  let cardExerciseNames = exercisesCardList.querySelectorAll(".card-exercise-name");
-  cardExerciseNames.forEach((element) => {
+  let cardExerciseNames = exercisesCardList.querySelectorAll(
+    '.card-exercise-name'
+  );
+  cardExerciseNames.forEach(element => {
     truncateText(element);
   });
 }
 
 function truncateText(element) {
-   let containerWidth =  exerciseCardNameWidth.clientWidth;
+  let containerWidth = exerciseCardNameWidth.clientWidth;
   let text = element.textContent.trim();
 
   if (element.scrollWidth > containerWidth) {
