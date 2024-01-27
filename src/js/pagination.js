@@ -1,4 +1,15 @@
-export default function pageNumbers(total, current) {
+import { renderExercises } from './render-exercises';
+import { initialRequest } from './renderCategoriesByFilter';
+import { renameFilter } from './render-exercises';
+import { isSearchByKey } from './render-exercises';
+import { searchExercises } from './render-exercises';
+
+export let page = 1;
+export let category = 'test';
+export const navForm = document.querySelector('.navigation-list-form');
+export const navBtnsList = document.querySelector('.exercises-navigation-list');
+
+export default function generatePageNumbers(total, current) {
   let result = [];
   if (total < 5) {
     for (let i = 1; i <= total; i++) {
@@ -9,7 +20,78 @@ export default function pageNumbers(total, current) {
   } else if (total >= 5 && total - current <= 2) {
     result = [1, '...', total - 3, total - 2, total - 1, total];
   } else {
-    result = [1, '...', current - 1, current, current + 1, '...', total];
+    result = [
+      1,
+      '...',
+      current - 1,
+      current,
+      parseInt(current) + 1,
+      '...',
+      total,
+    ];
   }
   return result;
+}
+
+export function renderPageList(totalPages, perPage) {
+  const pageList = generatePageNumbers(totalPages, perPage)
+    .map(
+      p => `<li class="exercises-navigation-item">
+        <button type="submit" class="exercises-navigation-number" value="${p}">${p}</button>
+      </li>`
+    )
+    .join('');
+
+  navBtnsList.innerHTML = pageList;
+
+  chooseCurrentPage();
+  return;
+}
+
+export function changeCurrentPage(e) {
+  e.preventDefault();
+
+  if (!parseInt(e.submitter.textContent)) {
+    return;
+  }
+
+  page = e.submitter.textContent;
+
+  category = renameFilter(
+    document.querySelector('.current-category-btn').textContent
+  ).trim();
+
+  const namePath = document.querySelector('.exercises-path-name');
+  if (namePath.classList.contains('hidden')) {
+    initialRequest(category);
+  } else if (isSearchByKey) {
+    searchExercises();
+  } else {
+    renderExercises();
+  }
+}
+
+export function resetPage() {
+  page = 1;
+}
+
+function chooseCurrentPage() {
+  const allPages = document.querySelectorAll('.exercises-navigation-item');
+  if (page <= 1) {
+    allPages[0].firstElementChild.classList.add('pagination-current');
+  } else {
+    for (let i = 0; i < allPages.length; i++) {
+      if (
+        allPages[i].firstElementChild.classList.contains('pagination-current')
+      ) {
+        allPages[i].firstElementChild.classList.remove('pagination-current');
+      } else if (allPages[i].firstElementChild.textContent === page) {
+        allPages[i].firstElementChild.classList.add('pagination-current');
+      }
+    }
+  }
+}
+
+export function removePageList() {
+  navBtnsList.innerHTML = '';
 }

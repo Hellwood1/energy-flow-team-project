@@ -1,28 +1,40 @@
 import EnergyFlowApiSevice from './api-service';
 import { categoriesCardsContainer } from './renderCategoriesByFilter';
 import { showMessageBadRequest } from './showMessage';
+import { resetPage, renderPageList } from './pagination';
+import { page } from './pagination';
+import { removePageList } from './pagination';
 
 const exerciseSearchInput = document.querySelector('.exercises-search-wrap');
 let exerciseCategory;
 let exerciseName;
 let limit = window.innerWidth <= 1440 ? 8 : 9;
 
+export let isSearchByKey = false;
+
 export function renderExercises(e) {
-  if (e.target.nodeName !== 'LI') {
-    return;
+  const ApiService = new EnergyFlowApiSevice();
+  isSearchByKey = false;
+  if (
+    document.querySelector('.exercises-path-name').classList.contains('hidden')
+  ) {
+    if (e.target.nodeName !== 'LI') {
+      return;
+    }
+    resetPage();
+    exerciseCategory = renameFilter(e.target.dataset.filter);
+    exerciseName = e.target.dataset.name;
   }
 
-  const ApiService = new EnergyFlowApiSevice();
-  exerciseCategory = renameFilter(e.target.dataset.filter);
-  exerciseName = e.target.dataset.name;
   try {
     return ApiService.getExercisesByCategory(
       exerciseCategory,
       exerciseName,
-      1,
+      page,
       limit
     ).then(r => {
       const cards = mapCards(r.results);
+      renderPageList(r.totalPages, page);
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
@@ -45,11 +57,11 @@ export function hideExerciseSearchForm() {
 function shownExerciseSearchForm() {
   const exerciseSearchInput = document.querySelector('.exercises-search-wrap');
   exerciseSearchInput.classList.remove('hidden');
-  exerciseSearchInput.addEventListener('submit', searchExercises);
+  exerciseSearchInput.addEventListener('submit', initSearch);
   exerciseSearchInput.addEventListener('input', shownInputDeleteBtn);
 }
 
-function renameFilter(filter) {
+export function renameFilter(filter) {
   if (filter === 'Body parts') {
     return (filter = 'bodypart');
   }
@@ -98,8 +110,14 @@ function addExercisePath(pathName) {
   namePath.classList.remove('hidden');
 }
 
-function searchExercises(e) {
+function initSearch(e) {
   e.preventDefault();
+  resetPage();
+  searchExercises();
+}
+
+export function searchExercises() {
+  isSearchByKey = true;
 
   const inputValue = exerciseSearchInput.firstElementChild.value;
   const ApiService = new EnergyFlowApiSevice();
@@ -108,15 +126,17 @@ function searchExercises(e) {
     exerciseCategory,
     exerciseName,
     inputValue,
-    1,
+    page,
     limit
   ).then(r => {
     if (r.results.length <= 0) {
+      removePageList();
       const notFoundMessage =
         'Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.';
       const onNotFound = `<li class="exercises-not-found-msg">${notFoundMessage}</li>`;
       return addCardsToList(onNotFound);
     }
+    renderPageList(r.totalPages, page);
     const cards = mapCards(r.results);
     addCardsToList(cards);
   });
@@ -140,6 +160,7 @@ function hideInputDeleteBtn() {
 }
 
 function resetForm() {
+  isSearchByKey = false;
   exerciseSearchInput.reset();
   hideInputDeleteBtn();
 }
