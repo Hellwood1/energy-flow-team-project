@@ -1,7 +1,6 @@
 /* mobile first */
 
 .quote-home {
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -27,9 +26,10 @@
   border-radius: 30px;
   background: var(--slate-gray);
 
+  position: relative;
+
   display: flex;
   flex-wrap: wrap;
-  flex-shrink: 0;
   padding: 40px 20px 40px 20px;
 }
 
@@ -40,23 +40,23 @@
 
 .quotes-home-title {
   color: var(--accent-color);
-  font-family: 'DM Sans';
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
   margin-left: 12px;
-  margin-right: 61px;
 }
 
 .icon-inverted-commas {
   width: 28px;
   height: 28px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
 }
 
 .quote-text,
 .quote-author {
   color: var(--transparent-light-gray);
-  font-family: 'DM Sans';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
@@ -75,7 +75,6 @@
 
 @media screen and (min-width: 768px) {
   .quote-home {
-    margin-top: 16px;
     margin-bottom: 16px;
   }
 
@@ -83,7 +82,6 @@
     background-image: url(../../images/quote-home/quote-home-tablet@1x.png);
     width: 736px;
     height: 302px;
-    flex-shrink: 0;
     border-radius: 50px;
   }
 
@@ -113,7 +111,8 @@
   .icon-inverted-commas {
     width: 48px;
     height: 48px;
-    margin-left: 226px;
+    top: 32px;
+    right: 80px;
   }
 
   .quote-text,
@@ -150,10 +149,13 @@
     display: flex;
   }
 
+  .icon-inverted-commas {
+    right: 64px;
+  }
+
   .quotes-div {
     width: 704px;
     height: 302px;
-    flex-shrink: 0;
     padding: 32px 64px 64px 64px;
   }
 }
