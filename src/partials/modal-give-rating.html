@@ -1,11 +1,19 @@
-<div class="rating-backdrop backdrop-is-hidden">
-  <div class="rating-form-wrap modal-is-hidden">
-    <button class="rating-modal-close-btn" type="button">
+<div
+  class="rating-backdrop backdrop-is-hidden"
+  data-modal-rating
+  data-modal-rating-backdrop
+>
+  <div class="rating-form-wrap modal-is-hidden" data-modal-rating-container>
+    <button
+      class="rating-modal-close-btn"
+      type="button"
+      data-modal-rating-close
+    >
       <svg class="rating-modal-close-icon" width="24" height="24">
         <use href="../images/sprite.svg#icon-close-modal"></use>
       </svg>
     </button>
-    <form class="rating-form">
+    <form class="rating-form" data-id="#">
       <div class="rating-inputs-container">
         <p class="rating-label">Rating</p>
         <div class="rating-container set-rating">
@@ -14,38 +22,43 @@
             <div class="rating-active"></div>
             <div class="rating-items">
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="1"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="2"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="3"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="4"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="5"
-                name="rating"
+                name="rate"
                 required
               />
             </div>
@@ -59,11 +72,10 @@
             name="email"
             id="email"
             required
-            pattern="/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/"
           />
           <textarea
-            name="comment"
-            id="comment"
+            name="review"
+            id="review"
             placeholder="Your comment"
             class="rating-user-comment"
             required
