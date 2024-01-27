@@ -1,7 +1,7 @@
 /**********************************MOBILE**********************************/
 
 .hero-background {
-  background-image: url(../../img/hero/background-img-mobile.jpg);
+  background-image: url(../../images/hero/background-img-mobile.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,7 +17,7 @@
   screen and (min-resolution: 2dppx) and (min-width: 375px),
   screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
   .hero-background {
-    background-image: url(../../img/hero/background-img-mobile@2x.jpg);
+    background-image: url(../../images/hero/background-img-mobile@2x.jpg);
   }
 }
 
@@ -77,7 +77,7 @@
     width: 248px;
     min-height: 900px;
     flex-shrink: 0;
-    background-image: url(../../img/hero/background-img-tablet.jpg);
+    background-image: url(../../images/hero/background-img-tablet.jpg);
   }
 
   .hero-container {
@@ -111,7 +111,7 @@
   screen and (min-resolution: 2dppx) and (min-width: 768px),
   screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
   .hero-background {
-    background-image: url(../../img/hero/background-img-tablet@2x.jpg);
+    background-image: url(../../images/hero/background-img-tablet@2x.jpg);
   }
 }
 /**********************************TABLET**********************************/
