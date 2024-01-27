@@ -7,7 +7,7 @@ const form = document.querySelector('.footer-subscription');
 const emailInput = document.querySelector('.input-footer');
 
 form.addEventListener('submit', handleFormSubmit);
-console.dir('email')
+
 
 async function handleFormSubmit(event) {
   event.preventDefault();
