@@ -1,6 +1,14 @@
-<div class="rating-backdrop" data-modal-rating>
-  <div class="rating-form-wrap">
-    <button class="rating-modal-close-btn" type="button" data-modal-rating-close>
+<div
+  class="rating-backdrop backdrop-is-hidden"
+  data-modal-rating
+  data-modal-rating-backdrop
+>
+  <div class="rating-form-wrap modal-is-hidden" data-modal-rating-container>
+    <button
+      class="rating-modal-close-btn"
+      type="button"
+      data-modal-rating-close
+    >
       <svg class="rating-modal-close-icon" width="24" height="24">
         <use href="../images/sprite.svg#icon-close-modal"></use>
       </svg>
@@ -64,7 +72,6 @@
             name="email"
             id="email"
             required
-            
           />
           <textarea
             name="review"

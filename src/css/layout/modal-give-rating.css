@@ -21,17 +21,7 @@
   width: 335px;
   padding: 40px 20px;
 }
-.backdrop-is-hidden {
-    overflow: hidden;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 200ms ease-in-out;
-  }
-  
-  .modal-is-hidden {
-    scale: 0.95;
-    transition: all 200ms ease-in-out;
-  }
+
 .rating-modal-close-btn {
   position: absolute;
   top: 14px;
@@ -227,8 +217,14 @@
 }
 
 
-.is-hidden{
+.backdrop-is-hidden {
+  overflow: hidden;
+  visibility: hidden;
   opacity: 0;
-  visibility: 0;
-  pointer-events: none;
+  transition: all 200ms ease-in-out;
+}
+
+.modal-is-hidden {
+  scale: 0.95;
+  transition: all 200ms ease-in-out;
 }

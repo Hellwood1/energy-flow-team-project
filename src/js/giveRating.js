@@ -96,12 +96,25 @@ export const manageRatingModal = () => {
     openModalBtn: document.querySelector('[data-modal-rating-open]'),
     closeModalBtn: document.querySelector('[data-modal-rating-close]'),
     modal: document.querySelector('[data-modal-rating]'),
+    backdrop: document.querySelector('[data-modal-rating-backdrop]'),
+    container: document.querySelector('[data-modal-rating-container]'),
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.modal.addEventListener('click', e => {
+    if (e.target !== refs.backdrop && e.target !== refs.closeModalBtn) return;
+    toggleModal();
+  });
+  window.addEventListener('keydown', escapeClose, { once: true });
 
+  function escapeClose(e) {
+    if (e.key === 'Escape') {
+      toggleModal();
+    }
+  }
   function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
+    refs.modal.classList.add('backdrop-is-hidden');
+    refs.modal.classList.add('modal-is-hidden');
   }
 };
