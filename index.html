@@ -14,49 +14,79 @@
     <title>Energy flow - Home</title>
     
     <script type="module" crossorigin src="/energy-flow-team-project/assets/vendor-7af2edd1.js"></script>
-    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-5535b725.js"></script>
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-01cd88c0.css">
+    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-7aac455e.js"></script>
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-b976ea4e.css">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
   </head>
   <body>
-    <!-- <header class="header-section">Vladyslav Sahaidak</header> -->
-<div class="header__container container">
-    <p class="header--label">energy.flow</p>
-    <svg>
-        <use></use>
-    </svg>
+    <header class="header">
 
-</div>
-<div class="modal">
-    <p class="header--modal--label">energy.flow</p>
-    <svg>
-        <use></use>
-    </svg>
-    <a class="modal--link" href="#" target="_blank" rel="noopener noreferrer">Home</a>
-    <a class="modal--link" href="#" target="_blank" rel="noopener noreferrer">Favorites</a>
-
-    <ul class="modal__list">
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
+    <div class="header__container container">
+        <a class="title--link" href="#">
+            energy.flow
         </a>
-    <svg>
-        <use></use>
-    </svg></li>
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
+        <button class="header__btn" type="button" data-modal-open>
+                <svg class="header--svg--btn" width="36" height="16">
+                    <use href="../images/sprite.svg.svg#icon-mobile-menu-open"></use>
+                </svg>
+            </button>
+    
+    </div>
+    
+    <div class="header__modal none">
+        <p class="header--modal--label">
+            energy.flow
+        </p>
+        <button class="modal__btn" type="button" data-modal-close>
+                зачини мене будь ласка
+                <svg class="modal--svg--btn" width="20" height="20">
+                    <use href="../images/sprite.svg.svg#icon-close-modal"></use>
+                </svg>
+        </button>
+        <a class="modal--link" href="../index.html" rel="noopener noreferrer">
+            Home
         </a>
-    <svg>
-        <use></use>
-    </svg></li>
-        <li class="modal__item"><a class="modal--network" href="#" target="_blank" rel="noopener noreferrer">
-sadf
+        <a class="modal--link" href="./favorites.html" rel="noopener noreferrer">
+            Favorites
         </a>
-    <svg>
-        <use></use>
-    </svg></li>
-    </ul>
-
-</div>
+    
+        <nav>
+            <ul class="modal__list">
+                <li class="modal__item">
+                    <a class="modal--network" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer"
+                        title="facebook link">
+                        <svg class="modal--svg" width="20" height="18">
+                            <use href="../images/sprite.svg.svg#icon-facebook"></use>
+                        </svg>
+                        facebook
+                    </a>
+            
+                </li>
+                <li class="modal__item">
+                    <a class="modal--network" href="https://www.instagram.com/goitclub/" rel="noopener noreferrer" target="_blank"
+                        title="instagram link">
+                        <svg class="modal--svg" width="25" height="25">
+                            <use href="../images/sprite.svg.svg#icon-instagram"></use>
+                        </svg>
+                        instagram
+                    </a>
+            
+                </li>
+                <li class="modal__item">
+                    <a class="modal--network" href="https://www.youtube.com/c/GoIT" rel="noopener noreferrer" target="_blank"
+                        title="youtube link">
+                        <svg class="modal--svg" width="25" height="25">
+                            <use href="../images/sprite.svg.svg#icon-youtube"></use>
+                        </svg>
+                        youtube
+                    </a>
+            
+                </li>
+            </ul>
+        </nav>
+    
+    </div>
+</header>
     <main>
       <section class="hero">
   <div class="container hero-container">
