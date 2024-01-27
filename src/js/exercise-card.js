@@ -52,7 +52,7 @@ energyFlowApiService.getExercisesByCategory("muscles", "abs", 1, 6)
 }
 
 
-export default function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
