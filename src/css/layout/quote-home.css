@@ -1,3 +1,4 @@
+@import 'animate.css';
 /* mobile first */
 
 .quote-home {
@@ -32,6 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 40px 20px 40px 20px;
+  animation-name: slideInLeft;
 }
 
 .icon-runing-man {
@@ -128,6 +130,10 @@
   .quote-author {
     font-weight: 500;
     margin-top: 25px;
+  }
+
+  .animate__animated.animate__fadeIn {
+    animation-delay: 1s;
   }
 }
 
