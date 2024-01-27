@@ -15,79 +15,85 @@
     <title>Energy flow - favorites</title>
     
     <script type="module" crossorigin src="/energy-flow-team-project/assets/vendor-7af2edd1.js"></script>
-    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-8cc58fa5.js"></script>
+    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-15a3793e.js"></script>
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-0a4aba59.css">
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-1b964da1.css">
   </head>
   <body>
     <header class="header">
+  <div class="header__container container">
+    <a class="title--link" href="#"> energy.flow </a>
+    <button class="header__btn" type="button" data-modal-open>
+      <svg class="header--svg--btn" width="36" height="16">
+        <use href="../images/sprite.svg.svg#icon-mobile-menu-open"></use>
+      </svg>
+    </button>
+  </div>
 
-    <div class="header__container container">
-        <a class="title--link" href="#">
-            energy.flow
-        </a>
-        <button class="header__btn" type="button" data-modal-open>
-                <svg class="header--svg--btn" width="36" height="16">
-                    <use href="../images/sprite.svg.svg#icon-mobile-menu-open"></use>
-                </svg>
-            </button>
-    
-    </div>
-    
-    <div class="header__modal none">
-        <p class="header--modal--label">
-            energy.flow
-        </p>
-        <button class="modal__btn" type="button" data-modal-close>
-                зачини мене будь ласка
-                <svg class="modal--svg--btn" width="20" height="20">
-                    <use href="../images/sprite.svg.svg#icon-close-modal"></use>
-                </svg>
-        </button>
-        <a class="modal--link" href="../index.html" rel="noopener noreferrer">
-            Home
-        </a>
-        <a class="modal--link" href="./favorites.html" rel="noopener noreferrer">
-            Favorites
-        </a>
-    
-        <nav>
-            <ul class="modal__list">
-                <li class="modal__item">
-                    <a class="modal--network" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer"
-                        title="facebook link">
-                        <svg class="modal--svg" width="20" height="18">
-                            <use href="../images/sprite.svg.svg#icon-facebook"></use>
-                        </svg>
-                        facebook
-                    </a>
-            
-                </li>
-                <li class="modal__item">
-                    <a class="modal--network" href="https://www.instagram.com/goitclub/" rel="noopener noreferrer" target="_blank"
-                        title="instagram link">
-                        <svg class="modal--svg" width="25" height="25">
-                            <use href="../images/sprite.svg.svg#icon-instagram"></use>
-                        </svg>
-                        instagram
-                    </a>
-            
-                </li>
-                <li class="modal__item">
-                    <a class="modal--network" href="https://www.youtube.com/c/GoIT" rel="noopener noreferrer" target="_blank"
-                        title="youtube link">
-                        <svg class="modal--svg" width="25" height="25">
-                            <use href="../images/sprite.svg.svg#icon-youtube"></use>
-                        </svg>
-                        youtube
-                    </a>
-            
-                </li>
-            </ul>
-        </nav>
-    
-    </div>
+  <div class="header__modal">
+    <p class="header--modal--label">energy.flow</p>
+    <button class="modal__btn" type="button" data-modal-close>
+      зачини мене будь ласка
+      <svg class="modal--svg--btn" width="20" height="20">
+        <use href="../images/sprite.svg.svg#icon-close-modal"></use>
+      </svg>
+    </button>
+    <a class="modal--link" href="./index.html" rel="noopener noreferrer">
+      Home
+    </a>
+    <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
+      Favorites
+    </a>
+
+    <nav>
+      <ul class="modal__list">
+        <li class="modal__item">
+          <a
+            class="modal--network"
+            href="https://www.facebook.com/goITclub/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="facebook link"
+          >
+            <svg class="modal--svg" width="20" height="18">
+              <use href="../images/sprite.svg.svg#icon-facebook"></use>
+            </svg>
+            facebook
+          </a>
+        </li>
+        <li class="modal__item">
+          <a
+            class="modal--network"
+            href="https://www.instagram.com/goitclub/"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="instagram link"
+          >
+            <svg class="modal--svg" width="25" height="25">
+              <use href="../images/sprite.svg.svg#icon-instagram"></use>
+            </svg>
+            instagram
+          </a>
+        </li>
+        <li class="modal__item">
+          <a
+            class="modal--network"
+            href="https://www.youtube.com/c/GoIT"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="youtube link"
+          >
+            <svg class="modal--svg" width="25" height="25">
+              <use href="../images/sprite.svg.svg#icon-youtube"></use>
+            </svg>
+            youtube
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
     <main>
       <section class="quote-home">
   <div class="quotes-div">
@@ -103,7 +109,49 @@
   </div>
 </section>
 
-      
+      <!-- <section class="favorites-section">Name Surname</section> -->
+<section class="favorites-section container">
+  <div class="favorites-section-wrapper">
+    <ul class="after-quote-section-list">
+      <li class="after-quote-section-item">
+        <img
+          class="favorites-img"
+          src="../images/favorites/sport-woman.jpg"
+          alt="sports woman"
+        />
+      </li>
+      <li class="after-quote-section-item">
+        <div class="favorites-text-div">
+          <div class="favorites-text-svg"></div>
+          <p class="favorites-text-time">110 min</p>
+          <p class="favorites-text-daily-norm">Daily norm of sports</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="favorites-div-with-cards">
+      <h2 class="favorites-div-head">Favorites</h2>
+      <div
+        class="favorites-div-without-cards favorites-div-without-cards-hidden"
+      >
+        <img
+          class="favorites-div-without-cards-img"
+          src="../images/favorites/dumbbell.png"
+          alt="dumbbell"
+          width="85"
+          height="52"
+        />
+        <p class="favorites-div-without-cards-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+
+      <ul class="favorites-list"></ul>
+    </div>
+  </div>
+</section>
 
     </main>
     <!-- <div class="mobile-menu-container"> Name Surname </div> -->
