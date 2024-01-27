@@ -1,5 +1,13 @@
 /* --------------list of card---------------- */
 
+.favorites-list{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px 14px;
+}
+
 .favorites-div-with-cards {
     margin-top: 20px;
     padding-top: 20px;
@@ -44,8 +52,8 @@
     margin: 0 auto 0 auto;
     border-radius: 15px;
     background: var(--white);
-    width: 263px;
-    height: 138px;
+    width: 295px;
+    height: 165px;
     padding: 16px;
   }
   
@@ -98,8 +106,11 @@
   .card-start {
     border: none;
     background: none;
-    display: flex;
-    gap: 8px;
+    height: 18px;
+  }
+
+  .card-start span {
+    margin-left: 4px;
   }
   
   .card-rating {
@@ -141,11 +152,10 @@
   }
   
   .card-exercise-name {
-  
     font-size: 20px;
-    font-weight: 400;
-    line-height: 1;
-    width: 216px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
   }
   
   .runing-man-icon {
