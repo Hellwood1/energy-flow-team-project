@@ -134,7 +134,7 @@
     width: 424px;
     font-size: 18px;
     padding-left: 32px;
-    padding-right: 60px;
+    padding-right: 0;
   }
 }
 
@@ -163,14 +163,16 @@
   }
 
   .hero-title-wrap {
-    width: 100%;
+    width: 704px;
     height: 884px;
     border-top-left-radius: 0;
   }
 
   .hero-title {
-    width: 639px;
     font-size: 120px;
+    line-height: 115px;
+    letter-spacing: -2.4px;
+    margin-bottom: 25px;
   }
 
   .accent {
@@ -179,6 +181,7 @@
 
   .hero-text {
     width: 528px;
+    padding-right: 0;
   }
 }
 @media screen and (min-resolution: 192dpi) and (min-width: 1440px),
