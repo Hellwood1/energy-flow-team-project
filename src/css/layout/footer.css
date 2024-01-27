@@ -8,6 +8,8 @@
   border-radius: 30px;
   width: 335px;
   height: 471px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -23,9 +25,6 @@
 }
 .logo-footer {
   color: var(--accent-color);
-  font-family: 'DM Sans';
-  font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: -0.02em;
@@ -75,9 +74,7 @@
 .footer-box-title {
   margin-bottom: 20px;
   color: var(--accent-color);
-  font-family: 'DM Sans';
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.28;
 }
@@ -158,6 +155,8 @@
     border-radius: 50px;
     width: 736px;
     height: 576px;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -166,7 +165,7 @@
       background-image: url(../../images/img/footer/bgrimg-tablet-2x.jpg);
     }
   }
-  .container {
+  .footer-container {
     display: flex;
     flex-wrap: wrap;
   }
@@ -258,13 +257,11 @@
       background-image: url(../../images/img/footer/bgrimg-desktop-2x.jpg);
     }
   }
-  .container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
+  .footer-container {
   }
 
   .footer-group {
-    margin-right: 162px;
+    margin-right: 156px;
   }
 
   .social-list {
@@ -274,6 +271,7 @@
     width: 488px;
     font-size: 64px;
     line-height: 0.96;
+    margin-right: 160px;
     margin-bottom: 0;
   }
 
