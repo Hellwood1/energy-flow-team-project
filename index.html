@@ -14,8 +14,8 @@
     <title>Energy flow - Home</title>
     
     <script type="module" crossorigin src="/energy-flow-team-project/assets/vendor-7af2edd1.js"></script>
-    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-15a3793e.js"></script>
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-1b964da1.css">
+    <script type="module" crossorigin src="/energy-flow-team-project/assets/main-29b665d1.js"></script>
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/main-dc1107a0.css">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -309,7 +309,7 @@
             <use href="/energy-flow-team-project/assets/sprite-0dccc979.svg#icon-heart"></use>
           </svg>
         </button>
-        <button type="button" class="exercise-rating-give-btn">
+        <button type="button" class="exercise-rating-give-btn" data-modal-rating-open>
           Give a rating
         </button>
       </div>
@@ -317,14 +317,22 @@
   </div>
 </div>
 
-    <div class="rating-backdrop backdrop-is-hidden">
-  <div class="rating-form-wrap modal-is-hidden">
-    <button class="rating-modal-close-btn" type="button">
+    <div
+  class="rating-backdrop backdrop-is-hidden"
+  data-modal-rating
+  data-modal-rating-backdrop
+>
+  <div class="rating-form-wrap modal-is-hidden" data-modal-rating-container>
+    <button
+      class="rating-modal-close-btn"
+      type="button"
+      data-modal-rating-close
+    >
       <svg class="rating-modal-close-icon" width="24" height="24">
         <use href="../images/sprite.svg#icon-close-modal"></use>
       </svg>
     </button>
-    <form class="rating-form">
+    <form class="rating-form" data-id="#">
       <div class="rating-inputs-container">
         <p class="rating-label">Rating</p>
         <div class="rating-container set-rating">
@@ -333,38 +341,43 @@
             <div class="rating-active"></div>
             <div class="rating-items">
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="1"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="2"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="3"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="4"
-                name="rating"
+                name="rate"
                 required
               />
               <input
+                id="rate"
                 type="radio"
                 class="rating-item"
                 value="5"
-                name="rating"
+                name="rate"
                 required
               />
             </div>
@@ -378,11 +391,10 @@
             name="email"
             id="email"
             required
-            pattern="/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/"
           />
           <textarea
-            name="comment"
-            id="comment"
+            name="review"
+            id="review"
             placeholder="Your comment"
             class="rating-user-comment"
             required
