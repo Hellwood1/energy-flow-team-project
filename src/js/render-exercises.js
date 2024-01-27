@@ -72,27 +72,33 @@ function mapCards(data) {
   return data
     .map(
       item =>
-        `
-        <li class="exercises-card">
-        <div class="exercises-card-upper-part">
-          <div class="div-rating-or-delete-button">
-            <div class="workout-text">WORKOUT</div>
-            <div class="card-rating">${item.rating} <span></span></div>
-            <button type="button" class="card-delete card-delete-inactive"></button>
-          </div>
-            <button type="button" class="card-start">Start <span></span></button>
+        `<li class="exercises-card" data-id="${item.id}">
+      <div class="exercises-card-upper-part">
+        <div class="div-rating-or-delete-button">
+          <div class="workout-text">WORKOUT</div>
+          <div class="card-rating">${item.rating}<span>
+            <svg class="rating-icon" width="18" height="18">
+            <use href="../images/sprite.svg#icon-star"></use></svg>
+          </span></div>
         </div>
-        <div class="exercises-card-midle-part">
-          <div class="exercises-card-midle-part-svg"></div>
-          <p class="card-exercise-name">${item.name}</p>
+        <button type="button" class="card-start">Start <span>
+          <svg class="start-icon" width="14" height="14">
+          <use href="../images/sprite.svg#icon-right-arrow"></use></svg>
+        </span></button>
+      </div>
+      <div class="exercises-card-midle-part">
+        <div class="exercises-card-midle-part-svg">
+          <svg class="runing-man-icon" width="24" height="24">
+          <use href="../images/sprite.svg#icon-runing-man"></use></svg>
         </div>
-        <div class="exercises-card-lower-part">
-          <p>Burned calories: <span class="exercises-card-lower-part-span">${item.burnedCalories} / 3 min</span></p>
-          <p>Body part: <span class="exercises-card-lower-part-span">${item.bodyPart}</span></p>
-          <p>Target: <span class="exercises-card-lower-part-span">${item.target}</span></p>
-        </div>
-      </li>
-        `
+        <p class="card-exercise-name">${item.name}</p>
+      </div>
+      <div class="exercises-card-lower-part">
+        <p>Burned calories: <span class="exercises-card-lower-part-span">${item.burnedCalories} / 3 min</span></p>
+        <p>Body part: <span class="exercises-card-lower-part-span">${item.bodyPart}</span></p>
+        <p>Target: <span class="exercises-card-lower-part-span">${item.target}</span></p>
+      </div>
+    </li>`
     )
     .join('');
 }
