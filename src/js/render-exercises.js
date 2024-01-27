@@ -91,7 +91,7 @@ function mapCards(data) {
           <svg class="runing-man-icon" width="24" height="24">
           <use href="../images/sprite.svg#icon-runing-man"></use></svg>
         </div>
-        <p class="card-exercise-name">${item.name}</p>
+        <p class="card-exercise-name">${capitalizeFirstLetter(item.name)}</p>
       </div>
       <div class="exercises-card-lower-part">
         <p>Burned calories: <span class="exercises-card-lower-part-span">${item.burnedCalories} / 3 min</span></p>

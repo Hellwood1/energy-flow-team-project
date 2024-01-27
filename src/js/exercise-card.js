@@ -20,22 +20,22 @@ energyFlowApiService.getExercisesByCategory("muscles", "abs", 1, 6)
             <div class="workout-text">WORKOUT</div>
             <div class="card-rating">${cardData.rating} <span>
               <svg class="rating-icon" width="18" height="18">
-              <use href="../images/sprite.svg#icon-star"></use></svg>
+              <use href="./images/sprite.svg#icon-star"></use></svg>
             </span></div>
             <button type="button" id="${cardData._id}" class="card-delete card-delte-inactive">
               <svg class="trash-icon" width="16" height="16">
-              <use href="../images/sprite.svg#icon-trash"></use></svg>
+              <use href="./images/sprite.svg#icon-trash"></use></svg>
             </button>
           </div>
           <button type="button" class="card-start">Start <span>
             <svg class="start-icon" width="14" height="14">
-            <use href="../images/sprite.svg#icon-right-arrow"></use></svg>
+            <use href="./images/sprite.svg#icon-right-arrow"></use></svg>
           </span></button>
         </div>
         <div class="exercises-card-midle-part">
           <div class="exercises-card-midle-part-svg">
             <svg class="runing-man-icon" width="24" height="24">
-            <use href="../images/sprite.svg#icon-runing-man"></use></svg>
+            <use href="./images/sprite.svg#icon-runing-man"></use></svg>
           </div>
           <p class="card-exercise-name">${capitalizeFirstLetter(cardData.name)}</p>
         </div>
