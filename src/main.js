@@ -9,7 +9,7 @@ import { scrollFunction } from './js/up-btn';
 mobileMenu();
 addListeners();
 checkDate();
-initRatings();
+initRating();
 validateEmail();
 handleFormSubmit();
 scrollFunction();
