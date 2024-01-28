@@ -5,13 +5,6 @@
 
 .title--link {
   color: var(--black);
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 555ms ease;
-}
-.title--link:hover,
-.title--link:focus {
-  border-bottom: 1px solid red;
-
 }
 .header--modal--label {
   color: var(--white);
