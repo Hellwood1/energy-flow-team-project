@@ -99,18 +99,25 @@ function mapCards(data) {
           <div class="workout-text">WORKOUT</div>
           <div class="card-rating">${item.rating.toFixed(1)}<span>
             <svg class="rating-icon" width="18" height="18">
+
             <use href="${imgUrl}#icon-star"></use></svg>
+
           </span></div>
         </div>
         <button type="button" class="card-start">Start <span>
           <svg class="start-icon" width="14" height="14">
+
           <use href="${imgUrl}#icon-right-arrow"></use></svg>
+
         </span></button>
       </div>
       <div class="exercises-card-midle-part">
         <div class="exercises-card-midle-part-svg">
           <svg class="runing-man-icon" width="24" height="24">
+
           <use href="${imgUrl}#icon-runing-man"></use></svg>
+
+
         </div>
         <p class="card-exercise-name">${capitalizeFirstLetter(item.name)}</p>
       </div>
