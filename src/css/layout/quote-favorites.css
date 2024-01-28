@@ -2,6 +2,41 @@
 /* та стилі відсутпу від секцій */
 
 /* mobile first */
+.quote-favorites-minutes {
+  border-radius: 30px;
+  background: var(--white);
+
+  width: 335px;
+  height: 272px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 102px;
+}
+
+.quote-favorites-minutes-title {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.quote-favorites-minutes-text {
+  margin-top: 6px;
+
+  color: rgba(27, 27, 27, 0.6);
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.icon-dumbbell {
+  width: 20px;
+  height: 20px;
+}
+
+.quote-favourites {
+  margin-top: 96px;
+}
 
 .quote-home-background-fav {
   background-image: url(../../images/favorites/quote-background/quote-favourites-mobile@1x.jpg);
@@ -28,6 +63,22 @@
     margin-bottom: 16px;
   }
 
+  .favorites-quote-div {
+    display: flex;
+  }
+
+  .quote-favorites-minutes {
+    border-radius: 50px;
+
+    width: 368px;
+    height: 302px;
+    padding-left: 118px;
+  }
+
+  .quote-favourites {
+    margin-top: 180px;
+  }
+
   .quote-home-background-fav {
     background-image: url(../../images/favorites/quote-background/quote-favourites-tablet@1x.jpg);
     border-radius: 50px;
@@ -52,7 +103,12 @@
     width: 352px;
   }
 
+  .quote-favorites-minutes {
+    width: 352px;
+  }
+
   .quote-favourites {
+    margin-top: 156px;
     display: flex;
   }
 
