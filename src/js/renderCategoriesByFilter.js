@@ -9,6 +9,8 @@ import { changeCurrentPage } from './pagination';
 import { page } from './pagination';
 import { resetPage } from './pagination';
 import { animateElement } from './render-exercises';
+import { form } from './form-footer';
+import { handleFormSubmit } from './form-footer';
 
 export const categoriesCardsContainer =
   document.querySelector('.categories-list');
@@ -69,6 +71,7 @@ function removeExercisePath() {
 }
 
 export const addListeners = () => {
+  form.addEventListener('submit', handleFormSubmit);
   window.addEventListener('load', addClassToCurrentFilter);
   window.addEventListener('load', initialRequest);
   filterButtonsList.addEventListener('click', renderCategories);

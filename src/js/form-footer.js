@@ -1,15 +1,10 @@
 import EnergyFlowApiSevice from './api-service.js';
-import {showMessageBadRequest, showMessageOkRequest} from './showMessage';
+import { showMessageBadRequest, showMessageOkRequest } from './showMessage';
 
-
-
-const form = document.querySelector('.footer-subscription');
 const emailInput = document.querySelector('.input-footer');
+export const form = document.querySelector('.footer-subscription');
 
-form.addEventListener('submit', handleFormSubmit);
-
-
-async function handleFormSubmit(event) {
+export async function handleFormSubmit(event) {
   event.preventDefault();
 
   const email = emailInput.value.trim();
@@ -26,11 +21,9 @@ async function handleFormSubmit(event) {
 
   try {
     const response = await request.sendSubscription(email);
-    console.log('Data sent successfully');
     emailInput.value = '';
     showMessageOkRequest();
   } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
     showMessageBadRequest();
   }
 }
