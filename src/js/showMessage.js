@@ -33,7 +33,7 @@ const showMessageOkRequest = () => {
 
 const showMessageConflictRequest = () => {
   iziToast.error({
-    message: `a subscription has already been sent to this email`,
+    message: `The subscription has already been sent to this email`,
     backgroundColor: 'rgb(240, 115, 115)',
     messageColor: 'white',
     maxWidth: 300,
