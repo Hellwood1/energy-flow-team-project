@@ -1,4 +1,4 @@
-import"./assets/index-762213a4.js";import{a as i,i as v}from"./assets/vendor-c4bdd18a.js";const E=document.querySelector(".exercise-modal-backdrop"),oe=document.querySelector(".exercise-modal-close-btn"),k=()=>{const e=document.querySelector(".exercise-modal");E.classList.add("backdrop-is-hidden"),e.classList.add("modal-is-hidden")};E.addEventListener("click",e=>{e.target!==oe&&e.target!==E||k()});window.addEventListener("keydown",e=>{e.key==="Escape"&&k()});const ie=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:a})=>t+`<li
+import"./assets/index-73f048ee.js";import{a as u,i as w}from"./assets/vendor-c4bdd18a.js";const me=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:a})=>t+`<li
     class="category-item"
     data-filter="${n}"
     data-name="${s}"
@@ -17,33 +17,139 @@ import"./assets/index-762213a4.js";import{a as i,i as v}from"./assets/vendor-c4b
     <h3 class="category-name">${s[0].toUpperCase()+s.slice(1)}</h3>
     <p class="category-filter">${n}</p>
     </div>
-  </li>`,"");class p{constructor(){i.defaults.headers.common["Content-type"]="application/json",this.BASE_URL="https://energyflow.b.goit.study/api"}async getCategoriesByFilter(t,s,n){const a=new URLSearchParams({filter:t,page:s,limit:n});return(await i.get(`${this.BASE_URL}/filters?${a}`)).data}async getExercisesByCategory(t,s,n,a){const c=new URLSearchParams({[t]:s,page:n,limit:a});return(await i.get(`${this.BASE_URL}/exercises?${c}`)).data}async getExercisesByKeyWord(t,s,n,a,c){const g=new URLSearchParams({[t]:s,keyword:n,page:a,limit:c});return(await i.get(`${this.BASE_URL}/exercises?${g}`)).data}async getExerciseInfoById(t){return(await i.get(`${this.BASE_URL}/exercises/${t}`)).data}async giveRating(t,s,n,a){return await i({method:"patch",url:`${this.BASE_URL}/exercises/${t}/rating`,data:{rate:Number(s),email:n,review:a}})}async getAllExercises(){return(await i.get(`${this.BASE_URL}/exercises?&limit=9999`)).data}async getQuote(){return(await i.get(`${this.BASE_URL}/quote`)).data}async sendSubscription(t){return(await i({method:"post",url:`${this.BASE_URL}/subscription`,data:{email:t}})).data}}const B=()=>{v.error({message:"Sorry, something went wrong. Please, try again later",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},ce=()=>{v.success({message:"Thanks for subscribing",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},le=()=>{v.error({message:"The subscription has already been sent to this email",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},de=()=>{v.success({message:"Thank you for your feedback",backgroundColor:"green",messageColor:"white",maxWidth:300,position:"center",timeout:4e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},ue=e=>{v.error({message:"Sorry, you have already leave a review",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},me=(e,t="hidden")=>{e.classList.add(t)},ge=(e,t="hidden")=>{e.classList.remove(t)};let o=1,D="test";document.querySelector(".navigation-list-form");const _=document.querySelector(".exercises-navigation-list");function pe(e,t){let s=[];if(e<5)for(let n=1;n<=e;n++)s.push(n);else e>=5&&t<=3?s=[1,2,3,4,"...",e]:e>=5&&e-t<=2?s=[1,"...",e-3,e-2,e-1,e]:s=[1,"...",t-1,t,parseInt(t)+1,"...",e];return s}function R(e,t){const s=pe(e,t).map(n=>`<li class="exercises-navigation-item">
+  </li>`,""),ge=({gifUrl:e,name:t,rating:s,target:n,bodyPart:a,equipment:i,popularity:o,burnedCalories:l,description:f,_id:g})=>`
+  <button type="button" class="exercise-modal-close-btn">
+    <svg class="exercise-modal-close-icon" width="24" height="24">
+      <use href="./images/sprite.svg#icon-close-modal"></use>
+    </svg>
+  </button>
+  <img
+    src="${e}"
+    class="exercise-modal-img"
+    width="295"
+    height="258"
+    alt="Exercise-img"
+  />
+  <div class="exercise-modal-info">
+    <div class="exercise-modal-hero">
+      <h3 class="exercise-modal-title">${t[0].toUpperCase()+t.slice(1)}</h3>
+      <form class="rating-form">
+          
+            <div class="rating-container">
+              <div class="rating-value">${s}</div>
+              <div class="rating-body">
+                <div class="rating-active"></div>
+                <div class="rating-items">
+                  <input
+                    id="rate"
+                    type="radio"
+                    class="rating-item"
+                    value="1"
+                    name="rate"
+                    required
+                  />
+                  <input
+                    id="rate"
+                    type="radio"
+                    class="rating-item"
+                    value="2"
+                    name="rate"
+                    required
+                  />
+                  <input
+                    id="rate"
+                    type="radio"
+                    class="rating-item"
+                    value="3"
+                    name="rate"
+                    required
+                  />
+                  <input
+                    id="rate"
+                    type="radio"
+                    class="rating-item"
+                    value="4"
+                    name="rate"
+                    required
+                  />
+                  <input
+                    id="rate"
+                    type="radio"
+                    class="rating-item"
+                    value="5"
+                    name="rate"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+    <ul class="exercise-tags-list">
+      <li class="exercise-tags-item">
+        <p class="exercise-tags-key">Target</p>
+        <p class="exercise-tags-value">${n}</p>
+      </li>
+      <li class="exercise-tags-item">
+        <p class="exercise-tags-key">Body Part</p>
+        <p class="exercise-tags-value">${a}</p>
+      </li>
+      <li class="exercise-tags-item">
+        <p class="exercise-tags-key">Equipment</p>
+        <p class="exercise-tags-value">${i}</p>
+      </li>
+      <li class="exercise-tags-item">
+        <p class="exercise-tags-key">Popular</p>
+        <p class="exercise-tags-value">${o}</p>
+      </li>
+      <li class="exercise-tags-item">
+        <p class="exercise-tags-key">Burned Calories</p>
+        <p class="exercise-tags-value">${l}/3 min</p>
+      </li>
+    </ul>
+    <p class="exercise-modal-description">
+      ${f}
+    </p>
+    <div class="exercise-modal-buttons">
+      <button type="button" class="exercise-favorite-add-btn">
+        Add to favorites
+        <svg class="exercise-heart-icon" width="18" height="18">
+          <use href="./images/sprite.svg#icon-heart"></use>
+        </svg>
+      </button>
+      <button type="button" data-modal-rating-open class="exercise-rating-give-btn" data-modal-rating-open
+      data-id="${g}">
+        Give a rating
+      </button>
+    </div>
+  </div>
+`;class v{constructor(){u.defaults.headers.common["Content-type"]="application/json",this.BASE_URL="https://energyflow.b.goit.study/api"}async getCategoriesByFilter(t,s,n){const a=new URLSearchParams({filter:t,page:s,limit:n});return(await u.get(`${this.BASE_URL}/filters?${a}`)).data}async getExercisesByCategory(t,s,n,a){const i=new URLSearchParams({[t]:s,page:n,limit:a});return(await u.get(`${this.BASE_URL}/exercises?${i}`)).data}async getExercisesByKeyWord(t,s,n,a,i){const o=new URLSearchParams({[t]:s,keyword:n,page:a,limit:i});return(await u.get(`${this.BASE_URL}/exercises?${o}`)).data}async getExerciseInfoById(t){return(await u.get(`${this.BASE_URL}/exercises/${t}`)).data}async giveRating(t,s,n,a){return await u({method:"patch",url:`${this.BASE_URL}/exercises/${t}/rating`,data:{rate:Number(s),email:n,review:a}})}async getAllExercises(){return(await u.get(`${this.BASE_URL}/exercises?&limit=9999`)).data}async getQuote(){return(await u.get(`${this.BASE_URL}/quote`)).data}async sendSubscription(t){return(await u({method:"post",url:`${this.BASE_URL}/subscription`,data:{email:t}})).data}}const L=()=>{w.error({message:"Sorry, something went wrong. Please, try again later",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},pe=()=>{w.success({message:"Thanks for subscribing",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},he=()=>{w.error({message:"The subscription has already been sent to this email",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},ve=()=>{w.success({message:"Thank you for your feedback",backgroundColor:"green",messageColor:"white",maxWidth:300,position:"center",timeout:4e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},fe=e=>{w.error({message:"Sorry, you have already leave a review",backgroundColor:"rgb(240, 115, 115)",messageColor:"white",maxWidth:300,position:"center",timeout:3e3,progressBar:!1,transitionIn:"bounceInRight",transitionOut:"fadeOutLeft",messageSize:14})},ye=(e,t="hidden")=>{e.classList.add(t)},xe=(e,t="hidden")=>{e.classList.remove(t)};let c=1,_="test";document.querySelector(".navigation-list-form");const K=document.querySelector(".exercises-navigation-list");function we(e,t){let s=[];if(e<5)for(let n=1;n<=e;n++)s.push(n);else e>=5&&t<=3?s=[1,2,3,4,"...",e]:e>=5&&e-t<=2?s=[1,"...",e-3,e-2,e-1,e]:s=[1,"...",t-1,t,parseInt(t)+1,"...",e];return s}function M(e,t){const s=we(e,t).map(n=>`<li class="exercises-navigation-item">
         <button type="submit" class="exercises-navigation-number" value="${n}">${n}</button>
-      </li>`).join("");_.innerHTML=s,fe()}function he(e){if(e.preventDefault(),!parseInt(e.submitter.textContent))return;o=e.submitter.textContent,D=K(document.querySelector(".current-category-btn").textContent).trim(),document.querySelector(".exercises-path-name").classList.contains("hidden")?A(D):S?Q():N()}function M(){o=1}function fe(){const e=document.querySelectorAll(".exercises-navigation-item");if(o<=1)e[0].firstElementChild.classList.add("pagination-current");else for(let t=0;t<e.length;t++)e[t].firstElementChild.classList.contains("pagination-current")?e[t].firstElementChild.classList.remove("pagination-current"):e[t].firstElementChild.textContent===o&&e[t].firstElementChild.classList.add("pagination-current")}function ve(){_.innerHTML=""}const P=document.querySelector(".categories-list"),ye=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&P.classList.add("on-animate")})});ye.observe(P);function z(e){e.classList.add("on-animate"),setTimeout(()=>{e.classList.remove("on-animate")},1e3)}const I=document.querySelector(".exercises-search-wrap");let b,w,H=window.innerWidth<=1440?8:9,S=!1;function N(e){const t=new p;if(S=!1,document.querySelector(".exercises-path-name").classList.contains("hidden")){if(e.target.nodeName!=="LI")return;M(),b=K(e.target.dataset.filter),w=e.target.dataset.name}try{return t.getExercisesByCategory(b,w,o,H).then(s=>{const n=V(s.results);R(s.totalPages,o),Se(j(w)),q(n),Le(),z(P)})}catch{B()}}function j(e){return e.charAt(0).toUpperCase()+e.slice(1)}function we(){document.querySelector(".exercises-search-wrap").classList.add("hidden"),$()}function Le(){const e=document.querySelector(".exercises-search-wrap");e.classList.remove("hidden"),e.addEventListener("submit",xe),e.addEventListener("input",Ee)}function K(e){return e==="Body parts"?e="bodypart":e.toLowerCase()}function V(e){return e.map(t=>`<li class="exercises-card" data-id="${t.id}">
+      </li>`).join("");K.innerHTML=s,Se()}function Le(e){if(e.preventDefault(),!parseInt(e.submitter.textContent))return;c=e.submitter.textContent,_=G(document.querySelector(".current-category-btn").textContent).trim(),document.querySelector(".exercises-path-name").classList.contains("hidden")?F(_):k?X():Z()}function A(){c=1}function Se(){const e=document.querySelectorAll(".exercises-navigation-item");if(c<=1)e[0].firstElementChild.classList.add("pagination-current");else for(let t=0;t<e.length;t++)e[t].firstElementChild.classList.contains("pagination-current")?e[t].firstElementChild.classList.remove("pagination-current"):e[t].firstElementChild.textContent===c&&e[t].firstElementChild.classList.add("pagination-current")}function be(){K.innerHTML=""}const Ee=document.querySelectorAll(".rating-container"),qe=()=>{let e,t;Ee.forEach(r=>s(r));function s(r){n(r),a(),r.classList.contains("set-rating")&&i(r)}function n(r){e=r.querySelector(".rating-active"),t=r.querySelector(".rating-value")}function a(r=t.innerHTML){const y=r/.05;e.style.width=`${y}%`}function i(r){const y=r.querySelectorAll(".rating-item");for(const p of y)p.addEventListener("mouseenter",S=>{n(r),a(p.value)}),p.addEventListener("mouseleave",S=>{a()}),p.addEventListener("click",S=>{p.checked=!0,n(r),t.innerHTML=p.value.padEnd(3,".0"),a()})}const o=document.querySelector(".rating-form");let l={};const f=async r=>{r.preventDefault();const y=o.dataset.id;new FormData(r.currentTarget).forEach((b,ue)=>{l[ue]=b});const S=l.rate,le=l.email,de=l.review;new v().giveRating(y,S,le,de).then(b=>{b.status===200?(ve(),x()):fe()}).catch(b=>L()),t.innerHTML=0,a(),o.reset()};o.addEventListener("submit",f);const g=document.querySelector("[data-modal-rating-close]"),U=document.querySelector("[data-modal-rating]"),d=document.querySelector("[data-modal-rating-backdrop]"),C=document.querySelector("[data-modal-rating-container]");ce();function x(){d.classList.add("backdrop-rating-is-hidden"),C.classList.add("modal-rating-is-hidden");const r=document.querySelector(".exercise-modal");document.querySelector(".exercise-modal-backdrop").classList.remove("backdrop-is-hidden"),r.classList.remove("modal-is-hidden")}function oe(r){r.target.key}function ce(){g.addEventListener("click",x),window.addEventListener("keydown",oe),U.addEventListener("click",r=>{r.target!==d&&r.target!==g||x()})}},ke=async e=>{const t=document.querySelector(".exercise-modal");if(e.target.nodeName!=="BUTTON")return;const s=new v,n=e.target.dataset.exerciseId,a=document.querySelector(".exercise-modal"),i=document.querySelector(".exercise-modal-backdrop");try{const f=await s.getExerciseInfoById(n);t.innerHTML=ge(f),document.querySelector(".send-rating-form").dataset.id=n,l();const g=document.querySelector(".exercise-modal-close-btn");i.addEventListener("click",d=>{d.target!==g&&d.target!==i||o()}),g.addEventListener("click",o),document.addEventListener("keydown",d=>{d.key==="Escape"&&o()}),qe(),document.querySelectorAll(".exercise-rating-give-btn").forEach(d=>d.addEventListener("click",()=>{const C=document.querySelector("[data-modal-rating-backdrop]"),x=document.querySelector("[data-modal-rating-container]");C.classList.remove("backdrop-rating-is-hidden"),x.classList.remove("modal-rating-is-hidden"),o()}))}catch{L()}function o(){i.classList.add("backdrop-is-hidden"),a.classList.add("modal-is-hidden")}function l(){i.classList.remove("backdrop-is-hidden"),a.classList.remove("modal-is-hidden")}},T=document.querySelector(".categories-list"),Ce=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&T.classList.add("on-animate")})});Ce.observe(T);function V(e){e.classList.add("on-animate"),setTimeout(()=>{e.classList.remove("on-animate")},1e3)}const D=document.querySelector(".exercises-search-wrap");let R,E,Q=window.innerWidth<=1440?8:9,k=!1;function Z(e){const t=new v;if(k=!1,document.querySelector(".exercises-path-name").classList.contains("hidden")){if(e.target.nodeName!=="LI")return;A(),R=G(e.target.dataset.filter),E=e.target.dataset.name}try{return t.getExercisesByCategory(R,E,c,Q).then(s=>{const n=Y(s.results);M(s.totalPages,c),$e(J(E)),$(n),Re(),m.addEventListener("click",ke),V(T)})}catch{L()}}function J(e){return e.charAt(0).toUpperCase()+e.slice(1)}function Be(){document.querySelector(".exercises-search-wrap").classList.add("hidden"),O()}function Re(){const e=document.querySelector(".exercises-search-wrap");e.classList.remove("hidden"),e.addEventListener("submit",Pe),e.addEventListener("input",Ie)}function G(e){return e==="Body parts"?e="bodypart":e.toLowerCase()}function Y(e){return e.map(t=>`<li class="exercises-card">
       <div class="exercises-card-upper-part">
         <div class="div-rating-or-delete-button">
           <div class="workout-text">WORKOUT</div>
           <div class="card-rating">${t.rating.toFixed(1)}<span>
             <svg class="rating-icon" width="18" height="18">
-            <use href="./src/images/sprite.svg#icon-star"></use></svg>
+            <use href="/src/images/sprite.svg#icon-star"></use></svg>
           </span></div>
         </div>
-        <button type="button" class="card-start">Start <span>
+        <button type="button" class="card-start open-modal-exercise" data-exercise-id="${t._id}">Start <span>
           <svg class="start-icon" width="14" height="14">
-          <use href="./src/images/sprite.svg#icon-right-arrow"></use></svg>
+          <use href="/src/images/sprite.svg#icon-right-arrow"></use></svg>
         </span></button>
       </div>
       <div class="exercises-card-midle-part">
         <div class="exercises-card-midle-part-svg">
           <svg class="runing-man-icon" width="24" height="24">
-          <use href="./src/images/sprite.svg#icon-runing-man"></use></svg>
+          <use href="/src/images/sprite.svg#icon-runing-man"></use></svg>
         </div>
-        <p class="card-exercise-name">${j(t.name)}</p>
+        <p class="card-exercise-name">${J(t.name)}</p>
       </div>
       <div class="exercises-card-lower-part">
         <p>Burned calories: <span class="exercises-card-lower-part-span">${t.burnedCalories} / 3 min</span></p>
         <p>Body part: <span class="exercises-card-lower-part-span">${t.bodyPart}</span></p>
-        <p>Target: <span class="exercises-card-lower-part-span">${be(t.target)}</span></p>
+        <p>Target: <span class="exercises-card-lower-part-span">${Me(t.target)}</span></p>
       </div>
-    </li>`).join("")}function q(e){u.classList.add("exercise-list"),u.innerHTML=e}function Se(e){const t=document.querySelector(".exercises-title"),s=document.querySelector(".exercises-path-name");t.textContent="Exercises /",s.textContent=e,s.classList.remove("hidden")}function xe(e){e.preventDefault(),M(),Q()}function Q(){S=!0;const e=I.firstElementChild.value;new p().getExercisesByKeyWord(b,w,e,o,H).then(s=>{if(s.results.length<=0)return ve(),q('<li class="exercises-not-found-msg">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</li>');R(s.totalPages,o);const n=V(s.results);q(n)})}function Ee(){const e=I.firstElementChild.value,t=document.querySelector(".exercises-search-close-btn");e?(t.classList.remove("hidden"),t.addEventListener("click",$)):Z()}function Z(){const e=document.querySelector(".exercises-search-close-btn");e.classList.add("hidden"),e.removeEventListener("click",$)}function $(){S=!1,I.reset(),Z()}function be(e){return e.length>=9?e.slice(0,9)+"...":e}const u=document.querySelector(".categories-list"),qe=document.querySelector(".category-btns-list"),J=document.querySelector(".exercises-title"),x=document.querySelector(".exercises-path-name"),Ce=document.querySelector(".navigation-list-form"),ke=()=>{const e=document.querySelectorAll(".category-btn");e.forEach(t=>t.addEventListener("click",()=>{e.forEach(s=>ge(s,"current-category-btn")),me(t,"current-category-btn")}))},A=async e=>{const t=new p,s=window.innerWidth<768?8:12;e=document.querySelector(".current-category-btn").textContent.trim();try{const n=await t.getCategoriesByFilter(e,o,s);R(n.totalPages,o),u.innerHTML=ie(n),u.addEventListener("click",N),Ce.addEventListener("submit",he),z(u)}catch{B()}},O=async e=>{const t=e.target.textContent.trim();M(),Be(),await A(t),u.classList.contains("exercise-list")&&u.classList.remove("exercise-list")};function Be(){x.textContent!==""&&(J.textContent="Exercises",x.textContent="",x.classList.add("hidden"),we())}const Re=()=>{window.addEventListener("load",ke),window.addEventListener("load",A),qe.addEventListener("click",O),J.addEventListener("click",O)},Me=document.querySelector(".quote-text"),Pe=document.querySelector(".quote-author"),Ie=new p,$e=async()=>{try{const e=await Ie.getQuote();if(e&&e.quote&&e.author){const t=new Date().toDateString();localStorage.setItem("quoteObj",JSON.stringify(e)),localStorage.setItem("currentDate",t)}}catch(e){console.error("Помилка при отриманні цитати:",e)}},Ae=async()=>{const e=new Date().toDateString(),t=localStorage.getItem("currentDate");(!t||e!==t)&&await $e(),T()};function T(){const e=JSON.parse(localStorage.getItem("quoteObj"));Me.innerHTML=e.quote,Pe.innerHTML=e.author}const De=document.querySelectorAll(".rating-container"),Oe=()=>{let e,t;De.forEach(r=>s(r));function s(r){n(r),a(),r.classList.contains("set-rating")&&c(r)}function n(r){e=r.querySelector(".rating-active"),t=r.querySelector(".rating-value")}function a(r=t.innerHTML){const f=r/.05;e.style.width=`${f}%`}function c(r){const f=r.querySelectorAll(".rating-item");for(const l of f)l.addEventListener("mouseenter",y=>{n(r),a(l.value)}),l.addEventListener("mouseleave",y=>{a()}),l.addEventListener("click",y=>{l.checked=!0,n(r),t.innerHTML=l.value.padEnd(3,".0"),a()})}const g=document.querySelector(".rating-form");let h={};const te=async r=>{r.preventDefault();const f=g.dataset.id;new FormData(r.currentTarget).forEach((d,ae)=>{h[ae]=d});const y=h.rate,se=h.email,ne=h.review,re=new p;try{const d=await re.giveRating(f,y,se,ne);console.log(d),d.status===200?de(d.data.message):ue(d.data.message)}catch{}t.innerHTML=0,a(),g.reset()};g.addEventListener("submit",te)},Te=()=>{const e={openModalBtn:document.querySelector("[data-modal-rating-open]"),closeModalBtn:document.querySelector("[data-modal-rating-close]"),modal:document.querySelector("[data-modal-rating]"),backdrop:document.querySelector("[data-modal-rating-backdrop]"),container:document.querySelector("[data-modal-rating-container]")};e.openModalBtn.addEventListener("click",s),e.closeModalBtn.addEventListener("click",s),e.modal.addEventListener("click",n=>{n.target!==e.backdrop&&n.target!==e.closeModalBtn||s()}),window.addEventListener("keydown",t,{once:!0});function t(n){n.key==="Escape"&&s()}function s(){e.modal.classList.add("backdrop-is-hidden"),e.modal.classList.add("modal-is-hidden")}},Fe=document.querySelector("[data-modal-open]"),Ue=document.querySelector("[data-modal-close]"),C=document.querySelector(".header__modal");var We={37:1,38:1,39:1,40:1};function m(e){e.preventDefault()}function Y(e){if(We[e.keyCode])return m(e),!1}var G=!1;try{window.addEventListener("test",null,Object.defineProperty({},"passive",{get:function(){G=!0}}))}catch{}var L=G?{passive:!1}:!1,X="onwheel"in document.createElement("div")?"wheel":"mousewheel";function _e(){window.addEventListener("DOMMouseScroll",m,!1),window.addEventListener(X,m,L),window.addEventListener("touchmove",m,L),window.addEventListener("keydown",Y,!1)}function ze(){window.removeEventListener("DOMMouseScroll",m,!1),window.removeEventListener(X,m,L),window.removeEventListener("touchmove",m,L),window.removeEventListener("keydown",Y,!1)}const F=()=>C.classList.contains("none")?ze():_e(),U=()=>{Fe.addEventListener("click",()=>{C.classList.toggle("none"),F()}),Ue.addEventListener("click",()=>{C.classList.toggle("none"),F()})},He=()=>{if(U())return U()},Ne=document.querySelector(".footer-subscription"),W=document.querySelector(".input-footer");Ne.addEventListener("submit",ee);async function ee(e){e.preventDefault();const t=W.value.trim(),s=new p;if(!je(t)){alert("Please enter a valid email address");return}if(t===""){alert("Please enter an email address");return}try{const n=await s.sendSubscription(t);console.log("Data sent successfully"),W.value="",ce()}catch(n){console.error("There was a problem with the fetch operation:",n),n.response&&n.response.status===409?le():B()}}function je(e){return/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(e)}He();Re();k();Ae();Oe();Te();ee();
+    </li>`).join("")}function $(e){m.classList.add("exercise-list"),m.innerHTML=e}function $e(e){const t=document.querySelector(".exercises-title"),s=document.querySelector(".exercises-path-name");t.textContent="Exercises /",s.textContent=e,s.classList.remove("hidden")}function Pe(e){e.preventDefault(),A(),X()}function X(){k=!0;const e=D.firstElementChild.value;new v().getExercisesByKeyWord(R,E,e,c,Q).then(s=>{if(s.results.length<=0)return be(),$('<li class="exercises-not-found-msg">Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</li>');M(s.totalPages,c);const n=Y(s.results);$(n)})}function Ie(){const e=D.firstElementChild.value,t=document.querySelector(".exercises-search-close-btn");e?(t.classList.remove("hidden"),t.addEventListener("click",O)):ee()}function ee(){const e=document.querySelector(".exercises-search-close-btn");e.classList.add("hidden"),e.removeEventListener("click",O)}function O(){k=!1,D.reset(),ee()}function Me(e){return e.length>=9?e.slice(0,9)+"...":e}const m=document.querySelector(".categories-list"),Ae=document.querySelector(".category-btns-list"),te=document.querySelector(".exercises-title"),B=document.querySelector(".exercises-path-name"),Te=document.querySelector(".navigation-list-form"),De=()=>{const e=document.querySelectorAll(".category-btn");e.forEach(t=>t.addEventListener("click",()=>{e.forEach(s=>xe(s,"current-category-btn")),ye(t,"current-category-btn")}))},F=async e=>{const t=new v,s=window.innerWidth<768?8:12;e=document.querySelector(".current-category-btn").textContent.trim();try{const n=await t.getCategoriesByFilter(e,c,s);M(n.totalPages,c),m.innerHTML=me(n),m.addEventListener("click",Z),Te.addEventListener("submit",Le),V(m)}catch{L()}},W=async e=>{const t=e.target.textContent.trim();A(),Oe(),await F(t),m.classList.contains("exercise-list")&&m.classList.remove("exercise-list")};function Oe(){B.textContent!==""&&(te.textContent="Exercises",B.textContent="",B.classList.add("hidden"),Be())}const Fe=()=>{window.addEventListener("load",De),window.addEventListener("load",F),Ae.addEventListener("click",W),te.addEventListener("click",W)},Ue=document.querySelector(".quote-text"),_e=document.querySelector(".quote-author"),We=new v,ze=async()=>{try{const e=await We.getQuote();if(e&&e.quote&&e.author){const t=new Date().toDateString();localStorage.setItem("quoteObj",JSON.stringify(e)),localStorage.setItem("currentDate",t)}}catch(e){console.error("Помилка при отриманні цитати:",e)}},He=async()=>{const e=new Date().toDateString(),t=localStorage.getItem("currentDate");(!t||e!==t)&&await ze(),z()};function z(){const e=JSON.parse(localStorage.getItem("quoteObj"));Ue.innerHTML=e.quote,_e.innerHTML=e.author}const Ne=document.querySelector("[data-modal-open]"),je=document.querySelector("[data-modal-close]"),P=document.querySelector(".header__modal");var Ke={37:1,38:1,39:1,40:1};function h(e){e.preventDefault()}function se(e){if(Ke[e.keyCode])return h(e),!1}var ne=!1;try{window.addEventListener("test",null,Object.defineProperty({},"passive",{get:function(){ne=!0}}))}catch{}var q=ne?{passive:!1}:!1,re="onwheel"in document.createElement("div")?"wheel":"mousewheel";function Ve(){window.addEventListener("DOMMouseScroll",h,!1),window.addEventListener(re,h,q),window.addEventListener("touchmove",h,q),window.addEventListener("keydown",se,!1)}function Qe(){window.removeEventListener("DOMMouseScroll",h,!1),window.removeEventListener(re,h,q),window.removeEventListener("touchmove",h,q),window.removeEventListener("keydown",se,!1)}const H=()=>P.classList.contains("none")?Qe():Ve(),N=()=>{Ne.addEventListener("click",()=>{P.classList.toggle("none"),H()}),je.addEventListener("click",()=>{P.classList.toggle("none"),H()})},Ze=()=>{if(N())return N()},Je=document.querySelector(".footer-subscription"),j=document.querySelector(".input-footer");Je.addEventListener("submit",ae);async function ae(e){e.preventDefault();const t=j.value.trim(),s=new v;if(!Ge(t)){alert("Please enter a valid email address");return}if(t===""){alert("Please enter an email address");return}try{const n=await s.sendSubscription(t);console.log("Data sent successfully"),j.value="",pe()}catch(n){console.error("There was a problem with the fetch operation:",n),n.response&&n.response.status===409?he():L()}}function Ge(e){return/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(e)}const I=document.querySelector(".up-btn");I.addEventListener("click",Ye);window.onscroll=function(){ie()};function ie(){document.documentElement.scrollTop>2e3?I.style.display="block":I.style.display="none"}function Ye(){document.documentElement.scrollTop=0}Ze();Fe();He();initRatings();ae();ie();
 //# sourceMappingURL=commonHelpers.js.map
