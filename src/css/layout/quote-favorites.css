@@ -1,0 +1,66 @@
+/* стилі з quote-home збігаються, тому тут лише стилі для картинок */
+/* та стилі відсутпу від секцій */
+
+/* mobile first */
+
+.quote-home-background-fav {
+  background-image: url(../../images/favorites/quote-background/quote-favourites-mobile@1x.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 335px;
+  height: 272px;
+  border-radius: 30px;
+}
+
+@media screen and (min-resolution: 192dpi) and (min-width: 375px),
+  screen and (min-resolution: 2dppx) and (min-width: 375px),
+  screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
+  .quote-home-background-fav {
+    background-image: url(../../images/favorites/quote-background/quote-favourites-mobile@2x.jpg);
+  }
+}
+
+/* tablet */
+
+@media screen and (min-width: 768px) {
+  .quotes-div-fav {
+    margin-bottom: 16px;
+  }
+
+  .quote-home-background-fav {
+    background-image: url(../../images/favorites/quote-background/quote-favourites-tablet@1x.jpg);
+    border-radius: 50px;
+    width: 368px;
+    height: 302px;
+  }
+
+  @media screen and (min-resolution: 192dpi) and (min-width: 768px),
+    screen and (min-resolution: 2dppx) and (min-width: 768px),
+    screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
+    .quote-home-background-fav {
+      background-image: url(../../images/favorites/quote-background/quote-favourites-tablet@2x.jpg);
+    }
+  }
+}
+
+/* desktop */
+
+@media screen and (min-width: 1440px) {
+  .quote-home-background-fav {
+    background-image: url(../../images/favorites/quote-background/quote-favourites-desktop@1x.jpg);
+    width: 352px;
+  }
+
+  .quote-favourites {
+    display: flex;
+  }
+
+  @media screen and (min-resolution: 192dpi) and (min-width: 1440px),
+    screen and (min-resolution: 2dppx) and (min-width: 1440px),
+    screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
+    .quote-home-background-fav {
+      background-image: url(../../images/favorites/quote-background/quote-favourites-desktop@2x.jpg);
+    }
+  }
+}

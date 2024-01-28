@@ -17,7 +17,7 @@
       background-size: cover;
     "
   >
-  <div class="category-item-content"
+  <div class="category-item-content">
     <h3 class="category-name">${name[0].toUpperCase()+name.slice(1)}</h3>
     <p class="category-filter">${filter}</p>
     </div>
