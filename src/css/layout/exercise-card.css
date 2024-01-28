@@ -6,6 +6,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px 14px;
+  justify-content: center;
 }
 
 .favorites-div-with-cards {
@@ -49,7 +50,6 @@
   }
   
   .exercises-card {
-    margin: 0 auto 0 auto;
     border-radius: 15px;
     background: var(--white);
     width: 295px;
@@ -78,6 +78,7 @@
   .div-rating-or-delete-button {
     display: flex;
     gap: 8px;
+    align-items: center;
   }
   
   .workout-text {
@@ -122,6 +123,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
+    height: 18px;
+  }
+
+  .card-rating > span {
+    height: 18px;
   }
 
   .rating-icon {
@@ -183,3 +189,27 @@
     font-weight: 400;
     line-height: 1.5;
   }
+
+/* ================АДАПТИВ ==============================*/
+
+@media (min-width: 768px) {
+  .exercises-card {
+    width: 313px;
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .exercises-card {
+    width: 424px;
+    height: auto;
+  }
+
+  .favorites-list {
+    gap: 28px 20px;
+  }
+
+  .exercises-card-midle-part {
+    margin-bottom: 8px;
+  }
+}
