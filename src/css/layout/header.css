@@ -166,9 +166,30 @@
     fill: var(--white);
   }
 
+.header--modal--label {
+  color: var(--white);
+}
+.modal--link {
+  color: var(--black);
+}
+.none {
+  display: none;
+}
+.header__btn {
+  max-width: 32px;
+  max-height: 16px;
+}
+  
+@media screen and (min-width: 375px) {
+  .container {
+    width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+}
   .modal--svg:hover,
   .modal--svg:focus {
     fill: #5f6560;
+
   }
 
   .modal--close--svg {
