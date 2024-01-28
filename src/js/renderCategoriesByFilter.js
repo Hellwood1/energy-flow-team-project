@@ -9,6 +9,7 @@ import { changeCurrentPage } from './pagination';
 import { page } from './pagination';
 import { resetPage } from './pagination';
 import { animateElement } from './render-exercises';
+import { sendMessage } from './form-footer';
 
 export const categoriesCardsContainer =
   document.querySelector('.categories-list');
@@ -16,6 +17,7 @@ const filterButtonsList = document.querySelector('.category-btns-list');
 const titlePath = document.querySelector('.exercises-title');
 const namePath = document.querySelector('.exercises-path-name');
 const paginationBtnsList = document.querySelector('.navigation-list-form');
+const subForm = document.querySelector('.footer-subscription');
 
 const addClassToCurrentFilter = () => {
   const buttons = document.querySelectorAll('.category-btn');
@@ -73,4 +75,5 @@ export const addListeners = () => {
   window.addEventListener('load', initialRequest);
   filterButtonsList.addEventListener('click', renderCategories);
   titlePath.addEventListener('click', renderCategories);
+  subForm.addEventListener('submit', sendMessage);
 };
