@@ -109,13 +109,14 @@ export const initRating = () => {
   function closeRatingModalByEscape(e) {
     if (e.target.key === 'Escape') closeRatingModal;
   }
-  function addRatingListeners(){
+  function addRatingListeners() {
     closeRatingModalBtn.addEventListener('click', closeRatingModal);
-  window.addEventListener('keydown', closeRatingModalByEscape);
+    window.addEventListener('keydown', closeRatingModalByEscape);
 
-  modalRating.addEventListener('click', e => {
-    if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn) return;
-    closeRatingModal();
-  });
+    modalRating.addEventListener('click', e => {
+      if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn)
+        return;
+      closeRatingModal();
+    });
   }
 };

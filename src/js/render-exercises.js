@@ -57,10 +57,7 @@ export function renderExercises(e) {
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
-
-      categoriesCardsContainer.addEventListener('click', renderExerciseModal)
       animateElement(element);
-
     });
   } catch {
     showMessageBadRequest();
@@ -95,24 +92,24 @@ function mapCards(data) {
   return data
     .map(
       item =>
-        `<li class="exercises-card">
+        `<li class="exercises-card" id="${item._id}">
       <div class="exercises-card-upper-part">
         <div class="div-rating-or-delete-button">
           <div class="workout-text">WORKOUT</div>
           <div class="card-rating">${item.rating.toFixed(1)}<span>
             <svg class="rating-icon" width="18" height="18">
-            <use href="./images/sprite.svg#icon-star"></use></svg>
+            <use href="/assets/sprite.svg#icon-star"></use></svg>
           </span></div>
         </div>
-        <button type="button" class="card-start open-modal-exercise" data-exercise-id="${item._id}">Start <span>
+        <button type="button" class="card-start">Start <span>
           <svg class="start-icon" width="14" height="14">
-          <use href="./images/sprite.svg#icon-right-arrow"></use></svg>
+          <use href="/assets/sprite.svg#icon-right-arrow"></use></svg>
         </span></button>
       </div>
       <div class="exercises-card-midle-part">
         <div class="exercises-card-midle-part-svg">
           <svg class="runing-man-icon" width="24" height="24">
-          <use href="./images/sprite.svg#icon-runing-man"></use></svg>
+          <use href="/assets/sprite.svg#icon-runing-man"></use></svg>
         </div>
         <p class="card-exercise-name">${capitalizeFirstLetter(item.name)}</p>
       </div>
@@ -206,4 +203,17 @@ function cutString(str) {
     return str.slice(0, 9) + '...';
   }
   return str;
+}
+
+document
+  .querySelector('.categories-list')
+  .addEventListener('click', renderModalExerciseCard);
+
+export function renderModalExerciseCard(e) {
+  if (
+    !document.querySelector('.exercises-path-name').classList.contains('hidden')
+  ) {
+    const id = e.target.id;
+    renderExerciseModal(id);
+  }
 }
