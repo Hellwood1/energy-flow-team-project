@@ -5,10 +5,9 @@ import { checkDate } from './js/quote';
 import { initRatings, manageRatingModal } from './js/giveRating';
 import { mobileMenu } from './js/header-modal';
 
-mobileMenu()
+mobileMenu();
 addListeners();
 closeModal();
 checkDate();
 initRatings();
 manageRatingModal();
-

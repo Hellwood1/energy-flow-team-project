@@ -5,6 +5,25 @@ import { resetPage, renderPageList } from './pagination';
 import { page } from './pagination';
 import { removePageList } from './pagination';
 
+const element = document.querySelector('.categories-list');
+
+export const inViewZone = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      element.classList.add('on-animate');
+    }
+  });
+});
+
+inViewZone.observe(element);
+
+export function animateElement(element) {
+  element.classList.add('on-animate');
+  setTimeout(() => {
+    element.classList.remove('on-animate');
+  }, 1000);
+}
+
 const exerciseSearchInput = document.querySelector('.exercises-search-wrap');
 let exerciseCategory;
 let exerciseName;
@@ -37,6 +56,7 @@ export function renderExercises(e) {
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
+      animateElement(element);
     });
   } catch {
     showMessageBadRequest();
@@ -178,8 +198,8 @@ function resetForm() {
 }
 
 function cutString(str) {
-  if (str.length >= 11) {
-    return str.slice(0, 11) + '...';
+  if (str.length >= 9) {
+    return str.slice(0, 9) + '...';
   }
   return str;
 }
