@@ -8,6 +8,7 @@ import { renderPageList } from './pagination';
 import { changeCurrentPage } from './pagination';
 import { page } from './pagination';
 import { resetPage } from './pagination';
+import { animateElement } from './render-exercises';
 
 export const categoriesCardsContainer =
   document.querySelector('.categories-list');
@@ -40,6 +41,7 @@ export const initialRequest = async filter => {
     categoriesCardsContainer.innerHTML = categoriesMarkup(response);
     categoriesCardsContainer.addEventListener('click', renderExercises);
     paginationBtnsList.addEventListener('submit', changeCurrentPage);
+    animateElement(categoriesCardsContainer);
   } catch (error) {
     showMessageBadRequest();
   }
@@ -49,7 +51,10 @@ export const renderCategories = async event => {
   const filter = event.target.textContent.trim();
   resetPage();
   removeExercisePath();
-  initialRequest(filter);
+  await initialRequest(filter);
+  if (categoriesCardsContainer.classList.contains('exercise-list')) {
+    categoriesCardsContainer.classList.remove('exercise-list');
+  }
 };
 
 function removeExercisePath() {

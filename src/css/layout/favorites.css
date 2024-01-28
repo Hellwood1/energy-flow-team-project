@@ -1,3 +1,4 @@
+
 .favorites-section {
   background: #f6f6f6;
   width: 100%;
@@ -59,7 +60,7 @@
     margin-top: 20px;
     padding-top: 20px;
     width: 335px;
-    height: 450px;
+    min-height: 450px;
     flex-shrink: 0;
     border-radius: 30px;
     background: #e8e8e8;
@@ -194,7 +195,7 @@
     align-items: center;
     gap: 28px;
     width: 247px;
-    margin: 80px auto 0 auto;
+    margin: 208px auto 0 auto;
     color: #1b1b1b;
     text-align: center;
     font-family: 'DM Sans';
@@ -278,7 +279,7 @@
     margin-top: 20px;
     padding-top: 20px;
     width: 1408px;
-    height: 687px;
+    min-height: 687px;
     flex-shrink: 0;
     border-radius: 50px;
     background: #e8e8e8;
@@ -303,7 +304,7 @@
     align-items: center;
     gap: 28px;
     width: 247px;
-    margin: 80px auto 0 auto;
+    margin: 146px auto 0 auto;
     color: #1b1b1b;
     text-align: center;
     font-family: 'DM Sans';
