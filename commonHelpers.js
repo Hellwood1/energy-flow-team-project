@@ -1,4 +1,4 @@
-import"./assets/index-73f048ee.js";import{a as u,i as f}from"./assets/vendor-c4bdd18a.js";const ge=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:a})=>t+`<li
+import"./assets/index-447d8e81.js";import{a as u,i as f}from"./assets/vendor-c4bdd18a.js";const ge=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:a})=>t+`<li
     class="category-item"
     data-filter="${n}"
     data-name="${s}"
