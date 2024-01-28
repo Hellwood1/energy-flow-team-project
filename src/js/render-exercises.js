@@ -5,6 +5,25 @@ import { resetPage, renderPageList } from './pagination';
 import { page } from './pagination';
 import { removePageList } from './pagination';
 
+const element = document.querySelector('.categories-list');
+
+export const inViewZone = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      element.classList.add('on-animate');
+    }
+  });
+});
+
+inViewZone.observe(element);
+
+export function animateElement(element) {
+  element.classList.add('on-animate');
+  setTimeout(() => {
+    element.classList.remove('on-animate');
+  }, 1000);
+}
+
 const exerciseSearchInput = document.querySelector('.exercises-search-wrap');
 let exerciseCategory;
 let exerciseName;
@@ -25,7 +44,6 @@ export function renderExercises(e) {
     exerciseCategory = renameFilter(e.target.dataset.filter);
     exerciseName = e.target.dataset.name;
   }
-
   try {
     return ApiService.getExercisesByCategory(
       exerciseCategory,
@@ -38,6 +56,7 @@ export function renderExercises(e) {
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
+      animateElement(element);
     });
   } catch {
     showMessageBadRequest();
@@ -76,27 +95,33 @@ function mapCards(data) {
       <div class="exercises-card-upper-part">
         <div class="div-rating-or-delete-button">
           <div class="workout-text">WORKOUT</div>
-          <div class="card-rating">${item.rating}<span>
+          <div class="card-rating">${item.rating.toFixed(1)}<span>
             <svg class="rating-icon" width="18" height="18">
-            <use href="../images/sprite.svg#icon-star"></use></svg>
+            <use href="./src/images/sprite.svg#icon-star"></use></svg>
           </span></div>
         </div>
         <button type="button" class="card-start">Start <span>
           <svg class="start-icon" width="14" height="14">
-          <use href="../images/sprite.svg#icon-right-arrow"></use></svg>
+          <use href="./src/images/sprite.svg#icon-right-arrow"></use></svg>
         </span></button>
       </div>
       <div class="exercises-card-midle-part">
         <div class="exercises-card-midle-part-svg">
           <svg class="runing-man-icon" width="24" height="24">
-          <use href="../images/sprite.svg#icon-runing-man"></use></svg>
+          <use href="./src/images/sprite.svg#icon-runing-man"></use></svg>
         </div>
         <p class="card-exercise-name">${capitalizeFirstLetter(item.name)}</p>
       </div>
       <div class="exercises-card-lower-part">
-        <p>Burned calories: <span class="exercises-card-lower-part-span">${item.burnedCalories} / 3 min</span></p>
-        <p>Body part: <span class="exercises-card-lower-part-span">${item.bodyPart}</span></p>
-        <p>Target: <span class="exercises-card-lower-part-span">${item.target}</span></p>
+        <p>Burned calories: <span class="exercises-card-lower-part-span">${
+          item.burnedCalories
+        } / 3 min</span></p>
+        <p>Body part: <span class="exercises-card-lower-part-span">${
+          item.bodyPart
+        }</span></p>
+        <p>Target: <span class="exercises-card-lower-part-span">${cutString(
+          item.target
+        )}</span></p>
       </div>
     </li>`
     )
@@ -104,6 +129,7 @@ function mapCards(data) {
 }
 
 function addCardsToList(cards) {
+  categoriesCardsContainer.classList.add('exercise-list');
   categoriesCardsContainer.innerHTML = cards;
 }
 
@@ -169,4 +195,11 @@ function resetForm() {
   isSearchByKey = false;
   exerciseSearchInput.reset();
   hideInputDeleteBtn();
+}
+
+function cutString(str) {
+  if (str.length >= 9) {
+    return str.slice(0, 9) + '...';
+  }
+  return str;
 }

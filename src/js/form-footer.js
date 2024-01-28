@@ -1,5 +1,5 @@
 import EnergyFlowApiSevice from './api-service.js';
-import {showMessageBadRequest, showMessageOkRequest} from './showMessage';
+import {showMessageBadRequest, showMessageOkRequest, showMessageConflictRequest} from './showMessage';
 
 
 
@@ -11,7 +11,7 @@ form.addEventListener('submit', handleFormSubmit);
 
 async function handleFormSubmit(event) {
   event.preventDefault();
-
+ 
   const email = emailInput.value.trim();
   const request = new EnergyFlowApiSevice();
   if (!validateEmail(email)) {
@@ -31,7 +31,11 @@ async function handleFormSubmit(event) {
     showMessageOkRequest();
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
-    showMessageBadRequest();
+    if (error.response && error.response.status === 409) {
+      showMessageConflictRequest();
+    } else {
+      showMessageBadRequest();
+    }
   }
 }
 
