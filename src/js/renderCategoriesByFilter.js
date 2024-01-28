@@ -49,7 +49,10 @@ export const renderCategories = async event => {
   const filter = event.target.textContent.trim();
   resetPage();
   removeExercisePath();
-  initialRequest(filter);
+  await initialRequest(filter);
+  if (categoriesCardsContainer.classList.contains('exercise-list')) {
+    categoriesCardsContainer.classList.remove('exercise-list');
+  }
 };
 
 function removeExercisePath() {
