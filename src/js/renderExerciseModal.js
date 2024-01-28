@@ -1,22 +1,18 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
-import { showMessageBadRequest } from './showMessage';
-import { initRating } from './giveRating';
+import { showMessageBadRequest, showMessageRatingFailed } from './showMessage';
 
-export const renderExerciseModal = async e => {
-  const exerciseModalBackdrop = document.querySelector('.exercise-modal');
-
-  if (e.target.nodeName !== 'BUTTON') return;
+export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
-  const id = e.target.dataset.exerciseId;
   const modalExercise = document.querySelector('.exercise-modal');
   const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
   try {
     const response = await request.getExerciseInfoById(id);
-    exerciseModalBackdrop.innerHTML = exerciseCardMarkup(response);
+    modalExercise.innerHTML = exerciseCardMarkup(response);
+
     document.querySelector('.send-rating-form').dataset.id = id;
     openExerciseModal();
-    
+
     const closeModealBtn = document.querySelector('.exercise-modal-close-btn');
     modalBackdrop.addEventListener('click', e => {
       if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
@@ -30,7 +26,6 @@ export const renderExerciseModal = async e => {
         closeExerciseModal();
       }
     });
-    initRating();
     const giveRatingButtons = document.querySelectorAll(
       '.exercise-rating-give-btn'
     );
@@ -48,7 +43,7 @@ export const renderExerciseModal = async e => {
       })
     );
   } catch (error) {
-    showMessageBadRequest();
+    showMessageRatingFailed();
   }
 
   function closeExerciseModal() {
