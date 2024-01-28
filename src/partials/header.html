@@ -2,72 +2,105 @@
   <div class="header__container container">
     <a class="title--link" href="#"> energy.flow </a>
     <button class="header__btn" type="button" data-modal-open>
-      <svg class="header--svg--btn" width="36" height="16">
-        <use href="../images/sprite.svg.svg#icon-mobile-menu-open"></use>
+      <svg class="header--svg--btn" width="32" height="36">
+        <use href="../images/sprite.svg#icon-mobile-menu-open"></use>
       </svg>
     </button>
+    <nav class="header__navigation">
+
+          <div class="navigation__links--box">
+            <a class="modal--link" href="./index.html" rel="noopener noreferrer">
+              Home
+            </a>
+            <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
+              Favorites
+            </a>
+          </div>
+
+          <ul class="navigation__list">
+                <li class="navigation__item">
+                  <a class="modal--network" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer"
+                    title="facebook link">
+                    <svg class="modal--svg" width="29" height="19">
+                      <use href="./images/sprite.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                 
+                </li>
+                <li class="navigation__item">
+                  <a class="modal--network" href="https://www.instagram.com/goitclub/" rel="noopener noreferrer" target="_blank"
+                    title="instagram link">
+                    <svg class="modal--svg" width="29" height="29">
+                      <use href="./images/sprite.svg#icon-instagram"></use>
+                    </svg>
+                  </a>
+                  
+                </li>
+                <li class="navigation__item">
+                  <a class="modal--network" href="https://www.youtube.com/c/GoIT" rel="noopener noreferrer" target="_blank"
+                    title="youtube link">
+                    <svg class="modal--svg" width="29" height="29">
+                      <use href="./images/sprite.svg#icon-youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+          </ul>
+    </nav>
   </div>
 
-  <div class="header__modal">
-    <p class="header--modal--label">energy.flow</p>
-    <button class="modal__btn" type="button" data-modal-close>
-      зачини мене будь ласка
-      <svg class="modal--svg--btn" width="20" height="20">
-        <use href="./images/sprite.svg.svg#icon-close-modal"></use>
-      </svg>
-    </button>
-    <a class="modal--link" href="./index.html" rel="noopener noreferrer">
-      Home
-    </a>
-    <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
-      Favorites
-    </a>
+  <div class="header__modal none">
 
-    <nav>
-      <ul class="modal__list">
-        <li class="modal__item">
-          <a
-            class="modal--network"
-            href="https://www.facebook.com/goITclub/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="facebook link"
-          >
-            <svg class="modal--svg" width="20" height="18">
-              <use href="./images/sprite.svg.svg#icon-facebook"></use>
-            </svg>
-            facebook
-          </a>
-        </li>
-        <li class="modal__item">
-          <a
-            class="modal--network"
-            href="https://www.instagram.com/goitclub/"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="instagram link"
-          >
-            <svg class="modal--svg" width="25" height="25">
-              <use href="./images/sprite.svg.svg#icon-instagram"></use>
-            </svg>
-            instagram
-          </a>
-        </li>
-        <li class="modal__item">
-          <a
-            class="modal--network"
-            href="https://www.youtube.com/c/GoIT"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="youtube link"
-          >
-            <svg class="modal--svg" width="25" height="25">
-              <use href="./images/sprite.svg.svg#icon-youtube"></use>
-            </svg>
-            youtube
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="header__modal--box">
+
+      <div class="modal__box--btn">
+        <p class="header--modal--label">energy.flow</p>
+        <button class="modal__btn" type="button" data-modal-close>
+          <svg class="modal--svg--btn" width="25" height="25">
+            <use href="./images/sprite.svg#icon-close-modal"></use>
+          </svg>
+        </button>
+      </div>
+          
+
+      <div class="modal__box--links">
+        <a class="modal--link" href="./index.html" rel="noopener noreferrer">
+          Home
+        </a>
+        <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
+          Favorites
+        </a>
+      </div>
+          
+          
+          <nav>
+            <ul class="modal__list">
+              <li class="modal__item">
+                <a class="modal--network" href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer"
+                  title="facebook link">
+                  <svg class="modal--svg" width="20" height="18">
+                    <use href="./images/sprite.svg#icon-facebook"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="modal__item">
+                <a class="modal--network" href="https://www.instagram.com/goitclub/" rel="noopener noreferrer" target="_blank"
+                  title="instagram link">
+                  <svg class="modal--svg" width="25" height="25">
+                    <use href="./images/sprite.svg#icon-instagram"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="modal__item">
+                <a class="modal--network" href="https://www.youtube.com/c/GoIT" rel="noopener noreferrer" target="_blank"
+                  title="youtube link">
+                  <svg class="modal--svg" width="25" height="25">
+                    <use href="./images/sprite.svg#icon-youtube"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+
   </div>
 </header>
