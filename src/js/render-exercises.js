@@ -4,7 +4,7 @@ import { showMessageBadRequest } from './showMessage';
 import { resetPage, renderPageList } from './pagination';
 import { page } from './pagination';
 import { removePageList } from './pagination';
-
+import { renderExerciseModal } from './renderExerciseModal';
 const exerciseSearchInput = document.querySelector('.exercises-search-wrap');
 let exerciseCategory;
 let exerciseName;
@@ -38,6 +38,7 @@ export function renderExercises(e) {
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
+      categoriesCardsContainer.addEventListener('click', renderExerciseModal)
     });
   } catch {
     showMessageBadRequest();
@@ -72,7 +73,7 @@ function mapCards(data) {
   return data
     .map(
       item =>
-        `<li class="exercises-card" data-id="${item.id}">
+        `<li class="exercises-card">
       <div class="exercises-card-upper-part">
         <div class="div-rating-or-delete-button">
           <div class="workout-text">WORKOUT</div>
@@ -81,7 +82,7 @@ function mapCards(data) {
             <use href="../images/sprite.svg#icon-star"></use></svg>
           </span></div>
         </div>
-        <button type="button" class="card-start">Start <span>
+        <button type="button" class="card-start open-modal-exercise" data-exercise-id="${item._id}">Start <span>
           <svg class="start-icon" width="14" height="14">
           <use href="../images/sprite.svg#icon-right-arrow"></use></svg>
         </span></button>

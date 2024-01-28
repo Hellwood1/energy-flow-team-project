@@ -173,6 +173,7 @@ height: 100%;
   max-width: 32px;
   max-height: 16px;
 }
+}
 @media screen and (min-width: 375px) {
   .container {
     width: 375px;
