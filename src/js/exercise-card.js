@@ -3,7 +3,6 @@ import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
 
 const exercisesCardList = document.querySelector(".favorites-list");
-const exerciseCardNameWidth = document.querySelector(".card-exercise-name")
 const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards")
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
@@ -12,7 +11,7 @@ energyFlowApiService.getExercisesByCategory("muscles", "abs", 1, 6)
   .then((response) => addCardToList(response.results));
 
   function addCardToList(results) {
-    console.log(results);
+    // console.log(results);
     const cardElement = results.map((cardData) => `
       <li class="exercises-card">
         <div class="exercises-card-upper-part">
@@ -83,6 +82,18 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   }
 }
 
+
+// ---------------------start button-------------------------------
+
+const cardStartButton = document.querySelectorAll(".card-start");
+const exerciseModalBackdrop = document.querySelector(".exercise-modal-backdrop");
+cardStartButton.forEach(button => {
+  button.addEventListener("click", () => {
+    exerciseModalBackdrop.classList.remove("backdrop-is-hidden");
+  })
+})
+
+
 //--------------------- add to favorites---------------------------
 
 
@@ -90,7 +101,7 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
 const addToFavoritesButtons = document.querySelectorAll(".exercise-favorite-add-btn");
 
 addToFavoritesButtons.forEach(button => {
-  button.addEventListener("click", async function() {
+  button.addEventListener("click", () => {
     const exerciseId = this.id;
     console.log(exerciseId);
 
@@ -110,3 +121,30 @@ function getFavoriteExerciseIds() {
   const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
   return storedIds ? JSON.parse(storedIds) : [];
 }
+
+
+
+
+
+
+
+// const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
+// console.log(favoriteExerciseIdInLocalStorage); 
+// let array = [];
+
+// // favoriteExerciseIdInLocalStorage.forEach(id => {
+// //   array.push(test(id));
+
+// // });
+// // console.log(array)
+
+
+// async function test(id) {
+//   const t = await energyFlowApiService.getExerciseInfoById(id);
+//   // array.push(t.data)
+//   console.log(t.data);
+// };
+// // test(favoriteExerciseIdInLocalStorage)
+
+// console.log(array)
+// console.log(test(favoriteExerciseIdInLocalStorage))
