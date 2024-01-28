@@ -5,6 +5,7 @@ import { checkDate } from './js/quote';
 import { initRatings, manageRatingModal } from './js/giveRating';
 import { mobileMenu } from './js/header-modal';
 import { validateEmail, handleFormSubmit } from './js/form-footer';
+import { scrollFunction } from './js/up-btn';
 
 mobileMenu();
 addListeners();
@@ -14,3 +15,4 @@ initRatings();
 manageRatingModal();
 validateEmail();
 handleFormSubmit();
+scrollFunction();
