@@ -190,7 +190,7 @@
   color: var(--accent-color);
   text-align: center;
   font-size: 20px;
-  line-height: 100%; /* 20px/20 */
+  line-height: 100%;
   margin-bottom: 2px;
   display: flex;
   justify-content: center;
