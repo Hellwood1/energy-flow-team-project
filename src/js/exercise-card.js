@@ -3,15 +3,14 @@ import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
 
 const exercisesCardList = document.querySelector(".favorites-list");
-const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards")
+const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards");
+const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
 const energyFlowApiService = new EnergyFlowApiSevice();
-energyFlowApiService.getExercisesByCategory("muscles", "abs", 1, 6)
-  .then((response) => addCardToList(response.results));
+
 
   function addCardToList(results) {
-    // console.log(results);
     const cardElement = results.map((cardData) => `
       <li class="exercises-card">
         <div class="exercises-card-upper-part">
@@ -122,29 +121,22 @@ function getFavoriteExerciseIds() {
   return storedIds ? JSON.parse(storedIds) : [];
 }
 
+// -------------------------Завантаження з улюблених-----------------------------------
 
+const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
+const fetchDataForIds = async (ids) => {
+  const promises = ids.map((id) => energyFlowApiService.getExerciseInfoById(id));
+  return Promise.all(promises);
+};
 
+if (favoriteExerciseIdInLocalStorage || favoriteExerciseIdInLocalStorage.length !== 0) {
+  fetchDataForIds(favoriteExerciseIdInLocalStorage)
+  .then((results) => { addCardToList(results) })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
+} else {
+  listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+}
 
-
-
-// const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
-// console.log(favoriteExerciseIdInLocalStorage); 
-// let array = [];
-
-// // favoriteExerciseIdInLocalStorage.forEach(id => {
-// //   array.push(test(id));
-
-// // });
-// // console.log(array)
-
-
-// async function test(id) {
-//   const t = await energyFlowApiService.getExerciseInfoById(id);
-//   // array.push(t.data)
-//   console.log(t.data);
-// };
-// // test(favoriteExerciseIdInLocalStorage)
-
-// console.log(array)
-// console.log(test(favoriteExerciseIdInLocalStorage))
