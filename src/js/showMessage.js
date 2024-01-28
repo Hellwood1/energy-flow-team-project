@@ -1,4 +1,3 @@
-
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -17,9 +16,9 @@ const showMessageBadRequest = () => {
   });
 };
 
-const showMessageOkRequest = () => {
+const showMessageOkRequest = message => {
   iziToast.success({
-    message: `Thanks for subscribing`,
+    message: message,
     messageColor: 'white',
     maxWidth: 300,
     position: 'center',
@@ -31,9 +30,9 @@ const showMessageOkRequest = () => {
   });
 };
 
-const showMessageConflictRequest = () => {
+const showMessageConflictRequest = message => {
   iziToast.error({
-    message: `The subscription has already been sent to this email`,
+    message: message,
     backgroundColor: 'rgb(240, 115, 115)',
     messageColor: 'white',
     maxWidth: 300,
@@ -79,7 +78,7 @@ const showMessageRatingFailed = message => {
 export {
   showMessageRatingFailed,
   showMessageRatingSuccess,
-  showMessageBadRequest, 
+  showMessageBadRequest,
   showMessageOkRequest,
-  showMessageConflictRequest
+  showMessageConflictRequest,
 };

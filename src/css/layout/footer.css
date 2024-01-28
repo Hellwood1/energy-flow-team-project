@@ -49,17 +49,12 @@
   width: 36px;
   height: 36px;
   background-color: transparent;
- 
 }
-
 
 .social-icon {
   fill: var(--accent-color);
 }
-.social-icon:hover,
-.social-icon:focus {
-  fill: #5f6560;
-}
+
 .footer-credo {
   color: var(--accent-color);
   /* font-family: 'DM Sans'; */
@@ -153,8 +148,6 @@
   opacity: 0.9;
   margin-bottom: 10px;
 }
-
-
 
 /* tablet-version */
 
@@ -265,6 +258,11 @@
     height: 454px;
   }
 
+  .social-item-footer:hover,
+  .social-item-footer:focus {
+    opacity: 0.7;
+  }
+
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
@@ -272,7 +270,6 @@
       background-image: url(../../images/img/footer/bgrimg-desktop-2x.jpg);
     }
   }
- 
 
   .footer-group {
     margin-right: 156px;
@@ -280,7 +277,6 @@
 
   .social-list {
     margin-top: 40px;
-    
   }
   .footer-credo {
     font-size: 64px;
@@ -301,7 +297,5 @@
   .social-link-footer {
     width: 44px;
     height: 44px;
-   
-    
   }
 }

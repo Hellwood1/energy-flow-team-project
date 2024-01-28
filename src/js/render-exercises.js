@@ -5,6 +5,7 @@ import { resetPage, renderPageList } from './pagination';
 import { page } from './pagination';
 import { removePageList } from './pagination';
 import { renderExerciseModal } from './renderExerciseModal';
+import imgUrl from '../images/sprite.svg';
 
 const element = document.querySelector('.categories-list');
 
@@ -98,18 +99,25 @@ function mapCards(data) {
           <div class="workout-text">WORKOUT</div>
           <div class="card-rating">${item.rating.toFixed(1)}<span>
             <svg class="rating-icon" width="18" height="18">
-            <use href="/energy-flow-team-project/assets/sprite.svg#icon-star"></use></svg>
+
+            <use href="${imgUrl}#icon-star"></use></svg>
+
           </span></div>
         </div>
         <button type="button" class="card-start">Start <span>
           <svg class="start-icon" width="14" height="14">
-          <use href="/energy-flow-team-project/assets/sprite.svg#icon-right-arrow"></use></svg>
+
+          <use href="${imgUrl}#icon-right-arrow"></use></svg>
+
         </span></button>
       </div>
       <div class="exercises-card-midle-part">
         <div class="exercises-card-midle-part-svg">
           <svg class="runing-man-icon" width="24" height="24">
-          <use href="/energy-flow-team-project/assets/sprite.svg#icon-runing-man"></use></svg>
+
+          <use href="${imgUrl}#icon-runing-man"></use></svg>
+
+
         </div>
         <p class="card-exercise-name">${capitalizeFirstLetter(item.name)}</p>
       </div>

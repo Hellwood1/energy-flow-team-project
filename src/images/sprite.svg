@@ -1,9 +1,9 @@
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <symbol id="icon-mobile-menu-open" viewBox="0 0 32 32">
-            <path fill="none" stroke="#7e847f" style="stroke:var(--color1, #7e847f)" stroke-linejoin="round"
-                stroke-linecap="round" stroke-width="2" d="M28 18.333H4M28 13H4" />
-        </symbol>
+        
+<symbol id="icon-mobile-menu-open" viewBox="0 0 64 32">
+<path fill="none" stroke="#7e847f" style="stroke: var(--color1, #7e847f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M56 20.666h-48M56 10h-48"></path>
+</symbol>
         <symbol id="icon-right-arrow" viewBox="0 0 32 32">
             <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.6" d="m15 28 13-13m0 0L15 2m13 13H2" />
         </symbol>
