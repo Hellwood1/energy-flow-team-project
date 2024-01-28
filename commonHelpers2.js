@@ -1,4 +1,4 @@
-import{E as a}from"./assets/main-b91dffa5.js";import"./assets/vendor-c4bdd18a.js";const o=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const r="favoriteExerciseIds",n=new a;n.getExercisesByCategory("muscles","abs",1,6).then(e=>d(e.results));function d(e){const t=e.map(s=>`
+import{E as a}from"./assets/main-ea3577f6.js";import"./assets/vendor-c4bdd18a.js";const o=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const r="favoriteExerciseIds",n=new a;n.getExercisesByCategory("muscles","abs",1,6).then(e=>d(e.results));function d(e){const t=e.map(s=>`
       <li class="exercises-card">
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
