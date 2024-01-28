@@ -1,23 +1,18 @@
 import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
 
-const exercisesCardList = document.querySelector('.favorites-list');
-const exerciseCardNameWidth = document.querySelector('.card-exercise-name');
-const favoriteDivWithoutCards = document.querySelector(
-  '.favorites-div-without-cards'
-);
-const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
+
+const exercisesCardList = document.querySelector(".favorites-list");
+const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards");
+const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
+const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
 const energyFlowApiService = new EnergyFlowApiSevice();
-energyFlowApiService
-  .getExercisesByCategory('muscles', 'abs', 1, 6)
-  .then(response => addCardToList(response.results));
 
-function addCardToList(results) {
-  console.log(results);
-  const cardElement = results
-    .map(
-      cardData => `
+
+  function addCardToList(results) {
+    const cardElement = results.map((cardData) => `
+
       <li class="exercises-card">
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
@@ -101,6 +96,18 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   }
 }
 
+
+// ---------------------start button-------------------------------
+
+const cardStartButton = document.querySelectorAll(".card-start");
+const exerciseModalBackdrop = document.querySelector(".exercise-modal-backdrop");
+cardStartButton.forEach(button => {
+  button.addEventListener("click", () => {
+    exerciseModalBackdrop.classList.remove("backdrop-is-hidden");
+  })
+})
+
+
 //--------------------- add to favorites---------------------------
 
 const addToFavoritesButtons = document.querySelectorAll(
@@ -108,7 +115,9 @@ const addToFavoritesButtons = document.querySelectorAll(
 );
 
 addToFavoritesButtons.forEach(button => {
-  button.addEventListener('click', async function () {
+
+  button.addEventListener("click", () => {
+
     const exerciseId = this.id;
     console.log(exerciseId);
 
@@ -130,3 +139,23 @@ function getFavoriteExerciseIds() {
   const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
   return storedIds ? JSON.parse(storedIds) : [];
 }
+
+// -------------------------Завантаження з улюблених-----------------------------------
+
+const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
+
+const fetchDataForIds = async (ids) => {
+  const promises = ids.map((id) => energyFlowApiService.getExerciseInfoById(id));
+  return Promise.all(promises);
+};
+
+if (favoriteExerciseIdInLocalStorage || favoriteExerciseIdInLocalStorage.length !== 0) {
+  fetchDataForIds(favoriteExerciseIdInLocalStorage)
+  .then((results) => { addCardToList(results) })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
+} else {
+  listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+}
+

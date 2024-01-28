@@ -28,6 +28,9 @@
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: -0.02em;
+
+  display: block;
+  padding-bottom: 9px;
 }
 
 .social-list {
@@ -43,17 +46,23 @@
   gap: 8px;
   border-radius: 10px;
   border: 1px solid rgba(246, 246, 246, 0.2);
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+ 
 }
+
+
 .social-icon {
   fill: var(--accent-color);
 }
 .social-icon:hover,
-.social-icon:hover {
+.social-icon:focus {
   fill: #5f6560;
 }
 .footer-credo {
   color: var(--accent-color);
-  font-family: 'DM Sans';
+  /* font-family: 'DM Sans'; */
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -63,7 +72,7 @@
 }
 .footer-credo-item {
   color: var(--transparent-light-gray);
-  font-family: 'DM Sans';
+  /* font-family: 'DM Sans'; */
   font-size: 32px;
   font-style: italic;
   font-weight: 400;
@@ -144,6 +153,8 @@
   opacity: 0.9;
   margin-bottom: 10px;
 }
+
+
 
 /* tablet-version */
 
@@ -236,6 +247,10 @@
   .security-text.first {
     margin-right: 32px;
   }
+  .social-link-footer {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* desktop-version */
@@ -257,8 +272,7 @@
       background-image: url(../../images/img/footer/bgrimg-desktop-2x.jpg);
     }
   }
-  .footer-container {
-  }
+ 
 
   .footer-group {
     margin-right: 156px;
@@ -266,9 +280,9 @@
 
   .social-list {
     margin-top: 40px;
+    
   }
   .footer-credo {
-    width: 488px;
     font-size: 64px;
     line-height: 0.96;
     margin-right: 160px;
@@ -283,5 +297,11 @@
   .section-subscription {
     margin-left: 0;
     margin-right: 48px;
+  }
+  .social-link-footer {
+    width: 44px;
+    height: 44px;
+   
+    
   }
 }

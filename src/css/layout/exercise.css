@@ -63,7 +63,7 @@
   padding: 7px 14px;
   color: var(--black);
   font-size: 14px;
-  line-height: 128.571429%; /* 18px/14 */
+  line-height: 128.571429%;
   border-radius: 30px;
   border: none;
   background: var(--accent-color);
@@ -87,7 +87,7 @@
   background: var(--accent-color);
   color: var(--black);
   font-size: 14px;
-  line-height: 128.571429%; /* 18px/14 */
+  line-height: 128.571429%;
   width: 295px;
   height: 42px;
   border: none;
