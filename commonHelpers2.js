@@ -1,4 +1,4 @@
-import{E as n}from"./assets/main-486810d4.js";import"./assets/vendor-c4bdd18a.js";const d=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const c=document.querySelector(".favorites-div-without-cards "),r="favoriteExerciseIds",l=new n;function v(e){console.log(e);const t=e.map(s=>`
+import{E as n}from"./assets/main-79662499.js";import"./assets/vendor-c4bdd18a.js";const d=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const c=document.querySelector(".favorites-div-without-cards "),r="favoriteExerciseIds",l=new n;function v(e){console.log(e);const t=e.map(s=>`
 <li class="exercises-card">
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
