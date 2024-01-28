@@ -1,3 +1,13 @@
+
+.random {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+
+
+
 /* --------------list of card---------------- */
 
 .favorites-list {
@@ -210,6 +220,18 @@
     width: 313px;
   }
 
+  .favorites-list {
+    overflow-y: auto;
+    max-height: 728px;
+    padding-bottom: 10px;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+ .exercises-card-lower-part {
+    overflow: hidden;
+  }
+
   .exercises-card-midle-part {
     margin-top: 25px;
     margin-bottom: 8px;
@@ -234,8 +256,19 @@
   .exercises-card-midle-part {
     margin-bottom: 8px;
   }
+}
 
-  .exercises-card-lower-part {
-    overflow: hidden;
-  }
+/* -----------------------скролбар------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--slate-gray);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(27, 27, 27, 0.10);
 }

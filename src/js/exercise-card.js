@@ -6,14 +6,13 @@ const exercisesCardList = document.querySelector(".favorites-list");
 const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards");
 const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
-
 const energyFlowApiService = new EnergyFlowApiSevice();
-
+// localStorage.clear()
 
   function addCardToList(results) {
+    console.log(results)
     const cardElement = results.map((cardData) => `
-
-      <li class="exercises-card">
+<li class="exercises-card">
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
             <div class="workout-text">WORKOUT</div>
@@ -119,6 +118,7 @@ addToFavoritesButtons.forEach(button => {
   button.addEventListener("click", () => {
 
     const exerciseId = this.id;
+
     console.log(exerciseId);
 
     const favoriteExerciseIds = getFavoriteExerciseIds();
@@ -141,7 +141,6 @@ function getFavoriteExerciseIds() {
 }
 
 // -------------------------Завантаження з улюблених-----------------------------------
-
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
 const fetchDataForIds = async (ids) => {
@@ -149,7 +148,8 @@ const fetchDataForIds = async (ids) => {
   return Promise.all(promises);
 };
 
-if (favoriteExerciseIdInLocalStorage || favoriteExerciseIdInLocalStorage.length !== 0) {
+if (favoriteExerciseIdInLocalStorage.length !== 0) {
+  listWithoutExercases.classList.add("favorites-div-without-cards-hidden");
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
   .then((results) => { addCardToList(results) })
   .catch((error) => {
