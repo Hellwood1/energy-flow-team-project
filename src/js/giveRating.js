@@ -6,7 +6,7 @@ import {
 } from './showMessage';
 const ratings = document.querySelectorAll('.rating-container');
 
-export const initRatings = () => {
+export const initRating = () => {
   let ratingActive;
   let ratingValue;
   ratings.forEach(rating => initRatings(rating));
@@ -70,51 +70,52 @@ export const initRatings = () => {
     const email = response.email;
     const comment = response.review;
     const request = new EnergyFlowApiSevice();
-
-    try {
-      const answer = await request.giveRating(id, rating, email, comment);
-      console.log(answer);
-
-      if (answer.status === 200) {
-        showMessageRatingSuccess(answer.data.message);
-      } else {
-        showMessageRatingFailed(answer.data.message);
-      }
-    } catch (error) {
-      showMessageBadRequest;
-    }
+    request
+      .giveRating(id, rating, email, comment)
+      .then(resp => {
+        if (resp.status === 200) {
+          showMessageRatingSuccess();
+          closeRatingModal();
+        } else {
+          showMessageRatingFailed();
+        }
+      })
+      .catch(error => showMessageBadRequest());
 
     ratingValue.innerHTML = 0.0;
     setRatingActiveWidth();
     form.reset();
   };
   form.addEventListener('submit', sendRating);
-};
 
-export const manageRatingModal = () => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-rating-open]'),
-    closeModalBtn: document.querySelector('[data-modal-rating-close]'),
-    modal: document.querySelector('[data-modal-rating]'),
-    backdrop: document.querySelector('[data-modal-rating-backdrop]'),
-    container: document.querySelector('[data-modal-rating-container]'),
-  };
+  const closeRatingModalBtn = document.querySelector(
+    '[data-modal-rating-close]'
+  );
+  const modalRating = document.querySelector('[data-modal-rating]');
+  const ratingBackdrop = document.querySelector('[data-modal-rating-backdrop]');
+  const ratingContainer = document.querySelector(
+    '[data-modal-rating-container]'
+  );
+  addRatingListeners();
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-  refs.modal.addEventListener('click', e => {
-    if (e.target !== refs.backdrop && e.target !== refs.closeModalBtn) return;
-    toggleModal();
-  });
-  window.addEventListener('keydown', escapeClose, { once: true });
-
-  function escapeClose(e) {
-    if (e.key === 'Escape') {
-      toggleModal();
-    }
+  function closeRatingModal() {
+    ratingBackdrop.classList.add('backdrop-rating-is-hidden');
+    ratingContainer.classList.add('modal-rating-is-hidden');
+    const modalExercise = document.querySelector('.exercise-modal');
+    const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
+    modalBackdrop.classList.remove('backdrop-is-hidden');
+    modalExercise.classList.remove('modal-is-hidden');
   }
-  function toggleModal() {
-    refs.modal.classList.add('backdrop-is-hidden');
-    refs.modal.classList.add('modal-is-hidden');
+  function closeRatingModalByEscape(e) {
+    if (e.target.key === 'Escape') closeRatingModal;
+  }
+  function addRatingListeners(){
+    closeRatingModalBtn.addEventListener('click', closeRatingModal);
+  window.addEventListener('keydown', closeRatingModalByEscape);
+
+  modalRating.addEventListener('click', e => {
+    if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn) return;
+    closeRatingModal();
+  });
   }
 };
