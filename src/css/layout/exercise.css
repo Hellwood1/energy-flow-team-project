@@ -1,6 +1,6 @@
 .exercises-section {
   padding: 40px 20px;
-  border-radius: 30px;
+  border-radius: 50px;
   background: var(--ligt-gray);
   width: 100%;
 }
@@ -269,7 +269,7 @@
   .categories-list {
     flex-flow: row wrap;
     gap: 14px;
-    justify-content: flex-start;
+    justify-content: center;
     margin-bottom: 32px;
   }
 
@@ -310,6 +310,7 @@
   .category-item {
     width: calc((100% - 60px) / 4);
   }
+
 }
 /* Клас для приховання неактивних елементів */
 .hidden {
