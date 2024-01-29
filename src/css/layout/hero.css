@@ -119,6 +119,10 @@
     animation-delay: 1s;
   }
 
+  .animate__animated.animate__fadeInLeft {
+    animation-duration: 1500ms;
+  }
+
   .hero-title {
     font-size: 98px;
     line-height: 0.96;

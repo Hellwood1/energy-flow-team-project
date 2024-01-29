@@ -1,8 +1,25 @@
 .exercises-section {
   padding: 40px 20px;
-  border-radius: 50px;
+  border-radius: 30px;
   background: var(--ligt-gray);
   width: 100%;
+}
+
+.categories-list.animate__animated.animate__fadeIn {
+  animation-delay: 0s;
+}
+
+.on-animate {
+  animation: animateExercises 400ms linear forwards;
+}
+
+@keyframes animateExercises {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .exercises-not-found-msg {
@@ -35,6 +52,7 @@
   font-style: normal;
   line-height: 100%; /* 32px/32px */
   letter-spacing: -0.02em;
+  cursor: pointer;
 }
 
 .exercises-path-name {
@@ -62,10 +80,17 @@
   padding: 7px 14px;
   color: var(--black);
   font-size: 14px;
-  line-height: 128.571429%; /* 18px/14 */
+  line-height: 128.571429%;
   border-radius: 30px;
   border: none;
   background: var(--accent-color);
+  transition: box-shadow 100ms ease-in-out;
+}
+
+.category-btn:hover,
+.category-btn:focus {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
 .exercises-search-wrap {
@@ -79,7 +104,7 @@
   background: var(--accent-color);
   color: var(--black);
   font-size: 14px;
-  line-height: 128.571429%; /* 18px/14 */
+  line-height: 128.571429%;
   width: 295px;
   height: 42px;
   border: none;
@@ -133,6 +158,10 @@
   margin-bottom: 20px;
 }
 
+.exercise-list {
+  gap: 20px;
+}
+
 .category-item {
   width: 295px;
   height: 232px;
@@ -142,6 +171,14 @@
   justify-content: center;
   align-items: center;
   border: 1px solid rgba(246, 246, 246, 0.3);
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  filter: none;
+}
+
+.category-item:hover,
+.category-item:focus {
+  filter: brightness(1.7);
 }
 
 .category-item-content {
@@ -153,7 +190,7 @@
   color: var(--accent-color);
   text-align: center;
   font-size: 20px;
-  line-height: 100%; /* 20px/20 */
+  line-height: 100%;
   margin-bottom: 2px;
   display: flex;
   justify-content: center;
@@ -180,20 +217,46 @@
 .exercises-navigation-number {
   border: none;
   background-color: transparent;
+  transition: color 200ms ease-in-out;
+}
+
+.exercises-navigation-number:hover {
+  color: var(--black);
 }
 
 .exercises-navigation-number.pagination-current {
   color: var(--black);
   border: 1px solid var(--black);
+  opacity: 0.3;
+  transform: scaleY(0.9);
   border-radius: 50%;
   width: 32px;
   height: 32px;
+  animation: test 100ms ease-in forwards;
+}
+
+@keyframes test {
+  0% {
+    border: 1px solid var(--black);
+    opacity: 0.3;
+    transform: scaleY(0.8);
+  }
+  100% {
+    border: 1px solid var(--black);
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 /* Класи для виділення поточних фільтрів і сторінок пагінації */
 .current-category-btn {
   background: var(--slate-gray);
   color: var(--accent-color);
+}
+
+.current-category-btn:hover,
+.current-category-btn:focus {
+  box-shadow: none;
 }
 
 .current-pagination-btn {
@@ -209,6 +272,7 @@
 @media screen and (min-width: 768px) {
   .exercises-section {
     padding: 64px 48px;
+    border-radius: 50px;
   }
 
   .exercises-not-found-msg {
@@ -269,8 +333,11 @@
   .categories-list {
     flex-flow: row wrap;
     gap: 14px;
-    justify-content: center;
     margin-bottom: 32px;
+  }
+
+  .categories-list.exercise-list {
+    gap: 20px 14px;
   }
 
   .category-item {
@@ -307,10 +374,13 @@
     gap: 40px 20px;
   }
 
+  .categories-list.exercise-list {
+    gap: 28px 20px;
+  }
+
   .category-item {
     width: calc((100% - 60px) / 4);
   }
-
 }
 /* Клас для приховання неактивних елементів */
 .hidden {
