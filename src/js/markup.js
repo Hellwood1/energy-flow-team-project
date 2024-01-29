@@ -1,4 +1,6 @@
-import imgUrl from '../images/sprite.svg';
+
+import spriteUrl from '../images/sprite.svg';
+
 const categoriesMarkup = ({ results = [] }) => {
   return results.reduce(
     (html, { name, filter, imgUrl }) =>
@@ -42,7 +44,7 @@ const exerciseCardMarkup = ({
   return `
   <button type="button" class="exercise-modal-close-btn">
     <svg class="exercise-modal-close-icon" width="24" height="24">
-      <use href="./images/sprite.svg#icon-close-modal"></use>
+      <use href="${spriteUrl}#icon-close-modal"></use>
     </svg>
   </button>
   <img
@@ -93,7 +95,7 @@ const exerciseCardMarkup = ({
       <button type="button" class="exercise-favorite-add-btn">
         Add to favorites
         <svg class="exercise-heart-icon" width="18" height="18">
-          <use href="${imgUrl}#icon-heart"></use>
+          <use href="${spriteUrl}#icon-heart"></use>
         </svg>
       </button>
       <button type="button" data-modal-rating-open class="exercise-rating-give-btn" data-modal-rating-open
