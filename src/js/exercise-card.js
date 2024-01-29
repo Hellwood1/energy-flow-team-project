@@ -116,8 +116,8 @@ const addToFavoritesButtons = document.querySelectorAll(
 addToFavoritesButtons.forEach(button => {
 
   button.addEventListener("click", () => {
+    const exerciseId = button.id;
 
-    const exerciseId = this.id;
 
     console.log(exerciseId);
 
