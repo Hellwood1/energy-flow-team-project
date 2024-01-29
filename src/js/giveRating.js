@@ -4,12 +4,11 @@ import {
   showMessageRatingFailed,
   showMessageRatingSuccess,
 } from './showMessage';
-const ratings = document.querySelectorAll('.rating-container');
 
-export const initRating = () => {
+export const initRating = (ratingsElement = []) => {
   let ratingActive;
   let ratingValue;
-  ratings.forEach(rating => initRatings(rating));
+  ratingsElement.forEach(rating => initRatings(rating));
 
   // ініціюємо конкретний рейтинг
   function initRatings(rating) {
@@ -55,7 +54,18 @@ export const initRating = () => {
       });
     }
   }
+};
 
+export const addListenersToRatingModal = () => {
+  const closeRatingModalBtn = document.querySelector(
+    '[data-modal-rating-close]'
+  );
+  const modalRating = document.querySelector('[data-modal-rating]');
+  const ratingBackdrop = document.querySelector('[data-modal-rating-backdrop]');
+  const ratingContainer = document.querySelector(
+    '[data-modal-rating-container]'
+  );
+  const ratings = document.querySelectorAll('.rating-container');
   const form = document.querySelector('.rating-form');
   let response = {};
 
@@ -82,21 +92,24 @@ export const initRating = () => {
       })
       .catch(error => showMessageBadRequest());
 
-    ratingValue.innerHTML = 0.0;
-    setRatingActiveWidth();
+    const ratingForm = document.querySelector('.set-rating');
+    let ratingValue = ratingForm.querySelector('.rating-value');
+    let ratingActive = ratingForm.querySelector('.rating-active');
+    ratingValue.textContent = '0.0';
+    ratingActive.style.width = '0%';
     form.reset();
   };
   form.addEventListener('submit', sendRating);
 
-  const closeRatingModalBtn = document.querySelector(
-    '[data-modal-rating-close]'
-  );
-  const modalRating = document.querySelector('[data-modal-rating]');
-  const ratingBackdrop = document.querySelector('[data-modal-rating-backdrop]');
-  const ratingContainer = document.querySelector(
-    '[data-modal-rating-container]'
-  );
-  addRatingListeners();
+  initRating(ratings);
+
+  closeRatingModalBtn.addEventListener('click', closeRatingModal);
+  window.addEventListener('keydown', closeRatingModalByEscape);
+
+  modalRating.addEventListener('click', e => {
+    if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn) return;
+    closeRatingModal();
+  });
 
   function closeRatingModal() {
     ratingBackdrop.classList.add('backdrop-rating-is-hidden');
@@ -107,16 +120,6 @@ export const initRating = () => {
     modalExercise.classList.remove('modal-is-hidden');
   }
   function closeRatingModalByEscape(e) {
-    if (e.target.key === 'Escape') closeRatingModal;
-  }
-  function addRatingListeners() {
-    closeRatingModalBtn.addEventListener('click', closeRatingModal);
-    window.addEventListener('keydown', closeRatingModalByEscape);
-
-    modalRating.addEventListener('click', e => {
-      if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn)
-        return;
-      closeRatingModal();
-    });
+    if (e.key === 'Escape') closeRatingModal();
   }
 };

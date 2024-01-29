@@ -1,3 +1,4 @@
+
 import spriteUrl from '../images/sprite.svg';
 
 const categoriesMarkup = ({ results = [] }) => {
@@ -58,57 +59,12 @@ const exerciseCardMarkup = ({
       <h3 class="exercise-modal-title">${
         name[0].toUpperCase() + name.slice(1)
       }</h3>
-      <form class="rating-form">
-          
             <div class="rating-container">
               <div class="rating-value">${rating}</div>
               <div class="rating-body">
                 <div class="rating-active"></div>
-                <div class="rating-items">
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="1"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="2"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="3"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="4"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="5"
-                    name="rate"
-                    required
-                  />
-                </div>
               </div>
             </div>
-        </form>
     </div>
     <ul class="exercise-tags-list">
       <li class="exercise-tags-item">
