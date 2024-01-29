@@ -1,41 +1,27 @@
-import EnergyFlowApiSevice from './api-service.js';
-import {showMessageBadRequest, showMessageOkRequest} from './showMessage';
+import EnergyFlowApiSevice from './api-service';
+import iziToast from 'izitoast';
+import {
+  showMessageOkRequest,
+  showMessageConflictRequest,
+} from './showMessage';
 
+export async function sendMessage(e) {
+  e.preventDefault();
 
+  const api = new EnergyFlowApiSevice();
+  const inputValue = document.querySelector('.input-footer').value;
+  let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
-const form = document.querySelector('.footer-subscription');
-const emailInput = document.querySelector('.input-footer');
-
-form.addEventListener('submit', handleFormSubmit);
-
-
-async function handleFormSubmit(event) {
-  event.preventDefault();
-
-  const email = emailInput.value.trim();
-  const request = new EnergyFlowApiSevice();
-  if (!validateEmail(email)) {
-    alert('Please enter a valid email address');
-    return;
-  }
-
-  if (email === '') {
-    alert('Please enter an email address');
-    return;
+  if (inputValue.match(reg) === null) {
+    return showMessageConflictRequest(`Please, enter the valid email :)`);
   }
 
   try {
-    const response = await request.sendSubscription(email);
-    console.log('Data sent successfully');
-    emailInput.value = '';
-    showMessageOkRequest();
+    const res = await api.sendSubscription(inputValue);
+    showMessageOkRequest(res.message);
   } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-    showMessageBadRequest();
+    showMessageConflictRequest(
+      `The subscription has already been sent to this email`
+    );
   }
-}
-
-function validateEmail(email) {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email);
 }

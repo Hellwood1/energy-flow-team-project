@@ -8,6 +8,8 @@ import { renderPageList } from './pagination';
 import { changeCurrentPage } from './pagination';
 import { page } from './pagination';
 import { resetPage } from './pagination';
+import { animateElement } from './render-exercises';
+import { sendMessage } from './form-footer';
 
 export const categoriesCardsContainer =
   document.querySelector('.categories-list');
@@ -15,6 +17,7 @@ const filterButtonsList = document.querySelector('.category-btns-list');
 const titlePath = document.querySelector('.exercises-title');
 const namePath = document.querySelector('.exercises-path-name');
 const paginationBtnsList = document.querySelector('.navigation-list-form');
+const subForm = document.querySelector('.footer-subscription');
 
 const addClassToCurrentFilter = () => {
   const buttons = document.querySelectorAll('.category-btn');
@@ -40,6 +43,7 @@ export const initialRequest = async filter => {
     categoriesCardsContainer.innerHTML = categoriesMarkup(response);
     categoriesCardsContainer.addEventListener('click', renderExercises);
     paginationBtnsList.addEventListener('submit', changeCurrentPage);
+    animateElement(categoriesCardsContainer);
   } catch (error) {
     showMessageBadRequest();
   }
@@ -49,7 +53,10 @@ export const renderCategories = async event => {
   const filter = event.target.textContent.trim();
   resetPage();
   removeExercisePath();
-  initialRequest(filter);
+  await initialRequest(filter);
+  if (categoriesCardsContainer.classList.contains('exercise-list')) {
+    categoriesCardsContainer.classList.remove('exercise-list');
+  }
 };
 
 function removeExercisePath() {
@@ -68,4 +75,5 @@ export const addListeners = () => {
   window.addEventListener('load', initialRequest);
   filterButtonsList.addEventListener('click', renderCategories);
   titlePath.addEventListener('click', renderCategories);
+  subForm.addEventListener('submit', sendMessage);
 };

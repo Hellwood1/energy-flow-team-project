@@ -1,8 +1,8 @@
-
 import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
 import { closeModal } from './modal'
 import imgUrl from '../images/sprite.svg';
+
 
 
 const exercisesCardList = document.querySelector(".favorites-list");
@@ -15,15 +15,18 @@ const energyFlowApiService = new EnergyFlowApiSevice();
   function addCardToList(results) {
     console.log(results)
     const cardElement = results.map((cardData) => `
+
       <li class="exercises-card" id="${cardData._id}">
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
             <div class="workout-text">WORKOUT</div>
-            <div class="card-rating">${cardData.rating} <span>
+            <div class="card-rating">${cardData.rating.toFixed(1)} <span>
               <svg class="rating-icon" width="18" height="18">
               <use href="${imgUrl}#icon-star"></use></svg>
             </span></div>
-            <button type="button" id="${cardData._id}" class="card-delete card-delte-inactive">
+            <button type="button" id="${
+              cardData._id
+            }" class="card-delete card-delte-inactive">
               <svg class="trash-icon" width="16" height="16">
               <use href="${imgUrl}#icon-trash"></use></svg>
             </button>
@@ -38,29 +41,38 @@ const energyFlowApiService = new EnergyFlowApiSevice();
             <svg class="runing-man-icon" width="24" height="24">
             <use href="${imgUrl}#icon-runing-man"></use></svg>
           </div>
-          <p class="card-exercise-name">${capitalizeFirstLetter(cardData.name)}</p>
+          <p class="card-exercise-name">${capitalizeFirstLetter(
+            cardData.name
+          )}</p>
         </div>
         <div class="exercises-card-lower-part">
-          <p>Burned calories: <span class="exercises-card-lower-part-span">${cardData.burnedCalories} / 3 min</span></p>
-          <p>Body part: <span class="exercises-card-lower-part-span">${cardData.bodyPart}</span></p>
-          <p>Target: <span class="exercises-card-lower-part-span">${cardData.target}</span></p>
+          <p>Burned calories: <span class="exercises-card-lower-part-span">${
+            cardData.burnedCalories
+          } / 3 min</span></p>
+          <p>Body part: <span class="exercises-card-lower-part-span">${
+            cardData.bodyPart
+          }</span></p>
+          <p>Target: <span class="exercises-card-lower-part-span">${
+            cardData.target
+          }</span></p>
         </div>
       </li>
-  `).join("");
+  `
+    )
+    .join('');
 
-  exercisesCardList.insertAdjacentHTML("beforeend", cardElement);
-
+  exercisesCardList.insertAdjacentHTML('beforeend', cardElement);
 }
-
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
 // --------------delete button-----------------------//
+
 const exercisesCard = document.querySelector(".exercises-card")
 const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
+
 
 // exercisesCard.addEventListener("click", () =>  {
 //   const exerciseIdToRemove = exercisesCard.id;
@@ -76,21 +88,28 @@ const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
 
 
 removeFromFavoritesButtons.forEach(button => {
+
   button.addEventListener("click", () =>  {
     const exerciseIdToRemove = button.id;
+
     const favoriteExerciseIds = getFavoriteExerciseIds();
     const indexToRemove = favoriteExerciseIds.indexOf(exerciseIdToRemove);
 
     if (indexToRemove !== -1) {
       favoriteExerciseIds.splice(indexToRemove, 1);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseIds));
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify(favoriteExerciseIds)
+      );
     }
     updateInterfaceAfterRemoval(exerciseIdToRemove);
   });
 });
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
-  const cardToRemove = document.querySelector(`.exercises-card[data-id="${exerciseIdToRemove}"]`);/////якщо помилка то точно тут
+  const cardToRemove = document.querySelector(
+    `.exercises-card[data-id="${exerciseIdToRemove}"]`
+  ); /////якщо помилка то точно тут
 
   if (cardToRemove) {
     cardToRemove.remove();
@@ -111,13 +130,15 @@ cardStartButton.forEach(button => {
 
 //--------------------- add to favorites---------------------------
 
-
-
-const addToFavoritesButtons = document.querySelectorAll(".exercise-favorite-add-btn");
+const addToFavoritesButtons = document.querySelectorAll(
+  '.exercise-favorite-add-btn'
+);
 
 addToFavoritesButtons.forEach(button => {
+
   button.addEventListener("click", () => {
     const exerciseId = button.id;
+
 
     console.log(exerciseId);
 
@@ -125,12 +146,14 @@ addToFavoritesButtons.forEach(button => {
 
     if (!favoriteExerciseIds.includes(exerciseId)) {
       favoriteExerciseIds.push(exerciseId);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseIds));
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify(favoriteExerciseIds)
+      );
     } else {
-      console.log("this exersice is already in favorites")
+      console.log('this exersice is already in favorites');
     }
-    
-    });
+  });
 });
 
 function getFavoriteExerciseIds() {

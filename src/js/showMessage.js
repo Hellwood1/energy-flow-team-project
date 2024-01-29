@@ -16,9 +16,24 @@ const showMessageBadRequest = () => {
   });
 };
 
-const showMessageOkRequest = () => {
+const showMessageOkRequest = message => {
   iziToast.success({
-    message: `Thanks for subscribing`,
+    message: message,
+    messageColor: 'white',
+    maxWidth: 300,
+    position: 'center',
+    timeout: 3000,
+    progressBar: false,
+    transitionIn: 'bounceInRight',
+    transitionOut: 'fadeOutLeft',
+    messageSize: 14,
+  });
+};
+
+const showMessageConflictRequest = message => {
+  iziToast.error({
+    message: message,
+    backgroundColor: 'rgb(240, 115, 115)',
     messageColor: 'white',
     maxWidth: 300,
     position: 'center',
@@ -63,6 +78,7 @@ const showMessageRatingFailed = message => {
 export {
   showMessageRatingFailed,
   showMessageRatingSuccess,
-  showMessageBadRequest, 
+  showMessageBadRequest,
   showMessageOkRequest,
+  showMessageConflictRequest,
 };

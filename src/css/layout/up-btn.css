@@ -1,0 +1,31 @@
+.up-btn {
+  padding: 22px;
+  background-color: var(--accent-color);
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  border-radius: 15px;
+  display: flex;
+  font-size: 18px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .up-btn {
+    font-size: 21px;
+    right: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .up-btn {
+    padding: 25px;
+    font-size: 25px;
+    right: 50px;
+  }
+}
