@@ -1,3 +1,5 @@
+import spriteUrl from '../images/sprite.svg';
+
 const categoriesMarkup = ({ results = [] }) => {
   return results.reduce(
     (html, { name, filter, imgUrl }) =>
@@ -26,11 +28,22 @@ const categoriesMarkup = ({ results = [] }) => {
   );
 };
 
-const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, popularity, burnedCalories, description, _id}) => {
+const exerciseCardMarkup = ({
+  gifUrl,
+  name,
+  rating,
+  target,
+  bodyPart,
+  equipment,
+  popularity,
+  burnedCalories,
+  description,
+  _id,
+}) => {
   return `
   <button type="button" class="exercise-modal-close-btn">
     <svg class="exercise-modal-close-icon" width="24" height="24">
-      <use href="./images/sprite.svg#icon-close-modal"></use>
+      <use href="${spriteUrl}#icon-close-modal"></use>
     </svg>
   </button>
   <img
@@ -42,7 +55,9 @@ const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, 
   />
   <div class="exercise-modal-info">
     <div class="exercise-modal-hero">
-      <h3 class="exercise-modal-title">${name[0].toUpperCase() + name.slice(1)}</h3>
+      <h3 class="exercise-modal-title">${
+        name[0].toUpperCase() + name.slice(1)
+      }</h3>
       <form class="rating-form">
           
             <div class="rating-container">
@@ -124,7 +139,7 @@ const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, 
       <button type="button" class="exercise-favorite-add-btn">
         Add to favorites
         <svg class="exercise-heart-icon" width="18" height="18">
-          <use href="./images/sprite.svg#icon-heart"></use>
+          <use href="${spriteUrl}#icon-heart"></use>
         </svg>
       </button>
       <button type="button" data-modal-rating-open class="exercise-rating-give-btn" data-modal-rating-open
