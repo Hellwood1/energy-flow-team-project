@@ -102,6 +102,7 @@ const addToFavoritesButtons = document.querySelectorAll(".exercise-favorite-add-
 addToFavoritesButtons.forEach(button => {
   button.addEventListener("click", () => {
     const exerciseId = button.id;
+
     console.log(exerciseId);
 
     const favoriteExerciseIds = getFavoriteExerciseIds();
