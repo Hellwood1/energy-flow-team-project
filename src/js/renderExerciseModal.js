@@ -1,6 +1,7 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
-import { showMessageBadRequest, showMessageRatingFailed } from './showMessage';
+import { showMessageRatingFailed } from './showMessage';
+import { initRating } from './giveRating';
 
 export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
@@ -13,19 +14,26 @@ export const renderExerciseModal = async id => {
     document.querySelector('.send-rating-form').dataset.id = id;
     openExerciseModal();
 
+    const ratings = document.querySelectorAll('.rating-container');
+    initRating(ratings);
+
     const closeModealBtn = document.querySelector('.exercise-modal-close-btn');
+
     modalBackdrop.addEventListener('click', e => {
       if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
         return;
       }
       closeExerciseModal();
     });
+
     closeModealBtn.addEventListener('click', closeExerciseModal);
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         closeExerciseModal();
       }
     });
+
     const giveRatingButtons = document.querySelectorAll(
       '.exercise-rating-give-btn'
     );
@@ -54,4 +62,6 @@ export const renderExerciseModal = async id => {
     modalBackdrop.classList.remove('backdrop-is-hidden');
     modalExercise.classList.remove('modal-is-hidden');
   }
+
+  
 };
