@@ -1,6 +1,6 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
-import { showMessageRatingFailed } from './showMessage';
+import { showMessageBadRequest } from './showMessage';
 import { initRating } from './giveRating';
 
 export const renderExerciseModal = async id => {
@@ -51,7 +51,7 @@ export const renderExerciseModal = async id => {
       })
     );
   } catch (error) {
-    showMessageRatingFailed();
+    showMessageBadRequest();
   }
 
   function closeExerciseModal() {

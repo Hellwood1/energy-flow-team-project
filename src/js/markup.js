@@ -1,3 +1,4 @@
+import imgUrl from '../images/sprite.svg';
 const categoriesMarkup = ({ results = [] }) => {
   return results.reduce(
     (html, { name, filter, imgUrl }) =>
@@ -26,7 +27,18 @@ const categoriesMarkup = ({ results = [] }) => {
   );
 };
 
-const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, popularity, burnedCalories, description, _id}) => {
+const exerciseCardMarkup = ({
+  gifUrl,
+  name,
+  rating,
+  target,
+  bodyPart,
+  equipment,
+  popularity,
+  burnedCalories,
+  description,
+  _id,
+}) => {
   return `
   <button type="button" class="exercise-modal-close-btn">
     <svg class="exercise-modal-close-icon" width="24" height="24">
@@ -42,58 +54,15 @@ const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, 
   />
   <div class="exercise-modal-info">
     <div class="exercise-modal-hero">
-      <h3 class="exercise-modal-title">${name[0].toUpperCase() + name.slice(1)}</h3>
-      <form class="rating-form">
-          
+      <h3 class="exercise-modal-title">${
+        name[0].toUpperCase() + name.slice(1)
+      }</h3>
             <div class="rating-container">
               <div class="rating-value">${rating}</div>
               <div class="rating-body">
                 <div class="rating-active"></div>
-                <div class="rating-items">
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="1"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="2"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="3"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="4"
-                    name="rate"
-                    required
-                  />
-                  <input
-                    id="rate"
-                    type="radio"
-                    class="rating-item"
-                    value="5"
-                    name="rate"
-                    required
-                  />
-                </div>
               </div>
             </div>
-        </form>
     </div>
     <ul class="exercise-tags-list">
       <li class="exercise-tags-item">
@@ -124,7 +93,7 @@ const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, 
       <button type="button" class="exercise-favorite-add-btn">
         Add to favorites
         <svg class="exercise-heart-icon" width="18" height="18">
-          <use href="./images/sprite.svg#icon-heart"></use>
+          <use href="${imgUrl}#icon-heart"></use>
         </svg>
       </button>
       <button type="button" data-modal-rating-open class="exercise-rating-give-btn" data-modal-rating-open
