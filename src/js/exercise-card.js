@@ -1,8 +1,6 @@
 import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
-import { closeModal } from './modal'
 import imgUrl from '../images/sprite.svg';
-
 
 
 const exercisesCardList = document.querySelector(".favorites-list");
