@@ -1,10 +1,10 @@
 const btnOpenEl = document.querySelector('[data-modal-open]');
 const btnCloseEl = document.querySelector('[data-modal-close]');
-const mobileModal = document.querySelector('.header__modal');
+const mobileModal = document.querySelector('.mobile-menu-wrapper');
 
-const pageLinks = document.querySelector('.navigation__links--box');
+const pageLinks = document.querySelector('.home-page');
 
-pageLinks.firstElementChild.classList.add('active-page');
+pageLinks.classList.add('active-page');
 
 let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
@@ -19,7 +19,6 @@ function preventDefaultForScrollKeys(e) {
   }
 }
 
-// modern Chrome requires { passive: false } when adding event
 let supportsPassive = false;
 try {
   window.addEventListener(
@@ -37,15 +36,15 @@ let wheelOpt = supportsPassive ? { passive: false } : false;
 let wheelEvent =
   'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-// call this to Disable
+
 function disableScroll() {
-  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('DOMMouseScroll', preventDefault, false); 
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.addEventListener('touchmove', preventDefault, wheelOpt); 
   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
-// call this to Enable
+
 function enableScroll() {
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
