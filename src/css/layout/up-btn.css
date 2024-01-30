@@ -14,11 +14,22 @@
   align-items: center;
   justify-content: center;
 }
-
+.up-button-icon{
+  stroke: var(--accent-color);
+}
 @media screen and (min-width: 768px) {
   .up-btn {
     font-size: 21px;
     right: 40px;
+    transition: all var(--timing-function);
+  }
+  .up-btn:hover,
+  .up-btn:focus{
+    background-color: var(--slate-gray);
+  }
+  .up-button-icon{
+    width: 33px;
+    height: 33px;
   }
 }
 
