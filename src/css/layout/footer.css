@@ -49,6 +49,7 @@
   width: 36px;
   height: 36px;
   background-color: transparent;
+
 }
 
 .social-icon {
@@ -161,6 +162,23 @@
 .social-item-footer:hover,
 .social-item-footer:focus {
   opacity: 0.7;
+  animation: 1.2s ease-in-out 0s normal none infinite running
+      trambling-animation;
+}
+@keyframes trambling-animation {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(-15deg);
+  }
+  20%,
+  40% {
+    transform: rotate(15deg);
+  }
 }
 
 /* tablet-version */
