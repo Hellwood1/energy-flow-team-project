@@ -9,6 +9,8 @@ import {
   closeRatingModal,
   addListenersToCloseRatingModal,
 } from './manageModals';
+import { isValidEmail } from './form-footer';
+
 export const initRating = (ratingsElement = []) => {
   let ratingActive;
   let ratingValue;
@@ -76,29 +78,26 @@ export const addListenersToRatingModal = () => {
     const email = response.email;
     const comment = response.review;
     const request = new EnergyFlowApiSevice();
-    let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
-    if (email.match(reg) === null) {
-      return showMessageConflictRequest(`Please, enter the valid email :)`);
+    isValidEmail(email);
+    try {
+      const answer = await request.giveRating(id, rating, email, comment);
+      if (answer.status === 200) {
+        showMessageRatingSuccess();
+        closeRatingModal();
+      }
+    } catch (error) {
+      showMessageRatingFailed();
     }
-    request
-      .giveRating(id, rating, email, comment)
-      .then(resp => {
-        if (resp.status === 200) {
-          showMessageRatingSuccess();
-          closeRatingModal();
-        } else {
-          showMessageRatingFailed();
-        }
-      })
-      .catch(error => showMessageBadRequest());
+    resetRatingForm();
 
-    const ratingForm = document.querySelector('.set-rating');
-    let ratingValue = ratingForm.querySelector('.rating-value');
-    let ratingActive = ratingForm.querySelector('.rating-active');
-    ratingValue.textContent = '0.0';
-    ratingActive.style.width = '0%';
-    form.reset();
+    function resetRatingForm() {
+      const ratingForm = document.querySelector('.set-rating');
+      let ratingValue = ratingForm.querySelector('.rating-value');
+      let ratingActive = ratingForm.querySelector('.rating-active');
+      ratingValue.textContent = '0.0';
+      ratingActive.style.width = '0%';
+      form.reset();
+    }
   };
   form.addEventListener('submit', sendRating);
 

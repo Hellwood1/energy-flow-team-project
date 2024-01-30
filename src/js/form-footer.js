@@ -1,5 +1,5 @@
 import EnergyFlowApiSevice from './api-service';
-import iziToast from 'izitoast';
+
 import {
   showMessageOkRequest,
   showMessageConflictRequest,
@@ -10,18 +10,25 @@ export async function sendMessage(e) {
 
   const api = new EnergyFlowApiSevice();
   const inputValue = document.querySelector('.input-footer').value;
-  let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
-  if (inputValue.match(reg) === null) {
-    return showMessageConflictRequest(`Please, enter the valid email :)`);
-  }
+  const formFooter = document.querySelector('.footer-subscription')
+  isValidEmail(inputValue)
 
   try {
     const res = await api.sendSubscription(inputValue);
     showMessageOkRequest(res.message);
+    formFooter.reset()
+
   } catch (error) {
     showMessageConflictRequest(
       `The subscription has already been sent to this email`
     );
+  }
+}
+
+export function isValidEmail(email){
+  let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+  if (email.match(reg) === null) {
+    return showMessageConflictRequest(`Please, enter the valid email :)`);
   }
 }

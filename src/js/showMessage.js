@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const showMessageBadRequest = () => {
   iziToast.error({
-    message: `Sorry, something went wrong. Please, try again later`,
+    message: `Ooops...Something happen. Please, try again later`,
     backgroundColor: 'rgb(240, 115, 115)',
     messageColor: 'white',
     maxWidth: 300,
@@ -60,9 +60,9 @@ const showMessageRatingSuccess = () => {
   });
 };
 
-const showMessageRatingFailed = message => {
+const showMessageRatingFailed = () => {
   iziToast.error({
-    message: 'Sorry, you have already leave a review',
+    message: 'Such email already exists',
     backgroundColor: 'rgb(240, 115, 115)',
     messageColor: 'white',
     maxWidth: 300,
