@@ -5,7 +5,5 @@ headerEl.classList.add('header-section-favorites')
 pageLinks.classList.add('active-page');
 
 import { checkDate } from './quote';
-import { toggleModal } from './header-modal';
 
 checkDate();
-toggleModal();
