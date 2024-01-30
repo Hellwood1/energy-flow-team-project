@@ -1,8 +1,9 @@
-.random {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 20px;
+
+.div-with-li {
+  position: relative;
+  z-index: 0;
 }
+
 
 /* --------------list of card---------------- */
 
@@ -79,6 +80,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.card-delete {
+  position: absolute;
+  top: 21px;
+  left: 100px;
+  z-index: 2;
 }
 
 /* -----------------upper part----------------- */
