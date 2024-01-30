@@ -125,12 +125,44 @@ const fetchDataForIds = async (ids) => {
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
   listWithoutExercases.classList.add("favorites-div-without-cards-hidden");
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
-  .then((results) => { addCardToList(results) })
-  .catch((error) => {
-    showMessageBadRequest();
-  });
+    .then(results => {
+
+      if (window.innerWidth < 768) {
+        addCardToList(results.slice(0, 8));
+        totalFavoritesPages = Math.ceil(results.length / 8);
+        renderPageList(totalFavoritesPages, currentPage, currentPage);
+        document
+          .querySelector('.navigation-list-form')
+          .addEventListener('submit', paginationFavorite);
+      } else {
+        addCardToList(results);
+      }
+
+    })
+    .catch(error => {
+      showMessageBadRequest();
+    });
+
 } else {
   listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+}
+
+function paginationFavorite(e) {
+  e.preventDefault();
+
+  currentPage = e.submitter.textContent;
+  const ids = JSON.parse(localStorage.getItem('favoriteExerciseIds'));
+  let total = Math.ceil(ids.length / 8);
+
+  fetchDataForIds(favoriteExerciseIdInLocalStorage)
+    .then(results => {
+      addCardToList(results.slice((currentPage - 1) * 8, currentPage * 8));
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+
+  renderPageList(total, currentPage, currentPage);
 }
 
 
