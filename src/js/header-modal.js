@@ -1,6 +1,6 @@
 const btnOpenEl = document.querySelector('[data-modal-open]');
 const btnCloseEl = document.querySelector('[data-modal-close]');
-const mobileModal = document.querySelector('.header__modal');
+const mobileModal = document.querySelector('.mobile-menu-wrapper');
 
 const pageLinks = document.querySelector('.navigation__links--box');
 
