@@ -33,7 +33,7 @@ export default function generatePageNumbers(total, current) {
   return result;
 }
 
-export function renderPageList(totalPages, perPage) {
+export function renderPageList(totalPages, perPage, pageTypeValue) {
   const pageList = generatePageNumbers(totalPages, perPage)
     .map(
       p => `<li class="exercises-navigation-item">
@@ -44,24 +44,21 @@ export function renderPageList(totalPages, perPage) {
 
   navBtnsList.innerHTML = pageList;
 
-  chooseCurrentPage();
+  chooseCurrentPage(pageTypeValue);
   return;
 }
 
 export function changeCurrentPage(e) {
   e.preventDefault();
-
+  const namePath = document.querySelector('.exercises-path-name');
   if (!parseInt(e.submitter.textContent)) {
     return;
   }
-
   page = e.submitter.textContent;
 
   category = renameFilter(
     document.querySelector('.current-category-btn').textContent
   ).trim();
-
-  const namePath = document.querySelector('.exercises-path-name');
   if (namePath.classList.contains('hidden')) {
     initialRequest(category);
   } else if (isSearchByKey) {
@@ -75,9 +72,9 @@ export function resetPage() {
   page = 1;
 }
 
-function chooseCurrentPage() {
+export function chooseCurrentPage(pageTypeValue) {
   const allPages = document.querySelectorAll('.exercises-navigation-item');
-  if (page <= 1) {
+  if (pageTypeValue <= 1) {
     allPages[0].firstElementChild.classList.add('pagination-current');
   } else {
     for (let i = 0; i < allPages.length; i++) {
@@ -85,7 +82,7 @@ function chooseCurrentPage() {
         allPages[i].firstElementChild.classList.contains('pagination-current')
       ) {
         allPages[i].firstElementChild.classList.remove('pagination-current');
-      } else if (allPages[i].firstElementChild.textContent === page) {
+      } else if (allPages[i].firstElementChild.textContent === pageTypeValue) {
         allPages[i].firstElementChild.classList.add('pagination-current');
       }
     }
