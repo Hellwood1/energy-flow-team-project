@@ -9,7 +9,7 @@ import {
   closeExerciseModal,
   openRatingModal,
 } from './manageModals';
-import { showMessageBadRequest, showMessageRatingFailed, showMessageOkRequest } from './showMessage';
+import { showMessageBadRequest, showMessageOkRequest } from './showMessage';
 
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
