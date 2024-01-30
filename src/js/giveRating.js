@@ -3,13 +3,18 @@ import {
   showMessageBadRequest,
   showMessageRatingFailed,
   showMessageRatingSuccess,
+  showMessageConflictRequest,
 } from './showMessage';
-const ratings = document.querySelectorAll('.rating-container');
+import {
+  closeRatingModal,
+  addListenersToCloseRatingModal,
+} from './manageModals';
+import { isValidEmail } from './form-footer';
 
-export const initRating = () => {
+export const initRating = (ratingsElement = []) => {
   let ratingActive;
   let ratingValue;
-  ratings.forEach(rating => initRatings(rating));
+  ratingsElement.forEach(rating => initRatings(rating));
 
   // ініціюємо конкретний рейтинг
   function initRatings(rating) {
@@ -55,10 +60,13 @@ export const initRating = () => {
       });
     }
   }
+};
 
+export const addListenersToRatingModal = () => {
+  const ratings = document.querySelectorAll('.rating-container');
   const form = document.querySelector('.rating-form');
   let response = {};
-
+  addListenersToCloseRatingModal();
   const sendRating = async e => {
     e.preventDefault();
     const id = form.dataset.id;
@@ -70,53 +78,28 @@ export const initRating = () => {
     const email = response.email;
     const comment = response.review;
     const request = new EnergyFlowApiSevice();
-    request
-      .giveRating(id, rating, email, comment)
-      .then(resp => {
-        if (resp.status === 200) {
-          showMessageRatingSuccess();
-          closeRatingModal();
-        } else {
-          showMessageRatingFailed();
-        }
-      })
-      .catch(error => showMessageBadRequest());
+    isValidEmail(email);
+    try {
+      const answer = await request.giveRating(id, rating, email, comment);
+      if (answer.status === 200) {
+        showMessageRatingSuccess();
+        closeRatingModal();
+      }
+    } catch (error) {
+      showMessageRatingFailed();
+    }
+    resetRatingForm();
 
-    ratingValue.innerHTML = 0.0;
-    setRatingActiveWidth();
-    form.reset();
+    function resetRatingForm() {
+      const ratingForm = document.querySelector('.set-rating');
+      let ratingValue = ratingForm.querySelector('.rating-value');
+      let ratingActive = ratingForm.querySelector('.rating-active');
+      ratingValue.textContent = '0.0';
+      ratingActive.style.width = '0%';
+      form.reset();
+    }
   };
   form.addEventListener('submit', sendRating);
 
-  const closeRatingModalBtn = document.querySelector(
-    '[data-modal-rating-close]'
-  );
-  const modalRating = document.querySelector('[data-modal-rating]');
-  const ratingBackdrop = document.querySelector('[data-modal-rating-backdrop]');
-  const ratingContainer = document.querySelector(
-    '[data-modal-rating-container]'
-  );
-  addRatingListeners();
-
-  function closeRatingModal() {
-    ratingBackdrop.classList.add('backdrop-rating-is-hidden');
-    ratingContainer.classList.add('modal-rating-is-hidden');
-    const modalExercise = document.querySelector('.exercise-modal');
-    const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
-    modalBackdrop.classList.remove('backdrop-is-hidden');
-    modalExercise.classList.remove('modal-is-hidden');
-  }
-  function closeRatingModalByEscape(e) {
-    if (e.target.key === 'Escape') closeRatingModal;
-  }
-  function addRatingListeners() {
-    closeRatingModalBtn.addEventListener('click', closeRatingModal);
-    window.addEventListener('keydown', closeRatingModalByEscape);
-
-    modalRating.addEventListener('click', e => {
-      if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn)
-        return;
-      closeRatingModal();
-    });
-  }
+  initRating(ratings);
 };

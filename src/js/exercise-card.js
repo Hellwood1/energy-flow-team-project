@@ -4,7 +4,6 @@ import imgUrl from '../images/sprite.svg';
 import { exerciseCardMarkup } from './markup';
 import { renderExerciseModal } from "./renderExerciseModal";
 
-
 const exercisesCardList = document.querySelector(".favorites-list");
 const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
 const exercisesCard = document.querySelector(".exercises-card")
@@ -110,12 +109,6 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
     cardToRemove.remove();
   }
 }
-
-
-// ---------------------start button-------------------------------
-
-
-
 
 //--------------------- add to favorites---------------------------
 

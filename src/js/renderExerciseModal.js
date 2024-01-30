@@ -1,30 +1,41 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
 import { showMessageBadRequest, showMessageRatingFailed, showMessageOkRequest } from './showMessage';
+import { showMessageBadRequest } from './showMessage';
+import { initRating } from './giveRating';
+import {
+  modalBackdrop,
+  modalExercise,
+  openExerciseModal,
+  closeExerciseModal,
+  openRatingModal,
+} from './manageModals';
 
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
 export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
-  const modalExercise = document.querySelector('.exercise-modal');
-  const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
+
   try {
     const response = await request.getExerciseInfoById(id);
     modalExercise.innerHTML = exerciseCardMarkup(response);
-
+    const ratings = document.querySelectorAll('.rating-container');
     document.querySelector('.send-rating-form').dataset.id = id;
     openExerciseModal();
+    initRating(ratings);
+    addListenersCloseToExerciseModal();
 
-    const closeModealBtn = document.querySelector('.exercise-modal-close-btn');
-    modalBackdrop.addEventListener('click', e => {
-      if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
-        return;
-      }
-      closeExerciseModal();
-    });
-    closeModealBtn.addEventListener('click', closeExerciseModal);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
+    function addListenersCloseToExerciseModal() {
+      const closeModealBtn = document.querySelector(
+        '.exercise-modal-close-btn'
+      );
+      const giveRatingButtons = document.querySelectorAll(
+        '.exercise-rating-give-btn'
+      );
+      modalBackdrop.addEventListener('click', e => {
+        if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
+          return;
+        }
         closeExerciseModal();
       }
     });
@@ -64,13 +75,15 @@ export const renderExerciseModal = async id => {
   } catch (error) {
     showMessageRatingFailed();
   }
+      });
 
-  function closeExerciseModal() {
-    modalBackdrop.classList.add('backdrop-is-hidden');
-    modalExercise.classList.add('modal-is-hidden');
-  }
-  function openExerciseModal() {
-    modalBackdrop.classList.remove('backdrop-is-hidden');
-    modalExercise.classList.remove('modal-is-hidden');
+      closeModealBtn.addEventListener('click', closeExerciseModal);
+
+      giveRatingButtons.forEach(button =>
+        button.addEventListener('click', openRatingModal)
+      );
+    }
+  } catch (error) {
+    showMessageBadRequest();
   }
 };

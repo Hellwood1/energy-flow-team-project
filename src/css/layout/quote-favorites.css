@@ -11,6 +11,13 @@
   width: 335px;
   height: 272px;
   border-radius: 30px;
+  flex-shrink: 0;
+}
+
+.quote-favourites {
+  margin-top: 96px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-resolution: 192dpi) and (min-width: 375px),
@@ -24,8 +31,9 @@
 /* tablet */
 
 @media screen and (min-width: 768px) {
-  .quotes-div-fav {
-    margin-bottom: 16px;
+  .quote-favourites {
+    margin-top: 180px;
+    gap: 16px;
   }
 
   .quote-home-background-fav {
@@ -47,13 +55,22 @@
 /* desktop */
 
 @media screen and (min-width: 1440px) {
+  .quote-favourites {
+    margin-top: 156px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+  }
+
+  .quotes-div-fav {
+    width: 704px;
+  }
+
   .quote-home-background-fav {
     background-image: url(../../images/favorites/quote-background/quote-favourites-desktop@1x.jpg);
     width: 352px;
-  }
-
-  .quote-favourites {
-    display: flex;
   }
 
   @media screen and (min-resolution: 192dpi) and (min-width: 1440px),
