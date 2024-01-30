@@ -17,12 +17,10 @@ const listWithoutExercases = document.querySelector(
 );
 const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
 
-import { exerciseCardMarkup } from './markup';
-import { renderExerciseModal } from "./renderExerciseModal";
 
 const exercisesCardList = document.querySelector(".favorites-list");
 const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
-const exercisesCard = document.querySelector(".exercises-card")
+const exercisesCard = document.querySelector(".exercises-card");
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
 const energyFlowApiService = new EnergyFlowApiSevice();
@@ -196,7 +194,7 @@ addToFavoritesButtons.forEach(button => {
 });
 
 
---------------------- add to favorites---------------------------
+// --------------------- add to favorites---------------------------
 
 function getFavoriteExerciseIds() {
   const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -252,5 +250,4 @@ function paginateFavorites(e) {
   renderPageList(total, currentPage, currentPage);
 }
 
- ---------------------------ПАГІНАЦІЯ-----------------------------------
-
+//  ---------------------------ПАГІНАЦІЯ----------------------------------
