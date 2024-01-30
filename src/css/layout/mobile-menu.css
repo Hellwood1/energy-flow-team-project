@@ -67,10 +67,9 @@
   width: 42px;
   height: 42px;
   padding: 8px;
-  /* align-items: center; */
+
   border-radius: 10px;
   border: 1px solid rgba(246, 246, 246, 0.2);
-  /* justify-content: center; */
 }
 
 .mobile-menu-social-item {
@@ -80,4 +79,12 @@
 }
 .social-links-svg {
   fill: var(--white);
+}
+
+/* mobile-menu-wrapper.is-open {
+  transform: translateX(0);
+}. */
+
+.none {
+  display: none;
 }
