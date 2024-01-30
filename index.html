@@ -15,138 +15,70 @@
     
     <script type="module" crossorigin src="/energy-flow-team-project/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/vendor-c4bdd18a.js">
-    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/quote-ba0fec5d.js">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/quote-d8b639e6.css">
+    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/quote-cc502a38.js">
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/quote-6eb844c7.css">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
   </head>
   <body>
-    <header class="header">
-  <div class="header__container container">
-    <nav class="header__navigation">
-      <div class="navigation__btn--box">
-        <a class="title--link" href="./index.html">energy.flow </a>
-        <button class="header__btn" type="button" data-modal-open>
-          <svg class="header--svg--btn" width="32" height="16">
-            <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-mobile-menu-open"></use>
-          </svg>
-        </button>
-      </div>
-      <div class="navigation__links--box">
-        <a class="modal--link" href="./index.html" rel="noopener noreferrer">
-          Home
-        </a>
-        <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
-          Favorites
-        </a>
-      </div>
-
-      <ul class="navigation__list">
-        <li class="navigation__item">
+    <header class="header-section">
+  <div class="container">
+    <div class="header-section-container">
+      <p class="header-title">energy.flow</p>
+      <nav class="navigation-header">
+        <ul class="navigation-list">
+          <li class="navigation-item">
+            <a href="./index.html" class="navigation-links home-page">Home</a>
+          </li>
+          <li class="navigation-item">
+            <a href="./page-2.html" class="navigation-links favorites-page"
+              >Favorites</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <ul class="header-social-list">
+        <li class="header-social-item">
           <a
-            class="modal--network"
             href="https://www.facebook.com/goITclub/"
+            class="header-social-link"
             target="_blank"
-            rel="noopener noreferrer"
-            title="facebook link"
+            title="facebook"
           >
-            <svg class="modal--svg" width="28" height="28">
+            <svg class="header-social-icon" width="28" height="28">
               <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-facebook"></use>
             </svg>
           </a>
         </li>
-        <li class="navigation__item">
+        <li class="header-social-item">
           <a
-            class="modal--network"
             href="https://www.instagram.com/goitclub/"
-            rel="noopener noreferrer"
+            class="header-social-link"
             target="_blank"
-            title="instagram link"
+            title="instagram"
           >
-            <svg class="modal--svg" width="28" height="28">
+            <svg class="header-social-icon" width="28" height="28">
               <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-instagram"></use>
             </svg>
           </a>
         </li>
-        <li class="navigation__item">
+        <li class="header-social-item">
           <a
-            class="modal--network"
             href="https://www.youtube.com/c/GoIT"
-            rel="noopener noreferrer"
+            class="header-social-link"
             target="_blank"
-            title="youtube link"
+            title="youtube"
           >
-            <svg class="modal--svg" width="28" height="28">
+            <svg class="header-social-icon" width="28" height="28">
               <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-youtube"></use>
             </svg>
           </a>
         </li>
       </ul>
-    </nav>
-  </div>
-
-  <div class="header__modal none">
-    <div class="header__modal--box">
-      <div class="modal__box--btn">
-        <a class="header--modal--label" href="./index.html">energy.flow </a>
-        <button class="modal__btn" type="button" data-modal-close>
-          <svg class="modal--svg--btn" width="28" height="28">
-            <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
-          </svg>
-        </button>
-      </div>
-
-      <div class="modal__box--links">
-        <a class="modal--link" href="./index.html" rel="noopener noreferrer">
-          Home
-        </a>
-        <a class="modal--link" href="./page-2.html" rel="noopener noreferrer">
-          Favorites
-        </a>
-      </div>
-
-      <nav>
-        <ul class="modal__list">
-          <li class="modal__item">
-            <a
-              class="modal--network"
-              href="https://www.facebook.com/goITclub/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="facebook link"
-            >
-              <svg class="modal--svg modal-svg" width="25" height="25">
-                <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-facebook"></use>
-              </svg>
-            </a>
-          </li>
-          <li class="modal__item">
-            <a
-              class="modal--network"
-              href="https://www.instagram.com/goitclub/"
-              rel="noopener noreferrer"
-              target="_blank"
-              title="instagram link"
-            >
-              <svg class="modal--svg modal-svg" width="25" height="25">
-                <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-instagram"></use>
-              </svg>
-            </a>
-          </li>
-          <li class="modal__item">
-            <a
-              class="modal--network"
-              href="https://www.youtube.com/c/GoIT"
-              rel="noopener noreferrer"
-              target="_blank"
-              title="youtube link"
-            >
-              <svg class="modal--svg modal-svg" width="25" height="25">
-                <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-youtube"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <button class="header-mobile-open-btn" type="button" data-modal-open>
+        <svg class="mobile-open-icon" width="32" height="16">
+          <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-mobile-menu-open"></use>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
