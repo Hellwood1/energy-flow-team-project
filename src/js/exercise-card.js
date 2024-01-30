@@ -1,21 +1,22 @@
-
 import EnergyFlowApiSevice from './api-service';
 import imgUrl from '../images/sprite.svg';
 import { exerciseCardMarkup } from './markup';
-import { renderExerciseModal } from "./renderExerciseModal";
+import { renderExerciseModal } from './renderExerciseModal';
 
-const exercisesCardList = document.querySelector(".favorites-list");
-const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
-const exercisesCard = document.querySelector(".exercises-card")
-const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
+const exercisesCardList = document.querySelector('.favorites-list');
+const listWithoutExercases = document.querySelector(
+  '.favorites-div-without-cards '
+);
+const exercisesCard = document.querySelector('.exercises-card');
+const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
 const energyFlowApiService = new EnergyFlowApiSevice();
 // localStorage.clear()
 
-
-
-  function addCardToList(results) {
-    console.log(results)
-    const cardElement = results.map((cardData) => `
+function addCardToList(results) {
+  console.log(results);
+  const cardElement = results
+    .map(
+      cardData => `
 
       <li class="exercises-card" id="${cardData._id}">
         <div class="exercises-card-upper-part">
@@ -78,26 +79,32 @@ function capitalizeFirstLetter(string) {
 
 // --------------delete button-----------------------//
 
-
 function deleteButtonEventListener() {
-  const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
+  const removeFromFavoritesButtons = document.querySelectorAll('.card-delete');
   console.log(removeFromFavoritesButtons);
-  removeFromFavoritesButtons.forEach(button => deleteButtonAddEventListener(button));
+  removeFromFavoritesButtons.forEach(button =>
+    deleteButtonAddEventListener(button)
+  );
 }
 
 function deleteButtonAddEventListener(button) {
   console.log(button);
 
-  button.addEventListener("click", function() {
-  const exerciseIdToRemove = this.id;
-  console.log(exerciseIdToRemove);
+  button.addEventListener('click', function () {
+    const exerciseIdToRemove = this.id;
+    console.log(exerciseIdToRemove);
 
-  const favoriteExerciseIds = getFavoriteExerciseIds();
-  let newFavoriteExerciseIds = favoriteExerciseIds.filter(element => element !== exerciseIdToRemove);
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newFavoriteExerciseIds));
+    const favoriteExerciseIds = getFavoriteExerciseIds();
+    let newFavoriteExerciseIds = favoriteExerciseIds.filter(
+      element => element !== exerciseIdToRemove
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify(newFavoriteExerciseIds)
+    );
 
-  updateInterfaceAfterRemoval(exerciseIdToRemove);
-});
+    updateInterfaceAfterRemoval(exerciseIdToRemove);
+  });
 }
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
@@ -120,20 +127,22 @@ function getFavoriteExerciseIds() {
 // -------------------------Завантаження з улюблених-----------------------------------
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
-const fetchDataForIds = async (ids) => {
-  const promises = ids.map((id) => energyFlowApiService.getExerciseInfoById(id));
+const fetchDataForIds = async ids => {
+  const promises = ids.map(id => energyFlowApiService.getExerciseInfoById(id));
   return Promise.all(promises);
 };
 
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
-  listWithoutExercases.classList.add("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.add('favorites-div-without-cards-hidden');
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
-  .then((results) => { addCardToList(results) })
-  .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+    .then(results => {
+      addCardToList(results);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 } else {
-  listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
 }
 
 // ---------------------------ПАГІНАЦІЯ-----------------------------------
