@@ -121,7 +121,7 @@ const exerciseCardMarkup = ({gifUrl, name, rating, target, bodyPart, equipment, 
       ${description}
     </p>
     <div class="exercise-modal-buttons">
-      <button type="button" class="exercise-favorite-add-btn">
+      <button type="button" class="exercise-favorite-add-btn" id="${_id}">
         Add to favorites
         <svg class="exercise-heart-icon" width="18" height="18">
           <use href="./images/sprite.svg#icon-heart"></use>

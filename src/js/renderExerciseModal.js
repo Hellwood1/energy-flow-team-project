@@ -1,6 +1,8 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
-import { showMessageBadRequest, showMessageRatingFailed } from './showMessage';
+import { showMessageBadRequest, showMessageRatingFailed, showMessageOkRequest } from './showMessage';
+
+const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
 export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
@@ -26,6 +28,23 @@ export const renderExerciseModal = async id => {
         closeExerciseModal();
       }
     });
+    const addToFavoritesButton = document.querySelector('.exercise-favorite-add-btn');
+    addToFavoritesButton.addEventListener('click', () => {
+      const exerciseId = addToFavoritesButton.id;
+      const favoriteExerciseIds = getFavoriteExerciseIds();
+      if (!favoriteExerciseIds.includes(exerciseId)) {
+        favoriteExerciseIds.push(exerciseId);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseIds));
+        showMessageOkRequest('This exercise is add in favorites')
+      } else {
+        showMessageOkRequest('This exercise is already in favorites');
+      }
+    });
+    
+    function getFavoriteExerciseIds() {
+      const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return storedIds ? JSON.parse(storedIds) : [];
+    }
     const giveRatingButtons = document.querySelectorAll(
       '.exercise-rating-give-btn'
     );
