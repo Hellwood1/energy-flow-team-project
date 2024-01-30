@@ -10,17 +10,6 @@
 }
 /* ---------------------MOBILE-------------------- */
 @media screen and (min-width: 375px) {
-  .favorites-img {
-    width: 335px;
-    height: 268px;
-    flex-shrink: 0;
-    border-radius: 30px;
-    background-image: url lightgray -5.94px 0.694px / 99.308% 160.887% no-repeat,
-      #e8e8e8;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .favorites-motivation-text {
     display: flex;
     flex-direction: column;
@@ -114,7 +103,7 @@
     display: none;
   }
 
-  .after-quote-section-list {
+  .after-quote-section-div {
     width: 100%;
     height: 100%;
     display: flex;
@@ -129,28 +118,18 @@
     align-items: center;
     border-radius: 30px;
   }
-  .favorites-img {
-    height: 100%;
-    width: 100%;
-  }
 }
 
 /* ---------------------TABLET-------------------- */
 
 @media screen and (min-width: 768px) {
-  .after-quote-section-list {
+  .after-quote-section-div {
     flex-direction: row;
   }
 
   .after-quote-section-item {
     border-radius: 50px;
     overflow: hidden;
-  }
-
-  .favorites-img {
-    flex-shrink: 0;
-    background-image: url lightgray -5.94px 0.694px / 99.308% 160.887% no-repeat,
-      #e8e8e8;
   }
 
   .favorites-text-div {
@@ -240,17 +219,11 @@
 
 /* ---------------------DESKTOP-------------------- */
 @media screen and (min-width: 1440px) {
-  .after-quote-section-list {
+  .after-quote-section-div {
     width: 704px;
   }
   .after-quote-section-item {
     width: 352px;
-  }
-  .favorites-img {
-    flex-shrink: 0;
-    border-radius: 30px;
-    background-image: url lightgray -5.94px 0.694px / 99.308% 160.887% no-repeat,
-      #e8e8e8;
   }
 
   .favorites-div-with-cards {
