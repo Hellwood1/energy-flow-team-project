@@ -1,4 +1,4 @@
-import{i as p,E as m,c as pe}from"./assets/quote-5525b7f6.js";import{i as v}from"./assets/vendor-c4bdd18a.js";const ve=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:r})=>t+`<li
+import{i as p,E as m,c as pe}from"./assets/quote-5164d01e.js";import{i as v}from"./assets/vendor-c4bdd18a.js";const ve=({results:e=[]})=>e.reduce((t,{name:s,filter:n,imgUrl:r})=>t+`<li
     class="category-item"
     data-filter="${n}"
     data-name="${s}"

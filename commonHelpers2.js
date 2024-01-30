@@ -1,4 +1,4 @@
-import{c as d,E as l,i as r}from"./assets/quote-5525b7f6.js";import"./assets/vendor-c4bdd18a.js";const v=document.querySelector(".navigation__links--box");v.lastElementChild.classList.add("active-page");d();const u=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const a=document.querySelector(".favorites-div-without-cards "),i="favoriteExerciseIds",p=new l;function g(e){console.log(e);const t=e.map(s=>`
+import{c as d,E as l,i as r}from"./assets/quote-5164d01e.js";import"./assets/vendor-c4bdd18a.js";const v=document.querySelector(".navigation__links--box");v.lastElementChild.classList.add("active-page");d();const u=document.querySelector(".favorites-list");document.querySelector(".favorites-div-without-cards");const a=document.querySelector(".favorites-div-without-cards "),i="favoriteExerciseIds",p=new l;function g(e){console.log(e);const t=e.map(s=>`
 
       <li class="exercises-card" id="${s._id}">
         <div class="exercises-card-upper-part">
