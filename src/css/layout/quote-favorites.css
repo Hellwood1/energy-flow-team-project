@@ -55,6 +55,7 @@
 
 @media screen and (min-width: 1440px) {
   .quote-favourites {
+    margin-top: 156px;
     display: flex;
     justify-content: center;
     flex-direction: row;
