@@ -81,10 +81,13 @@
   fill: var(--white);
 }
 
-/* mobile-menu-wrapper.is-open {
-  transform: translateX(0);
-}. */
-
 .none {
   display: none;
+}
+
+.active-page {
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 30px;
+  transition: all var(--timing-function);
 }

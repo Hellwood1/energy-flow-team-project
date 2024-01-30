@@ -2,9 +2,18 @@ const btnOpenEl = document.querySelector('[data-modal-open]');
 const btnCloseEl = document.querySelector('[data-modal-close]');
 const mobileModal = document.querySelector('.mobile-menu-wrapper');
 
-const pageLinks = document.querySelector('.home-page');
-
-pageLinks.classList.add('active-page');
+export const showCurrentPageHome = () => {
+  const pageLinks = document.querySelector('.home-page');
+  const pageMobileLinks = document.querySelector('.home-mobile-page');
+  pageLinks.classList.add('active-page')
+  pageMobileLinks.classList.add('active-page')
+};
+export const showCurrentPageFavorites =()=>{
+  const pageLinks = document.querySelector('.favorites-page');
+  const pageMobileLinks = document.querySelector('.favorites-mobile-page')
+  pageLinks.classList.add('active-page')
+  pageMobileLinks.classList.add('active-page')
+}
 
 let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
