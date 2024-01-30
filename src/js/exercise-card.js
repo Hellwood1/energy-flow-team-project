@@ -1,18 +1,30 @@
 import axios from 'axios';
 import EnergyFlowApiSevice from './api-service';
 import imgUrl from '../images/sprite.svg';
+import {
+  renderPageList,
+  chooseCurrentPage,
+  changeCurrentPage,
+} from './pagination';
 
-
-const exercisesCardList = document.querySelector(".favorites-list");
-const favoriteDivWithoutCards = document.querySelector(".favorites-div-without-cards");
-const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
-const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
+const exercisesCardList = document.querySelector('.favorites-list');
+const favoriteDivWithoutCards = document.querySelector(
+  '.favorites-div-without-cards'
+);
+const listWithoutExercases = document.querySelector(
+  '.favorites-div-without-cards '
+);
+const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
 const energyFlowApiService = new EnergyFlowApiSevice();
+let totalFavoritesPages;
+let currentPage = 1;
 // localStorage.clear()
 
-  function addCardToList(results) {
-    console.log(results)
-    const cardElement = results.map((cardData) => `
+function addCardToList(results) {
+  console.log(results);
+  const cardElement = results
+    .map(
+      cardData => `
 
       <li class="exercises-card" id="${cardData._id}">
         <div class="exercises-card-upper-part">
@@ -59,7 +71,7 @@ const energyFlowApiService = new EnergyFlowApiSevice();
     )
     .join('');
 
-  exercisesCardList.insertAdjacentHTML('beforeend', cardElement);
+  exercisesCardList.innerHTML = cardElement;
 }
 
 function capitalizeFirstLetter(string) {
@@ -68,9 +80,8 @@ function capitalizeFirstLetter(string) {
 
 // --------------delete button-----------------------//
 
-const exercisesCard = document.querySelector(".exercises-card")
-const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
-
+const exercisesCard = document.querySelector('.exercises-card');
+const removeFromFavoritesButtons = document.querySelectorAll('.card-delete');
 
 // exercisesCard.addEventListener("click", () =>  {
 //   const exerciseIdToRemove = exercisesCard.id;
@@ -84,10 +95,8 @@ const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
 //   updateInterfaceAfterRemoval(exerciseIdToRemove);
 // });
 
-
 removeFromFavoritesButtons.forEach(button => {
-
-  button.addEventListener("click", () =>  {
+  button.addEventListener('click', () => {
     const exerciseIdToRemove = button.id;
 
     const favoriteExerciseIds = getFavoriteExerciseIds();
@@ -114,17 +123,17 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   }
 }
 
-
 // ---------------------start button-------------------------------
 
-const cardStartButton = document.querySelectorAll(".card-start");
-const exerciseModalBackdrop = document.querySelector(".exercise-modal-backdrop");
+const cardStartButton = document.querySelectorAll('.card-start');
+const exerciseModalBackdrop = document.querySelector(
+  '.exercise-modal-backdrop'
+);
 cardStartButton.forEach(button => {
-  button.addEventListener("click", () => {
-    exerciseModalBackdrop.classList.remove("backdrop-is-hidden");
-  })
-})
-
+  button.addEventListener('click', () => {
+    exerciseModalBackdrop.classList.remove('backdrop-is-hidden');
+  });
+});
 
 //--------------------- add to favorites---------------------------
 
@@ -133,10 +142,8 @@ const addToFavoritesButtons = document.querySelectorAll(
 );
 
 addToFavoritesButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     const exerciseId = button.id;
-
 
     console.log(exerciseId);
 
@@ -162,19 +169,47 @@ function getFavoriteExerciseIds() {
 // -------------------------Завантаження з улюблених-----------------------------------
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
-const fetchDataForIds = async (ids) => {
-  const promises = ids.map((id) => energyFlowApiService.getExerciseInfoById(id));
+const fetchDataForIds = async ids => {
+  const promises = ids.map(id => energyFlowApiService.getExerciseInfoById(id));
   return Promise.all(promises);
 };
 
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
-  listWithoutExercases.classList.add("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.add('favorites-div-without-cards-hidden');
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
-  .then((results) => { addCardToList(results) })
-  .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+    .then(results => {
+      if (window.innerWidth < 768) {
+        addCardToList(results.slice(0, 8));
+        totalFavoritesPages = Math.ceil(results.length / 8);
+        renderPageList(totalFavoritesPages, currentPage, currentPage);
+        document
+          .querySelector('.navigation-list-form')
+          .addEventListener('submit', lol);
+      } else {
+        addCardToList(results);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 } else {
-  listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
 }
 
+function lol(e) {
+  e.preventDefault();
+
+  currentPage = e.submitter.textContent;
+  const ids = JSON.parse(localStorage.getItem('favoriteExerciseIds'));
+  let total = Math.ceil(ids.length / 8);
+
+  fetchDataForIds(favoriteExerciseIdInLocalStorage)
+    .then(results => {
+      addCardToList(results.slice((currentPage - 1) * 8, currentPage * 8));
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+
+  renderPageList(total, currentPage, currentPage);
+}

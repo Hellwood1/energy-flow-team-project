@@ -18,6 +18,7 @@ const titlePath = document.querySelector('.exercises-title');
 const namePath = document.querySelector('.exercises-path-name');
 const paginationBtnsList = document.querySelector('.navigation-list-form');
 const subForm = document.querySelector('.footer-subscription');
+export const element = document.querySelector('.categories-list');
 
 const addClassToCurrentFilter = () => {
   const buttons = document.querySelectorAll('.category-btn');
@@ -29,9 +30,18 @@ const addClassToCurrentFilter = () => {
   );
 };
 
+export const inViewZone = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      element.classList.add('on-animate');
+    }
+  });
+});
+
 export const initialRequest = async filter => {
   const request = new EnergyFlowApiSevice();
   const cardsPerPage = window.innerWidth < 768 ? 8 : 12;
+
   filter = document.querySelector('.current-category-btn').textContent.trim();
   try {
     const response = await request.getCategoriesByFilter(
@@ -39,11 +49,13 @@ export const initialRequest = async filter => {
       page,
       cardsPerPage
     );
-    renderPageList(response.totalPages, page);
+    renderPageList(response.totalPages, page, page);
     categoriesCardsContainer.innerHTML = categoriesMarkup(response);
     categoriesCardsContainer.addEventListener('click', renderExercises);
     paginationBtnsList.addEventListener('submit', changeCurrentPage);
     animateElement(categoriesCardsContainer);
+
+    inViewZone.observe(element);
   } catch (error) {
     showMessageBadRequest();
   }

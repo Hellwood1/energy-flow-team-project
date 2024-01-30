@@ -6,18 +6,7 @@ import { page } from './pagination';
 import { removePageList } from './pagination';
 import { renderExerciseModal } from './renderExerciseModal';
 import imgUrl from '../images/sprite.svg';
-
-const element = document.querySelector('.categories-list');
-
-export const inViewZone = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      element.classList.add('on-animate');
-    }
-  });
-});
-
-inViewZone.observe(element);
+import { element } from './renderCategoriesByFilter';
 
 export function animateElement(element) {
   element.classList.add('on-animate');
@@ -54,7 +43,7 @@ export function renderExercises(e) {
       limit
     ).then(r => {
       const cards = mapCards(r.results);
-      renderPageList(r.totalPages, page);
+      renderPageList(r.totalPages, page, page);
       addExercisePath(capitalizeFirstLetter(exerciseName));
       addCardsToList(cards);
       shownExerciseSearchForm();
@@ -177,7 +166,7 @@ export function searchExercises() {
       const onNotFound = `<li class="exercises-not-found-msg">${notFoundMessage}</li>`;
       return addCardsToList(onNotFound);
     }
-    renderPageList(r.totalPages, page);
+    renderPageList(r.totalPages, page, page);
     const cards = mapCards(r.results);
     addCardsToList(cards);
   });
@@ -213,9 +202,11 @@ function cutString(str) {
   return str;
 }
 
-document
-  .querySelector('.categories-list')
-  .addEventListener('click', renderModalExerciseCard);
+if (document.querySelector('.categories-list')) {
+  document
+    .querySelector('.categories-list')
+    .addEventListener('click', renderModalExerciseCard);
+}
 
 export function renderModalExerciseCard(e) {
   if (
