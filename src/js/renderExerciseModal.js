@@ -1,5 +1,6 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
+import { showMessageBadRequest, showMessageRatingFailed, showMessageOkRequest } from './showMessage';
 import { showMessageBadRequest } from './showMessage';
 import { initRating } from './giveRating';
 import {
@@ -9,6 +10,9 @@ import {
   closeExerciseModal,
   openRatingModal,
 } from './manageModals';
+
+const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
+
 export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
 
@@ -33,6 +37,44 @@ export const renderExerciseModal = async id => {
           return;
         }
         closeExerciseModal();
+      }
+    });
+    const addToFavoritesButton = document.querySelector('.exercise-favorite-add-btn');
+    addToFavoritesButton.addEventListener('click', () => {
+      const exerciseId = addToFavoritesButton.id;
+      const favoriteExerciseIds = getFavoriteExerciseIds();
+      if (!favoriteExerciseIds.includes(exerciseId)) {
+        favoriteExerciseIds.push(exerciseId);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseIds));
+        showMessageOkRequest('This exercise is add in favorites')
+      } else {
+        showMessageOkRequest('This exercise is already in favorites');
+      }
+    });
+    
+    function getFavoriteExerciseIds() {
+      const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return storedIds ? JSON.parse(storedIds) : [];
+    }
+    const giveRatingButtons = document.querySelectorAll(
+      '.exercise-rating-give-btn'
+    );
+    giveRatingButtons.forEach(button =>
+      button.addEventListener('click', () => {
+        const ratingBackdrop = document.querySelector(
+          '[data-modal-rating-backdrop]'
+        );
+        const ratingContainer = document.querySelector(
+          '[data-modal-rating-container]'
+        );
+        ratingBackdrop.classList.remove('backdrop-rating-is-hidden');
+        ratingContainer.classList.remove('modal-rating-is-hidden');
+        closeExerciseModal();
+      })
+    );
+  } catch (error) {
+    showMessageRatingFailed();
+  }
       });
 
       closeModealBtn.addEventListener('click', closeExerciseModal);
