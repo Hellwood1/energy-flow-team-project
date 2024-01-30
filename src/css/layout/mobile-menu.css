@@ -81,10 +81,10 @@
   fill: var(--white);
 }
 
-/* mobile-menu-wrapper.is-open {
-  transform: translateX(0);
-}. */
-
 .none {
   display: none;
+}
+
+.mobile-menu-btn-svg {
+  stroke: var(--white);
 }
