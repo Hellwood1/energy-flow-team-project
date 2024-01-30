@@ -3,8 +3,12 @@ import {
   showMessageBadRequest,
   showMessageRatingFailed,
   showMessageRatingSuccess,
+  showMessageConflictRequest,
 } from './showMessage';
-
+import {
+  closeRatingModal,
+  addListenersToCloseRatingModal,
+} from './manageModals';
 export const initRating = (ratingsElement = []) => {
   let ratingActive;
   let ratingValue;
@@ -57,18 +61,10 @@ export const initRating = (ratingsElement = []) => {
 };
 
 export const addListenersToRatingModal = () => {
-  const closeRatingModalBtn = document.querySelector(
-    '[data-modal-rating-close]'
-  );
-  const modalRating = document.querySelector('[data-modal-rating]');
-  const ratingBackdrop = document.querySelector('[data-modal-rating-backdrop]');
-  const ratingContainer = document.querySelector(
-    '[data-modal-rating-container]'
-  );
   const ratings = document.querySelectorAll('.rating-container');
   const form = document.querySelector('.rating-form');
   let response = {};
-
+  addListenersToCloseRatingModal();
   const sendRating = async e => {
     e.preventDefault();
     const id = form.dataset.id;
@@ -80,6 +76,11 @@ export const addListenersToRatingModal = () => {
     const email = response.email;
     const comment = response.review;
     const request = new EnergyFlowApiSevice();
+    let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+    if (email.match(reg) === null) {
+      return showMessageConflictRequest(`Please, enter the valid email :)`);
+    }
     request
       .giveRating(id, rating, email, comment)
       .then(resp => {
@@ -102,38 +103,4 @@ export const addListenersToRatingModal = () => {
   form.addEventListener('submit', sendRating);
 
   initRating(ratings);
-
-  closeRatingModalBtn.addEventListener('click', closeRatingModal);
-
-  modalRating.addEventListener('click', e => {
-    if (e.target !== ratingBackdrop && e.target !== closeRatingModalBtn) return;
-    closeRatingModal();
-  });
-
-  function closeRatingModal() {
-    ratingBackdrop.classList.add('backdrop-rating-is-hidden');
-    ratingContainer.classList.add('modal-rating-is-hidden');
-    const modalExercise = document.querySelector('.exercise-modal');
-    const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
-    modalBackdrop.classList.remove('backdrop-is-hidden');
-    modalExercise.classList.remove('modal-is-hidden');
-    window.removeEventListener('keydown', closeRatingModalByEscape);
-    window.addEventListener('keydown', closeExerciseCardByEscape);
-    
-  }
-
-  function closeRatingModalByEscape(e) {
-    if (e.key === 'Escape') closeRatingModal();
-  }
-  function closeExerciseModal() {
-    const modalExercise = document.querySelector('.exercise-modal');
-    const modalBackdrop = document.querySelector('.exercise-modal-backdrop');
-    modalBackdrop.classList.add('backdrop-is-hidden');
-    modalExercise.classList.add('modal-is-hidden');
-  }
-  function closeExerciseCardByEscape(e) {
-    if (e.key === 'Escape') {
-      closeExerciseModal();
-    }
-  }
 };
