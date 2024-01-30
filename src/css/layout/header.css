@@ -1,0 +1,171 @@
+.header-section {
+  margin-top: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 111;
+}
+
+.header-section-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-title {
+  margin-right: auto;
+  color: var(--black);
+  font-weight: 700;
+  line-height: 112.5%; /* 18px/16 */
+  letter-spacing: -2%; /* -0.32px/16 */
+}
+
+.header-mobile-open-btn {
+  margin-left: auto;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+}
+
+.navigation-header {
+  display: none;
+}
+
+.header-social-list {
+  display: none;
+}
+
+/* ===================TABLET============== */
+@media screen and (min-width: 768px) {
+  .header-section {
+    margin-top: 16px;
+  }
+
+  .header-section-container {
+    padding: 16px 32px;
+  }
+  .header-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 100%; /* 28px/28 */
+  }
+
+  .navigation-header {
+    display: flex;
+  }
+
+  .navigation-list {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 16px;
+
+    border-radius: 60px;
+    background: var(--slate-gray);
+    height: 52px;
+  }
+
+  .navigation-links {
+    color: var(--accent-color);
+    font-size: 16px;
+    line-height: 150%; /* 24px/16 */
+    transition: all var(--timing-function);
+  }
+
+  .navigation-links:hover,
+  .navigation-links:focus {
+    color: #b4b0b0;
+  }
+
+  .home-page {
+    padding: 6px 26px;
+  }
+  .favorites-page {
+    padding: 6px 14px;
+  }
+
+  .header-social-list {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .header-social-link {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(126, 132, 127, 0.2);
+    transition: all var(--timing-function);
+  }
+
+  .header-social-link:hover,
+  .header-social-link:focus {
+    border-color: #5f6560;
+    animation: 1.2s ease-in-out 0s normal none infinite running
+      trambling-animation;
+  }
+
+  @keyframes trambling-animation {
+    0%,
+    50%,
+    100% {
+      transform: rotate(0deg);
+    }
+    10%,
+    30% {
+      transform: rotate(-15deg);
+    }
+    20%,
+    40% {
+      transform: rotate(15deg);
+    }
+  }
+  .header-social-icon {
+    opacity: 0.8;
+    fill: var(--slate-gray);
+    transition: all var(--timing-function);
+  }
+
+  .header-social-link:hover .header-social-icon,
+  .header-social-link:focus .header-social-icon {
+    fill: #5f6560;
+  }
+  .header-mobile-open-btn {
+    display: none;
+  }
+}
+
+/* =====================DESKTOP============== */
+@media screen and (min-width: 1440px) {
+  .header-section {
+    margin-top: 24px;
+  }
+
+  .header-section-container {
+    padding: 24px 48px;
+  }
+  .header-title {
+    font-size: 28px;
+  }
+}
+
+.active-page {
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 30px;
+  transition: all var(--timing-function);
+}
+.active-page:hover,
+.active-page:focus {
+  color: var(--slate-gray);
+}
+
+.header-section-favorites {
+  position: static;
+}
