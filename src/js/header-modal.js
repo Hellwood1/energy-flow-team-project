@@ -2,9 +2,9 @@ const btnOpenEl = document.querySelector('[data-modal-open]');
 const btnCloseEl = document.querySelector('[data-modal-close]');
 const mobileModal = document.querySelector('.mobile-menu-wrapper');
 
-const pageLinks = document.querySelector('.navigation__links--box');
+const pageLinks = document.querySelector('.home-page');
 
-pageLinks.firstElementChild.classList.add('active-page');
+pageLinks.classList.add('active-page');
 
 let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
