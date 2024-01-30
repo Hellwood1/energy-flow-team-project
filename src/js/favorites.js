@@ -7,5 +7,8 @@ pageLinks.classList.add('active-page');
 
 
 import { checkDate } from './quote';
+import { addListenersToRatingModal } from './giveRating';
 
 checkDate();
+addListenersToRatingModal();
+
