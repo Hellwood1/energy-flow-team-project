@@ -7,7 +7,7 @@ import {
   modalExercise,
   openExerciseModal,
   closeExerciseModal,
-  openRatingModal
+  openRatingModal,
 } from './manageModals';
 export const renderExerciseModal = async id => {
   const request = new EnergyFlowApiSevice();
@@ -15,30 +15,32 @@ export const renderExerciseModal = async id => {
   try {
     const response = await request.getExerciseInfoById(id);
     modalExercise.innerHTML = exerciseCardMarkup(response);
-
+    const ratings = document.querySelectorAll('.rating-container');
     document.querySelector('.send-rating-form').dataset.id = id;
     openExerciseModal();
-
-    const ratings = document.querySelectorAll('.rating-container');
     initRating(ratings);
+    addListenersCloseToExerciseModal();
 
-    const closeModealBtn = document.querySelector('.exercise-modal-close-btn');
+    function addListenersCloseToExerciseModal() {
+      const closeModealBtn = document.querySelector(
+        '.exercise-modal-close-btn'
+      );
+      const giveRatingButtons = document.querySelectorAll(
+        '.exercise-rating-give-btn'
+      );
+      modalBackdrop.addEventListener('click', e => {
+        if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
+          return;
+        }
+        closeExerciseModal();
+      });
 
-    modalBackdrop.addEventListener('click', e => {
-      if (e.target !== closeModealBtn && e.target !== modalBackdrop) {
-        return;
-      }
-      closeExerciseModal();
-    });
+      closeModealBtn.addEventListener('click', closeExerciseModal);
 
-    closeModealBtn.addEventListener('click', closeExerciseModal);
-
-    const giveRatingButtons = document.querySelectorAll(
-      '.exercise-rating-give-btn'
-    );
-    giveRatingButtons.forEach(button =>
-      button.addEventListener('click', openRatingModal)
-    );
+      giveRatingButtons.forEach(button =>
+        button.addEventListener('click', openRatingModal)
+      );
+    }
   } catch (error) {
     showMessageBadRequest();
   }
