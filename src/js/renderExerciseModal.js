@@ -1,6 +1,6 @@
 import EnergyFlowApiSevice from './api-service';
 import { exerciseCardMarkup } from './markup';
-import { showMessageBadRequest } from './showMessage';
+import { showMessageBadRequest, showMessageOkRequest } from './showMessage';
 import { initRating } from './giveRating';
 import {
   modalBackdrop,
@@ -9,7 +9,6 @@ import {
   closeExerciseModal,
   openRatingModal,
 } from './manageModals';
-import { showMessageBadRequest, showMessageOkRequest } from './showMessage';
 
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 
