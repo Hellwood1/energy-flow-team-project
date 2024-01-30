@@ -81,6 +81,10 @@
   fill: var(--white);
 }
 
+.modal-svg-btn {
+  stroke: var(--white);
+}
+
 .none {
   display: none;
 }
