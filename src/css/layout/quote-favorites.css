@@ -15,7 +15,7 @@
 }
 
 .quote-favourites {
-  margin-top: 96px;
+  margin-top: 38px;
   display: flex;
   flex-direction: column;
 }
@@ -36,7 +36,7 @@
 
 @media screen and (min-width: 768px) {
   .quote-favourites {
-    margin-top: 180px;
+    margin-top: 80px;
     gap: 16px;
   }
 
@@ -60,7 +60,7 @@
 
 @media screen and (min-width: 1440px) {
   .quote-favourites {
-    margin-top: 156px;
+    margin-top: 64px;
     display: flex;
     justify-content: center;
     flex-direction: row;
