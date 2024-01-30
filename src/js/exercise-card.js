@@ -184,7 +184,7 @@ if (favoriteExerciseIdInLocalStorage.length !== 0) {
         renderPageList(totalFavoritesPages, currentPage, currentPage);
         document
           .querySelector('.navigation-list-form')
-          .addEventListener('submit', lol);
+          .addEventListener('submit', paginationFavorite);
       } else {
         addCardToList(results);
       }
@@ -196,7 +196,7 @@ if (favoriteExerciseIdInLocalStorage.length !== 0) {
   listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
 }
 
-function lol(e) {
+function paginationFavorite(e) {
   e.preventDefault();
 
   currentPage = e.submitter.textContent;
