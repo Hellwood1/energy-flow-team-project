@@ -1,4 +1,3 @@
-
 import EnergyFlowApiSevice from './api-service';
 import imgUrl from '../images/sprite.svg';
 import { renderExerciseModal } from "./renderExerciseModal";
@@ -8,6 +7,8 @@ const exercisesCardList = document.querySelector(".favorites-list");
 const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
 const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
 const energyFlowApiService = new EnergyFlowApiSevice();
+const totalFavoritesPages = 1;
+
 
   function addCardToList(results) {
 
@@ -94,7 +95,7 @@ function deleteButtonEventListener(button) {
 }
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
-  const cardToRemove = document.querySelector(`.div-with-li[id="${exerciseIdToRemove}"]`);
+  const cardToRemove = document.querySelector(.div-with-li[id="${exerciseIdToRemove}"]);
 
   if (cardToRemove) {
     cardToRemove.remove();
@@ -131,3 +132,5 @@ if (favoriteExerciseIdInLocalStorage.length !== 0) {
 } else {
   listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
 }
+
+

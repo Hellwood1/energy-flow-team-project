@@ -1,9 +1,7 @@
 import EnergyFlowApiSevice from './api-service';
 import {
-  showMessageBadRequest,
   showMessageRatingFailed,
   showMessageRatingSuccess,
-  showMessageConflictRequest,
 } from './showMessage';
 import {
   closeRatingModal,
