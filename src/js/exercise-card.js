@@ -4,11 +4,24 @@ import { renderExerciseModal } from './renderExerciseModal';
 import { showMessageBadRequest } from './showMessage';
 import { renderPageList } from './pagination';
 import { cutString } from './render-exercises';
+import { addListenersToRatingModal } from './giveRating';
+
+addListenersToRatingModal();
 
 const exercisesCardList = document.querySelector('.favorites-list');
-const listWithoutExercases = document.querySelector(
-  '.favorites-div-without-cards '
-);
+const listWithoutExercases = `<div class="favorites-no-results"><img
+          class="favorites-div-without-cards-img"
+          src="./images/favorites/dumbbell.png"
+          alt="dumbbell"
+          width="85"
+          height="52"
+        />
+        <p class="favorites-div-without-cards-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p></div>`;
+
 const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
 const energyFlowApiService = new EnergyFlowApiSevice();
 let totalFavoritesPages = 1;
@@ -64,26 +77,25 @@ function addCardToList(results) {
     .join('');
 
   exercisesCardList.innerHTML = cardElement;
-
-  startButtonAddEventListener();
-
-  // deleteButtonAddEventListener();
 }
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-// ----------------start button---------------------------
+// ----------------open modal---------------------------//
 
-function startButtonAddEventListener() {
-  const removeFromFavoritesButtons =
-    document.querySelectorAll('.exercises-card');
-  removeFromFavoritesButtons.forEach(start =>
-    start.addEventListener('click', e => {
-      const id = e.target.id;
-      renderExerciseModal(id);
-    })
-  );
+exercisesCardList.addEventListener('click', onOpenFavorite);
+
+async function onOpenFavorite(e) {
+  if (e.target.classList.contains('trash-icon')) {
+    return;
+  }
+
+  let id = e.target.id;
+
+  await renderExerciseModal(id);
+  document.querySelector('.exercise-favorite-add-btn').remove();
+  document.querySelector('.exercise-rating-give-btn').style.width = '100%';
 }
 
 // --------------delete button-----------------------//
@@ -133,7 +145,7 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   }
 
   if (JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length === 0) {
-    listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
+    exercisesCardList.innerHTML = listWithoutExercases;
     document.querySelector('.exercises-navigation-list').innerHTML = '';
     return;
   }
@@ -155,7 +167,6 @@ const fetchDataForIds = async ids => {
 };
 
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
-  listWithoutExercases.classList.add('favorites-div-without-cards-hidden');
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
     .then(results => {
       if (window.innerWidth < 768) {
@@ -176,7 +187,7 @@ if (favoriteExerciseIdInLocalStorage.length !== 0) {
       console.log(error);
     });
 } else {
-  listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
+  exercisesCardList.innerHTML = listWithoutExercases;
 }
 
 function paginationFavorite(e) {
