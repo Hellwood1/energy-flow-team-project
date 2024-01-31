@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/energy-flow-team-project/assets/favicon-59c70d74.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Yout personal gym trainer. Exercises in your telephone. App for gym."
+    />
+    <meta
+      name="keywords"
+      content="Ukrainian cultural attire. 
+    Favorites exersices.
+    Exersices for the gym.
+    Sport.
+    The best exersices for the body."
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
@@ -16,16 +28,21 @@
     
     <script type="module" crossorigin src="/energy-flow-team-project/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/vendor-c4bdd18a.js">
-    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/header-modal-ebdd0605.js">
+    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/header-modal-1de1f9cf.js">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/header-modal-48e002ca.css">
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/header-modal-430f16a1.css">
   </head>
   <body>
     <header class="header-section">
   <div class="container">
     <div class="header-section-container">
-      <p class="header-title">energy.flow</p>
-      <nav class="navigation-header">
+      <a
+        href="./index.html"
+        class="header-title animate__animated animate__bounceInDown"
+      >
+        energy.flow
+      </a>
+      <nav class="navigation-header animate__animated animate__bounceInDown">
         <ul class="navigation-list">
           <li class="navigation-item">
             <a href="./index.html" class="navigation-links home-page">Home</a>
@@ -38,7 +55,9 @@
         </ul>
       </nav>
       <ul class="header-social-list">
-        <li class="header-social-item">
+        <li
+          class="header-social-item instagram-animation animate__animated animate__bounceInDown"
+        >
           <a
             href="https://www.facebook.com/goITclub/"
             class="header-social-link"
@@ -50,7 +69,9 @@
             </svg>
           </a>
         </li>
-        <li class="header-social-item">
+        <li
+          class="header-social-item facebook-animation animate__animated animate__bounceInDown"
+        >
           <a
             href="https://www.instagram.com/goitclub/"
             class="header-social-link"
@@ -62,7 +83,9 @@
             </svg>
           </a>
         </li>
-        <li class="header-social-item">
+        <li
+          class="header-social-item youtube-animation animate__animated animate__bounceInDown"
+        >
           <a
             href="https://www.youtube.com/c/GoIT"
             class="header-social-link"
@@ -75,7 +98,11 @@
           </a>
         </li>
       </ul>
-      <button class="header-mobile-open-btn" type="button" data-modal-open>
+      <button
+        class="header-mobile-open-btn animate__animated animate__bounceInDown"
+        type="button"
+        data-modal-open
+      >
         <svg class="mobile-open-icon" width="32" height="16">
           <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-mobile-menu-open"></use>
         </svg>
@@ -86,7 +113,7 @@
 
     <main>
       <section class="quote-favourites container">
-  <div class="quotes-div quotes-div-fav">
+  <div class="quotes-div quotes-div-fav animate__animated animate__fadeInLeft">
     <svg class="icon-runing-man">
       <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-runing-man"></use>
     </svg>
@@ -102,8 +129,12 @@
     <span class="quote-author">Tom Brady</span>
   </div>
   <div class="after-quote-section-div">
-    <div class="quote-home-background-fav"></div>
-    <div class="after-quote-section-item">
+    <div
+      class="quote-home-background-fav animate__animated animate__fadeInRight"
+    ></div>
+    <div
+      class="after-quote-section-item animate__animated animate__fadeInRight"
+    >
       <div class="favorites-text-div">
         <svg class="motivation-icon-favorites" width="20" height="20">
           <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-dumbbell"></use>
@@ -118,7 +149,7 @@
 </section>
 
       <section class="favorites-section container">
-  <div class="favorites-section-wrapper">
+  <div class="favorites-section-wrapper animate__animated animate__bounceInUp">
     <div class="favorites-div-with-cards">
       <h2 class="favorites-div-head">Favorites</h2>
       <div class="favorites-div-without-cards">
@@ -138,16 +169,82 @@
 
       <ul class="favorites-list"></ul>
 
-
       <form class="navigation-list-form">
         <ul class="exercises-navigation-list"></ul>
       </form>
-
     </div>
   </div>
 </section>
 
     </main>
+
+    <div class="mobile-menu-wrapper none">
+  <div class="mobile-menu-container">
+    <div class="mobile-menu-header">
+      <a class="mobile-menu-logo" href="./index.html">energy.flow</a>
+      <button class="mobile-menu-cls-btn" type="button" data-modal-close>
+        <svg class="modal-svg-btn" width="28" height="28">
+          <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-body">
+      <ul class="mobile-navigation-list">
+        <li>
+          <a class="mobile-navigation-item home-mobile-page" href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="mobile-navigation-item favorites-mobile-page"
+            href="./index.html"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="mobile-menu-footer">
+      <ul class="mobile-menu-social-list">
+        <li class="mobile-menu-social-item">
+          <a
+            class="mobile-menu-social-links"
+            title="Facebook"
+            href="https://www.facebook.com/goITclub/"
+            ><svg class="social-links-svg" width="25" height="25">
+              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-facebook"></use></svg
+          ></a>
+        </li>
+        <li class="mobile-menu-social-item">
+          <a
+            class="mobile-menu-social-links"
+            title="Instagram"
+            href="https://www.instagram.com/goitclub/"
+          >
+            <svg class="social-links-svg" width="25" height="25">
+              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="mobile-menu-social-item">
+          <a
+            class="mobile-menu-social-links"
+            title="YouTube"
+            href="https://www.youtube.com/c/GoIT"
+          >
+            <svg class="social-links-svg" width="25" height="25">
+              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="exercise-modal-backdrop container backdrop-is-hidden">
+  <div class="exercise-modal modal-is-hidden"></div>
+</div>
 
     <div
   class="rating-backdrop backdrop-rating-is-hidden"
@@ -240,71 +337,6 @@
     </form>
   </div>
 </div>
-
-    <div class="mobile-menu-wrapper none">
-  <div class="mobile-menu-container">
-    <div class="mobile-menu-header">
-      <a class="mobile-menu-logo" href="./index.html">energy.flow</a>
-      <button class="mobile-menu-cls-btn" type="button" data-modal-close>
-        <svg class="modal-svg-btn" width="28" height="28">
-          <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
-        </svg>
-      </button>
-    </div>
-    <div class="mobile-menu-body">
-      <ul class="mobile-navigation-list">
-        <li>
-          <a class="mobile-navigation-item home-mobile-page" href="./index.html"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            class="mobile-navigation-item favorites-mobile-page"
-            href="./index.html"
-            >Favorites</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="mobile-menu-footer">
-      <ul class="mobile-menu-social-list">
-        <li class="mobile-menu-social-item">
-          <a
-            class="mobile-menu-social-links"
-            title="Facebook"
-            href="https://www.facebook.com/goITclub/"
-            ><svg class="social-links-svg" width="25" height="25">
-              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-facebook"></use></svg
-          ></a>
-        </li>
-        <li class="mobile-menu-social-item">
-          <a
-            class="mobile-menu-social-links"
-            title="Instagram"
-            href="https://www.instagram.com/goitclub/"
-          >
-            <svg class="social-links-svg" width="25" height="25">
-              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-instagram"></use>
-            </svg>
-          </a>
-        </li>
-        <li class="mobile-menu-social-item">
-          <a
-            class="mobile-menu-social-links"
-            title="YouTube"
-            href="https://www.youtube.com/c/GoIT"
-          >
-            <svg class="social-links-svg" width="25" height="25">
-              <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-youtube"></use>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 
 
     

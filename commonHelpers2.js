@@ -1,4 +1,4 @@
-import{f as p,m,b as f,E,s as w,i,r as x}from"./assets/header-modal-ebdd0605.js";import"./assets/vendor-c4bdd18a.js";const L=document.querySelector(".favorites-page"),S=document.querySelector(".header-section");S.classList.add("header-section-favorites");L.classList.add("active-page");p();m();f();const d=document.querySelector(".favorites-list"),a=document.querySelector(".favorites-div-without-cards "),l="favoriteExerciseIds",y=new E,c=1;function o(e){const s=e.map(t=>`
+import{f as p,m,b as f,E,s as w,i,r as x}from"./assets/header-modal-1de1f9cf.js";import"./assets/vendor-c4bdd18a.js";const L=document.querySelector(".favorites-page"),S=document.querySelector(".header-section");S.classList.add("header-section-favorites");L.classList.add("active-page");p();m();f();const d=document.querySelector(".favorites-list"),a=document.querySelector(".favorites-div-without-cards "),l="favoriteExerciseIds",y=new E,c=1;function o(e){const s=e.map(t=>`
     <div class="div-with-li" id="${t._id}">
     <button type="button" id="${t._id}" class="card-delete">
     <svg class="trash-icon" width="16" height="16">
