@@ -1,9 +1,7 @@
-
 .div-with-li {
   position: relative;
   z-index: 0;
 }
-
 
 /* --------------list of card---------------- */
 
@@ -87,6 +85,10 @@
   top: 21px;
   left: 100px;
   z-index: 2;
+}
+
+.card-delete use {
+  pointer-events: none;
 }
 
 /* -----------------upper part----------------- */

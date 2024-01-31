@@ -1,18 +1,22 @@
 import EnergyFlowApiSevice from './api-service';
 import imgUrl from '../images/sprite.svg';
-import { renderExerciseModal } from "./renderExerciseModal";
-import { showMessageBadRequest } from "./showMessage"
+import { renderExerciseModal } from './renderExerciseModal';
+import { showMessageBadRequest } from './showMessage';
+import { renderPageList } from './pagination';
 
-const exercisesCardList = document.querySelector(".favorites-list");
-const listWithoutExercases = document.querySelector(".favorites-div-without-cards ");
-const LOCAL_STORAGE_KEY = "favoriteExerciseIds";
+const exercisesCardList = document.querySelector('.favorites-list');
+const listWithoutExercases = document.querySelector(
+  '.favorites-div-without-cards '
+);
+const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
 const energyFlowApiService = new EnergyFlowApiSevice();
-const totalFavoritesPages = 1;
+let totalFavoritesPages = 1;
+let currentPage = 1;
 
-
-  function addCardToList(results) {
-
-    const cardElement = results.map((cardData) => `
+function addCardToList(results) {
+  const cardElement = results
+    .map(
+      cardData => `
     <div class="div-with-li" id="${cardData._id}">
     <button type="button" id="${cardData._id}" class="card-delete">
     <svg class="trash-icon" width="16" height="16">
@@ -25,7 +29,9 @@ const totalFavoritesPages = 1;
             <div class="workout-text">WORKOUT</div>
 
           </div>
-          <button type="button" id="${cardData._id}" class="card-start">Start <span>
+          <button type="button" id="${
+            cardData._id
+          }" class="card-start">Start <span>
             <svg class="start-icon" width="14" height="14">
             <use href="${imgUrl}#icon-right-arrow"></use></svg>
           </span></button>
@@ -56,10 +62,11 @@ const totalFavoritesPages = 1;
     )
     .join('');
 
-  exercisesCardList.insertAdjacentHTML('beforeend', cardElement);
+  exercisesCardList.innerHTML = cardElement;
 
   startButtonAddEventListener();
-  deleteButtonAddEventListener();
+
+  // deleteButtonAddEventListener();
 }
 
 function capitalizeFirstLetter(string) {
@@ -68,45 +75,69 @@ function capitalizeFirstLetter(string) {
 // ----------------start button---------------------------
 
 function startButtonAddEventListener() {
-  const removeFromFavoritesButtons = document.querySelectorAll(".exercises-card");
-  removeFromFavoritesButtons.forEach(start => start.addEventListener("click", e => {
-    const id = e.target.id;
-   renderExerciseModal(id);
- })
-)}
+  const removeFromFavoritesButtons =
+    document.querySelectorAll('.exercises-card');
+  removeFromFavoritesButtons.forEach(start =>
+    start.addEventListener('click', e => {
+      const id = e.target.id;
+      renderExerciseModal(id);
+    })
+  );
+}
 
 // --------------delete button-----------------------//
 
-function deleteButtonAddEventListener() {
-  const removeFromFavoritesButtons = document.querySelectorAll(".card-delete");
-  removeFromFavoritesButtons.forEach(deleteButtonEventListener);
-}
+function deleteFavoriteCard(e) {
+  if (!e.target.classList.contains('trash-icon')) {
+    return;
+  }
 
-function deleteButtonEventListener(button) {
-  button.addEventListener("click", (event) => {
-    const exerciseIdToRemove = event.currentTarget.id;
+  let id = e.target.parentNode.id;
 
-    const favoriteExerciseIds = getFavoriteExerciseIds();
-    let newFavoriteExerciseIds = favoriteExerciseIds.filter(element => element !== exerciseIdToRemove);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newFavoriteExerciseIds));
+  let savedIdList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  let test = savedIdList.filter(e => e !== id);
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(test));
+  totalFavoritesPages = Math.ceil(test.length / 8);
+  updateInterfaceAfterRemoval(id);
 
-    updateInterfaceAfterRemoval(exerciseIdToRemove);
-  });
+  if (
+    document.querySelectorAll('.div-with-li').length === 0 &&
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length > 0
+  ) {
+    fetchDataForIds(test).then(results => {
+      if (window.innerWidth < 768) {
+        console.log('noooooooo');
+        currentPage = currentPage - 1;
+        addCardToList(results.slice(0, 8));
+        renderPageList(totalFavoritesPages, currentPage, currentPage);
+        console.log(currentPage);
+        let pageList = document.querySelectorAll(
+          '.exercises-navigation-number'
+        );
+
+        pageList[currentPage - 1].classList.add('pagination-current');
+        return;
+      }
+    });
+  }
 }
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
-  const cardToRemove = document.querySelector(`.div-with-li[id="${exerciseIdToRemove}"]`);
+  const cardToRemove = document.querySelector(
+    `.div-with-li[id="${exerciseIdToRemove}"]`
+  );
 
   if (cardToRemove) {
     cardToRemove.remove();
   }
 
-  const hasChildrenWithClass = exercisesCardList.querySelector('.div-with-li') === null;
-  if (!hasChildrenWithClass) {
-    listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+  if (JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length === 0) {
+    listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
+    document.querySelector('.exercises-navigation-list').innerHTML = '';
+    return;
   }
 }
-
+exercisesCardList.addEventListener('click', deleteFavoriteCard);
 //--------------------- add to favorites---------------------------
 
 function getFavoriteExerciseIds() {
@@ -117,19 +148,20 @@ function getFavoriteExerciseIds() {
 // -------------------------Завантаження з улюблених-----------------------------------
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
-const fetchDataForIds = async (ids) => {
-  const promises = ids.map((id) => energyFlowApiService.getExerciseInfoById(id));
+const fetchDataForIds = async ids => {
+  const promises = ids.map(id => energyFlowApiService.getExerciseInfoById(id));
   return Promise.all(promises);
 };
 
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
-  listWithoutExercases.classList.add("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.add('favorites-div-without-cards-hidden');
   fetchDataForIds(favoriteExerciseIdInLocalStorage)
     .then(results => {
-
       if (window.innerWidth < 768) {
         addCardToList(results.slice(0, 8));
+
         totalFavoritesPages = Math.ceil(results.length / 8);
+        // console.log(totalFavoritesPages);
         renderPageList(totalFavoritesPages, currentPage, currentPage);
         document
           .querySelector('.navigation-list-form')
@@ -137,14 +169,13 @@ if (favoriteExerciseIdInLocalStorage.length !== 0) {
       } else {
         addCardToList(results);
       }
-
     })
     .catch(error => {
       showMessageBadRequest();
+      console.log(error);
     });
-
 } else {
-  listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
+  listWithoutExercases.classList.remove('favorites-div-without-cards-hidden');
 }
 
 function paginationFavorite(e) {
@@ -164,5 +195,3 @@ function paginationFavorite(e) {
 
   renderPageList(total, currentPage, currentPage);
 }
-
-
