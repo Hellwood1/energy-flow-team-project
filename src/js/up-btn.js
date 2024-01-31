@@ -6,8 +6,8 @@ window.onscroll = function () {
 };
 
 export function scrollFunction() {
-  if (document.documentElement.scrollTop > 2000) {
-    upBtn.style.display = 'block';
+  if (document.documentElement.scrollTop > 1000) {
+    upBtn.style.display = 'flex';
   } else {
     upBtn.style.display = 'none';
   }

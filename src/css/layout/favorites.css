@@ -148,7 +148,7 @@
     height: 928px;
     flex-shrink: 0;
     border-radius: 50px;
-    background: var(--white);
+    background: var(--ligt-gray);
   }
 
   .favorites-div-head {
