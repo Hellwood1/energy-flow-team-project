@@ -53,5 +53,12 @@ const addListenersToCloseRatingModal = () => {
   });
 };
 
-
-export {addListenersToCloseRatingModal, closeRatingModal, openRatingModal, closeExerciseModal, openExerciseModal, modalBackdrop, modalExercise}
+export {
+  addListenersToCloseRatingModal,
+  closeRatingModal,
+  openRatingModal,
+  closeExerciseModal,
+  openExerciseModal,
+  modalBackdrop,
+  modalExercise,
+};
