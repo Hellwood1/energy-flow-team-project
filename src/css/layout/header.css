@@ -14,10 +14,9 @@
 
 .header-title {
   margin-right: auto;
-  color: var(--black);
   font-weight: 700;
   line-height: 112.5%; /* 18px/16 */
-  letter-spacing: -2%; /* -0.32px/16 */
+  letter-spacing: 0.02em;
 
   --animate-duration: 1400ms;
 }
