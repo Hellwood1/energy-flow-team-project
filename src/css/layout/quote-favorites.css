@@ -24,6 +24,15 @@
   fill: var(--black);
 }
 
+.animate__animated.animate__fadeInLeft,
+.animate__animated.animate__fadeRight {
+  animation-duration: 1600ms;
+}
+
+.after-quote-section-item {
+  animation-duration: 1650ms;
+}
+
 @media screen and (min-resolution: 192dpi) and (min-width: 375px),
   screen and (min-resolution: 2dppx) and (min-width: 375px),
   screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
