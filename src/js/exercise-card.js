@@ -12,7 +12,7 @@ addListenersToRatingModal();
 const exercisesCardList = document.querySelector('.favorites-list');
 const listWithoutExercases = `<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
-          src="${imgUrl}"
+          src="${dumbbellImg}"
           alt="dumbbell"
           width="85"
           height="52"
