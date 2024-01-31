@@ -77,6 +77,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.mobile-menu-social-links {
+  width: 25px;
+  height: 25px;
+}
+
 .social-links-svg {
   fill: var(--white);
 }

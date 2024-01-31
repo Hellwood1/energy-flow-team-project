@@ -195,9 +195,9 @@ function resetForm() {
   hideInputDeleteBtn();
 }
 
-function cutString(str) {
+export function cutString(str) {
   if (str.length >= 9) {
-    return str.slice(0, 9) + '...';
+    return str.slice(0, 5) + '...';
   }
   return str;
 }
