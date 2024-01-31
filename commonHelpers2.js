@@ -1,4 +1,4 @@
-import{d as h,m,c as f,b as y,E as S,r as w,e as g,f as x,i as l,g as L}from"./assets/header-modal-e7d7f6b5.js";import"./assets/vendor-c4bdd18a.js";const b=document.querySelector(".favorites-page"),I=document.querySelector(".header-section");I.classList.add("header-section-favorites");b.classList.add("active-page");h();m();f();const E="/energy-flow-team-project/assets/dumbbell-71edb8d8.png";y();const n=document.querySelector(".favorites-list"),p=`<div class="favorites-no-results"><img
+import{d as h,m,c as f,b as y,E as S,r as w,e as g,f as x,i as l,g as L}from"./assets/header-modal-aede7c4e.js";import"./assets/vendor-c4bdd18a.js";const b=document.querySelector(".favorites-page"),I=document.querySelector(".header-section");I.classList.add("header-section-favorites");b.classList.add("active-page");h();m();f();const E="/energy-flow-team-project/assets/dumbbell-71edb8d8.png";y();const n=document.querySelector(".favorites-list"),p=`<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
           src="${E}"
           alt="dumbbell"
