@@ -4,14 +4,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 const showMessageBadRequest = () => {
   iziToast.error({
     message: `Ooops...Something happen. Please, try again later`,
-    backgroundColor: 'rgba(246, 246, 246, 0.6)',
+    backgroundColor: 'rgb(255, 102, 102)',
     messageColor: 'black',
     maxWidth: 300,
     position: 'bottomRight',
     timeout: 4000,
     progressBar: false,
-    transitionIn: 'bounceInRight',
-    transitionOut: 'fadeOutLeft',
+     transitionIn: 'bounceInBottom',
+    transitionOut: 'fadeOutRight',
     messageSize: 14,
   });
 };
@@ -25,8 +25,8 @@ const showMessageOkRequest = message => {
     position: 'bottomRight',
     timeout: 4000,
     progressBar: false,
-    transitionIn: 'bounceInRight',
-    transitionOut: 'fadeOutLeft',
+     transitionIn: 'bounceInBottom',
+    transitionOut: 'fadeOutRight',
     messageSize: 14,
   });
 };
@@ -34,14 +34,14 @@ const showMessageOkRequest = message => {
 const showMessageConflictRequest = message => {
   iziToast.error({
     message: message,
-    backgroundColor: 'rgba(246, 246, 246, 0.6)',
+    backgroundColor: 'rgb(255, 102, 102)',
     messageColor: 'black',
     maxWidth: 300,
     position: 'bottomRight',
     timeout: 4000,
     progressBar: false,
-    transitionIn: 'bounceInRight',
-    transitionOut: 'fadeOutLeft',
+     transitionIn: 'bounceInBottom',
+    transitionOut: 'fadeOutRight',
     messageSize: 14,
   });
 };
@@ -55,8 +55,8 @@ const showMessageRatingSuccess = () => {
     position: 'bottomRight',
     timeout: 4000,
     progressBar: false,
-    transitionIn: 'bounceInRight',
-    transitionOut: 'fadeOutLeft',
+    transitionIn: 'bounceInBottom',
+    transitionOut: 'fadeOutRight',
     messageSize: 14,
   });
 };
@@ -64,14 +64,14 @@ const showMessageRatingSuccess = () => {
 const showMessageRatingFailed = () => {
   iziToast.error({
     message: 'Such email already exists',
-    backgroundColor: 'rgba(246, 246, 246, 0.6)',
+    backgroundColor: 'rgb(255, 102, 102)',
     messageColor: 'black',
     maxWidth: 300,
     position: 'bottomRight',
     timeout: 4000,
     progressBar: false,
-    transitionIn: 'bounceInRight',
-    transitionOut: 'fadeOutLeft',
+    transitionIn: 'bounceInBottom',
+    transitionOut: 'fadeOutRight',
     messageSize: 14,
   });
 };
