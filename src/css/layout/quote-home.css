@@ -133,8 +133,9 @@
     margin-top: 25px;
   }
 
-  .animate__animated.animate__fadeIn {
-    animation-delay: 1s;
+  .animate__animated.animate__slideInLeft,
+  .animate__animated.animate__slideInRight {
+    animation-duration: 2000ms;
   }
 }
 

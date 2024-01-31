@@ -18,6 +18,8 @@
   font-weight: 700;
   line-height: 112.5%; /* 18px/16 */
   letter-spacing: -2%; /* -0.32px/16 */
+
+  --animate-duration: 1400ms;
 }
 
 .header-mobile-open-btn {
@@ -28,6 +30,8 @@
   justify-content: center;
   border: none;
   background-color: transparent;
+
+  --animate-duration: 1500ms;
 }
 
 .navigation-header {
@@ -36,6 +40,9 @@
 
 .header-social-list {
   display: none;
+}
+.animate__animated.animate__animate__bounceInDown {
+  animation-duration: 1500ms;
 }
 
 /* ===================TABLET============== */
@@ -55,6 +62,7 @@
 
   .navigation-header {
     display: flex;
+    --animate-duration: 1500ms;
   }
 
   .navigation-list {
@@ -92,6 +100,16 @@
     display: flex;
     gap: 12px;
     align-items: center;
+  }
+
+  .instagram-animation {
+    --animate-duration: 1600ms;
+  }
+  .facebook-animation {
+    --animate-duration: 1700ms;
+  }
+  .youtube-animation {
+    --animate-duration: 1800ms;
   }
 
   .header-social-link {
