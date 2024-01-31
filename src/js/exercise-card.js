@@ -95,14 +95,14 @@ function deleteButtonEventListener(button) {
 }
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
-  const cardToRemove = document.querySelector(.div-with-li[id="${exerciseIdToRemove}"]);
+  const cardToRemove = document.querySelector(`.div-with-li[id="${exerciseIdToRemove}"]`);
 
   if (cardToRemove) {
     cardToRemove.remove();
   }
 
   const hasChildrenWithClass = exercisesCardList.querySelector('.div-with-li') === null;
-  if (hasChildrenWithClass) {
+  if (!hasChildrenWithClass) {
     listWithoutExercases.classList.remove("favorites-div-without-cards-hidden");
   }
 }
