@@ -1,17 +1,28 @@
-import{d as h,m,c as f,E as S,r as v,e as w,i as d,f as L,g as x}from"./assets/header-modal-46641136.js";import"./assets/vendor-c4bdd18a.js";const y=document.querySelector(".favorites-page"),E=document.querySelector(".header-section");E.classList.add("header-section-favorites");y.classList.add("active-page");h();m();f();const p=document.querySelector(".favorites-list"),l=document.querySelector(".favorites-div-without-cards "),a="favoriteExerciseIds",I=new S;let o=1,i=1;function n(e){const s=e.map(t=>`
-    <div class="div-with-li" id="${t._id}">
-    <button type="button" id="${t._id}" class="card-delete">
+import{d as h,m,c as f,b as y,E as S,r as w,e as g,f as x,i as d,g as L}from"./assets/header-modal-b68d4978.js";import"./assets/vendor-c4bdd18a.js";const b=document.querySelector(".favorites-page"),I=document.querySelector(".header-section");I.classList.add("header-section-favorites");b.classList.add("active-page");h();m();f();y();const o=document.querySelector(".favorites-list"),p=`<div class="favorites-no-results"><img
+          class="favorites-div-without-cards-img"
+          src="./images/favorites/dumbbell.png"
+          alt="dumbbell"
+          width="85"
+          height="52"
+        />
+        <p class="favorites-div-without-cards-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p></div>`,a="favoriteExerciseIds",E=new S;let n=1,i=1;function c(e){const t=e.map(s=>`
+    <div class="div-with-li" id="${s._id}">
+    <button type="button" id="${s._id}" class="card-delete">
     <svg class="trash-icon" width="16" height="16">
     <use href="${d}#icon-trash"></use></svg>
   </button>
-      <li class="exercises-card" id="${t._id}">
+      <li class="exercises-card" id="${s._id}">
 
         <div class="exercises-card-upper-part">
           <div class="div-rating-or-delete-button">
             <div class="workout-text">WORKOUT</div>
 
           </div>
-          <button type="button" id="${t._id}" class="card-start">Start <span>
+          <button type="button" id="${s._id}" class="card-start">Start <span>
             <svg class="start-icon" width="14" height="14">
             <use href="${d}#icon-right-arrow"></use></svg>
           </span></button>
@@ -21,14 +32,14 @@ import{d as h,m,c as f,E as S,r as v,e as w,i as d,f as L,g as x}from"./assets/h
             <svg class="runing-man-icon" width="24" height="24">
             <use href="${d}#icon-runing-man"></use></svg>
           </div>
-          <p class="card-exercise-name">${b(t.name)}</p>
+          <p class="card-exercise-name">${$(s.name)}</p>
         </div>
         <div class="exercises-card-lower-part">
-          <p>Burned calories: <span class="exercises-card-lower-part-span">${t.burnedCalories} / 3 min</span></p>
-          <p>Body part: <span class="exercises-card-lower-part-span">${t.bodyPart}</span></p>
-          <p>Target: <span class="exercises-card-lower-part-span">${L(t.target)}</span></p>
+          <p>Burned calories: <span class="exercises-card-lower-part-span">${s.burnedCalories} / 3 min</span></p>
+          <p>Body part: <span class="exercises-card-lower-part-span">${s.bodyPart}</span></p>
+          <p>Target: <span class="exercises-card-lower-part-span">${L(s.target)}</span></p>
         </div>
       </li>
       </div>
-  `).join("");p.innerHTML=s,F()}function b(e){return e.charAt(0).toUpperCase()+e.slice(1)}function F(){document.querySelectorAll(".exercises-card").forEach(s=>s.addEventListener("click",t=>{const r=t.target.id;x(r)}))}function $(e){if(!e.target.classList.contains("trash-icon"))return;let s=e.target.parentNode.id,r=JSON.parse(localStorage.getItem(a)).filter(c=>c!==s);localStorage.setItem(a,JSON.stringify(r)),o=Math.ceil(r.length/8),q(s),document.querySelectorAll(".div-with-li").length===0&&JSON.parse(localStorage.getItem(a)).length>0&&g(r).then(c=>{if(window.innerWidth<768){console.log("noooooooo"),i=i-1,n(c.slice(0,8)),v(o,i,i),console.log(i),document.querySelectorAll(".exercises-navigation-number")[i-1].classList.add("pagination-current");return}})}function q(e){const s=document.querySelector(`.div-with-li[id="${e}"]`);if(s&&s.remove(),JSON.parse(localStorage.getItem(a)).length===0){l.classList.remove("favorites-div-without-cards-hidden"),document.querySelector(".exercises-navigation-list").innerHTML="";return}}p.addEventListener("click",$);function A(){const e=localStorage.getItem(a);return e?JSON.parse(e):[]}const u=A(),g=async e=>{const s=e.map(t=>I.getExerciseInfoById(t));return Promise.all(s)};u.length!==0?(l.classList.add("favorites-div-without-cards-hidden"),g(u).then(e=>{window.innerWidth<768?(n(e.slice(0,8)),o=Math.ceil(e.length/8),v(o,i,i),document.querySelector(".navigation-list-form").addEventListener("submit",O)):n(e)}).catch(e=>{w(),console.log(e)})):l.classList.remove("favorites-div-without-cards-hidden");function O(e){e.preventDefault(),i=e.submitter.textContent;const s=JSON.parse(localStorage.getItem("favoriteExerciseIds"));let t=Math.ceil(s.length/8);g(u).then(r=>{n(r.slice((i-1)*8,i*8))}).catch(r=>{console.error("Error fetching data:",r)}),v(t,i,i)}
+  `).join("");o.innerHTML=t}function $(e){return e.charAt(0).toUpperCase()+e.slice(1)}o.addEventListener("click",q);async function q(e){if(e.target.classList.contains("trash-icon"))return;let t=e.target.id;await w(t),document.querySelector(".exercise-favorite-add-btn").remove(),document.querySelector(".exercise-rating-give-btn").style.width="100%"}function M(e){if(!e.target.classList.contains("trash-icon"))return;let t=e.target.parentNode.id,r=JSON.parse(localStorage.getItem(a)).filter(l=>l!==t);localStorage.setItem(a,JSON.stringify(r)),n=Math.ceil(r.length/8),O(t),document.querySelectorAll(".div-with-li").length===0&&JSON.parse(localStorage.getItem(a)).length>0&&v(r).then(l=>{if(window.innerWidth<768){console.log("noooooooo"),i=i-1,c(l.slice(0,8)),g(n,i,i),console.log(i),document.querySelectorAll(".exercises-navigation-number")[i-1].classList.add("pagination-current");return}})}function O(e){const t=document.querySelector(`.div-with-li[id="${e}"]`);if(t&&t.remove(),JSON.parse(localStorage.getItem(a)).length===0){o.innerHTML=p,document.querySelector(".exercises-navigation-list").innerHTML="";return}}o.addEventListener("click",M);function T(){const e=localStorage.getItem(a);return e?JSON.parse(e):[]}const u=T(),v=async e=>{const t=e.map(s=>E.getExerciseInfoById(s));return Promise.all(t)};u.length!==0?v(u).then(e=>{window.innerWidth<768?(c(e.slice(0,8)),n=Math.ceil(e.length/8),g(n,i,i),document.querySelector(".navigation-list-form").addEventListener("submit",F)):c(e)}).catch(e=>{x(),console.log(e)}):o.innerHTML=p;function F(e){e.preventDefault(),i=e.submitter.textContent;const t=JSON.parse(localStorage.getItem("favoriteExerciseIds"));let s=Math.ceil(t.length/8);v(u).then(r=>{c(r.slice((i-1)*8,i*8))}).catch(r=>{console.error("Error fetching data:",r)}),g(s,i,i)}
 //# sourceMappingURL=commonHelpers2.js.map
