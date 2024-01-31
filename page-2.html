@@ -16,9 +16,9 @@
     
     <script type="module" crossorigin src="/energy-flow-team-project/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/vendor-c4bdd18a.js">
-    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/quote-53c236f5.js">
+    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/header-modal-ebdd0605.js">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/quote-165f945f.css">
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/header-modal-48e002ca.css">
   </head>
   <body>
     <header class="header-section">
@@ -105,7 +105,7 @@
     <div class="quote-home-background-fav"></div>
     <div class="after-quote-section-item">
       <div class="favorites-text-div">
-        <svg class="motivation-icon" width="20" height="20">
+        <svg class="motivation-icon-favorites" width="20" height="20">
           <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-dumbbell"></use>
         </svg>
         <div class="favorites-motivation-text">
@@ -148,21 +148,122 @@
 </section>
 
     </main>
+
+    <div
+  class="rating-backdrop backdrop-rating-is-hidden"
+  data-modal-rating
+  data-modal-rating-backdrop
+>
+  <div
+    class="rating-form-wrap modal-rating-is-hidden"
+    data-modal-rating-container
+  >
+    <button
+      class="rating-modal-close-btn"
+      type="button"
+      data-modal-rating-close
+    >
+      <svg class="rating-modal-close-icon" width="24" height="24">
+        <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
+      </svg>
+    </button>
+    <form class="rating-form send-rating-form" data-id="">
+      <div class="rating-inputs-container">
+        <p class="rating-label">Rating</p>
+        <div class="rating-container set-rating">
+          <div class="rating-value">0.0</div>
+          <div class="rating-body rating-body-custom">
+            <div class="rating-active"></div>
+            <div class="rating-items">
+              <input
+                id="rate"
+                type="radio"
+                class="rating-item"
+                value="1"
+                name="rate"
+                required
+              />
+              <input
+                id="rate"
+                type="radio"
+                class="rating-item"
+                value="2"
+                name="rate"
+                required
+              />
+              <input
+                id="rate"
+                type="radio"
+                class="rating-item"
+                value="3"
+                name="rate"
+                required
+              />
+              <input
+                id="rate"
+                type="radio"
+                class="rating-item"
+                value="4"
+                name="rate"
+                required
+              />
+              <input
+                id="rate"
+                type="radio"
+                class="rating-item"
+                value="5"
+                name="rate"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="inputs-container">
+          <input
+            class="rating-user-email-input"
+            type="email"
+            placeholder="Email"
+            name="email"
+            id="email"
+            required
+          />
+          <textarea
+            name="review"
+            id="review"
+            placeholder="Your comment"
+            class="rating-user-comment"
+            required
+          ></textarea>
+        </div>
+      </div>
+      <button class="rating-submit-btn" type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
     <div class="mobile-menu-wrapper none">
   <div class="mobile-menu-container">
     <div class="mobile-menu-header">
       <a class="mobile-menu-logo" href="./index.html">energy.flow</a>
       <button class="mobile-menu-cls-btn" type="button" data-modal-close>
-        <svg class="modal--svg--btn" width="28" height="28">
+        <svg class="modal-svg-btn" width="28" height="28">
           <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
         </svg>
       </button>
     </div>
     <div class="mobile-menu-body">
       <ul class="mobile-navigation-list">
-        <li><a class="mobile-navigation-item" href="./index.html">Home</a></li>
         <li>
-          <a class="mobile-navigation-item" href="./index.html">Favorites</a>
+          <a class="mobile-navigation-item home-mobile-page" href="./index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="mobile-navigation-item favorites-mobile-page"
+            href="./index.html"
+            >Favorites</a
+          >
         </li>
       </ul>
     </div>
@@ -204,10 +305,7 @@
   </div>
 </div>
 
-    <!-- <div class="exercise-modal-backdrop container backdrop-is-hidden">
-  <div class="exercise-modal modal-is-hidden"></div>
-</div>
- -->
+
 
     
     
