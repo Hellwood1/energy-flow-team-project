@@ -5,13 +5,14 @@ import { showMessageBadRequest } from './showMessage';
 import { renderPageList } from './pagination';
 import { cutString } from './render-exercises';
 import { addListenersToRatingModal } from './giveRating';
+import dumbbellImg from '../images/favorites/dumbbell.png';
 
 addListenersToRatingModal();
 
 const exercisesCardList = document.querySelector('.favorites-list');
 const listWithoutExercases = `<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
-          src="./images/favorites/dumbbell.png"
+          src="${imgUrl}"
           alt="dumbbell"
           width="85"
           height="52"
@@ -119,7 +120,6 @@ function deleteFavoriteCard(e) {
   ) {
     fetchDataForIds(test).then(results => {
       if (window.innerWidth < 768) {
-        console.log('noooooooo');
         currentPage = currentPage - 1;
         addCardToList(results.slice(0, 8));
         renderPageList(totalFavoritesPages, currentPage, currentPage);
