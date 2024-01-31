@@ -54,7 +54,6 @@
 }
 
 .hero-title {
-  color: var(--black);
   font-size: 56px;
   font-weight: 400;
   line-height: 0.9;
@@ -63,13 +62,20 @@
 }
 
 .hero-text {
-  color: var(--black);
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.01em;
   padding-right: 20px;
   padding-bottom: 81px;
   padding-left: 20px;
+}
+
+.animate__animated.animate__fadeIn {
+  animation-delay: 1550ms;
+}
+
+.animate__animated.animate__fadeInLeft {
+  animation-duration: 1500ms;
 }
 /**********************************MOBILE**********************************/
 
@@ -113,14 +119,6 @@
     justify-content: center;
     border-radius: 50px;
     border-top-left-radius: 0;
-  }
-
-  .animate__animated.animate__fadeIn {
-    animation-delay: 1550ms;
-  }
-
-  .animate__animated.animate__fadeInLeft {
-    animation-duration: 1500ms;
   }
 
   .hero-title {
