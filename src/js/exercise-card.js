@@ -3,6 +3,7 @@ import imgUrl from '../images/sprite.svg';
 import { renderExerciseModal } from './renderExerciseModal';
 import { showMessageBadRequest } from './showMessage';
 import { renderPageList } from './pagination';
+import { cutString } from './render-exercises';
 
 const exercisesCardList = document.querySelector('.favorites-list');
 const listWithoutExercases = document.querySelector(
@@ -52,9 +53,9 @@ function addCardToList(results) {
           <p>Body part: <span class="exercises-card-lower-part-span">${
             cardData.bodyPart
           }</span></p>
-          <p>Target: <span class="exercises-card-lower-part-span">${
+          <p>Target: <span class="exercises-card-lower-part-span">${cutString(
             cardData.target
-          }</span></p>
+          )}</span></p>
         </div>
       </li>
       </div>
