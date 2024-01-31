@@ -5,15 +5,20 @@ const mobileModal = document.querySelector('.mobile-menu-wrapper');
 export const showCurrentPageHome = () => {
   const pageLinks = document.querySelector('.home-page');
   const pageMobileLinks = document.querySelector('.home-mobile-page');
-  pageLinks.classList.add('active-page')
-  pageMobileLinks.classList.add('active-page')
+  if (pageLinks && pageMobileLinks) {
+    pageLinks.classList.add('active-page');
+    pageMobileLinks.classList.add('active-page');
+  }
 };
-export const showCurrentPageFavorites =()=>{
+
+export const showCurrentPageFavorites = () => {
   const pageLinks = document.querySelector('.favorites-page');
-  const pageMobileLinks = document.querySelector('.favorites-mobile-page')
-  pageLinks.classList.add('active-page')
-  pageMobileLinks.classList.add('active-page')
-}
+  const pageMobileLinks = document.querySelector('.favorites-mobile-page');
+  if (pageLinks && pageMobileLinks) {
+    pageLinks.classList.add('active-page');
+    pageMobileLinks.classList.add('active-page');
+  }
+};
 
 let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
@@ -45,14 +50,12 @@ let wheelOpt = supportsPassive ? { passive: false } : false;
 let wheelEvent =
   'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-
 function disableScroll() {
   window.addEventListener('DOMMouseScroll', preventDefault, false); 
   window.addEventListener(wheelEvent, preventDefault, wheelOpt); 
   window.addEventListener('touchmove', preventDefault, wheelOpt); 
   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
-
 
 function enableScroll() {
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
@@ -61,30 +64,31 @@ function enableScroll() {
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
-const ifAbleSckroll = () => {
-  if (mobileModal.classList.contains('none')) {
-    return enableScroll();
+const ifAbleScroll = () => {
+  if (mobileModal && mobileModal.classList.contains('none')) {
+    enableScroll();
   } else {
-    return disableScroll();
+    disableScroll();
   }
 };
 
 const modal = () => {
-  btnOpenEl.addEventListener('click', () => {
-    mobileModal.classList.toggle('none');
-    ifAbleSckroll();
-  });
-  btnCloseEl.addEventListener('click', () => {
-    mobileModal.classList.toggle('none');
-    ifAbleSckroll();
-  });
+  if (btnOpenEl && btnCloseEl) {
+    btnOpenEl.addEventListener('click', () => {
+      mobileModal.classList.toggle('none');
+      ifAbleScroll();
+    });
+    btnCloseEl.addEventListener('click', () => {
+      mobileModal.classList.toggle('none');
+      ifAbleScroll();
+    });
+  } else {
+    console.error('Modal open/close buttons not found');
+  }
 };
 
 const mobileMenu = () => {
-  if (!modal()) {
-    return;
-  }
-  return modal();
+  modal();
 };
 
 export { mobileMenu };
