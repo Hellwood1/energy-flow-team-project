@@ -14,9 +14,14 @@
   align-items: center;
   justify-content: center;
 }
-.up-button-icon{
+.up-button-icon {
   stroke: var(--accent-color);
 }
+
+.animate__animated.animate__backInUp {
+  animation-delay: 500ms;
+}
+
 @media screen and (min-width: 768px) {
   .up-btn {
     font-size: 21px;
@@ -24,10 +29,10 @@
     transition: all var(--timing-function);
   }
   .up-btn:hover,
-  .up-btn:focus{
+  .up-btn:focus {
     background-color: var(--slate-gray);
   }
-  .up-button-icon{
+  .up-button-icon {
     width: 33px;
     height: 33px;
   }
