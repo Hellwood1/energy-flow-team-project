@@ -28,9 +28,9 @@
     
     <script type="module" crossorigin src="/energy-flow-team-project/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/vendor-c4bdd18a.js">
-    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/header-modal-54fca415.js">
+    <link rel="modulepreload" crossorigin href="/energy-flow-team-project/assets/header-modal-c0dd8342.js">
     <link rel="stylesheet" href="/energy-flow-team-project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/energy-flow-team-project/assets/header-modal-049aa2f8.css">
+    <link rel="stylesheet" href="/energy-flow-team-project/assets/header-modal-1cace1de.css">
   </head>
   <body>
     <header class="header-section">
@@ -45,10 +45,18 @@
       <nav class="navigation-header animate__animated animate__bounceInDown">
         <ul class="navigation-list">
           <li class="navigation-item">
-            <a href="./index.html" class="navigation-links home-page">Home</a>
+            <a
+              href="./index.html"
+              class="navigation-links home-page"
+              aria-label="Home page link"
+              >Home</a
+            >
           </li>
           <li class="navigation-item">
-            <a href="./page-2.html" class="navigation-links favorites-page"
+            <a
+              href="./page-2.html"
+              class="navigation-links favorites-page"
+              aria-label="Favorties page link"
               >Favorites</a
             >
           </li>
@@ -101,6 +109,7 @@
       <button
         class="header-mobile-open-btn animate__animated animate__bounceInDown"
         type="button"
+        aria-label="Open mobile menu"
         data-modal-open
       >
         <svg class="mobile-open-icon" width="32" height="16">
@@ -159,6 +168,7 @@
           alt="dumbbell"
           width="85"
           height="52"
+          loading="lazy"
         />
         <p class="favorites-div-without-cards-text">
           It appears that you haven't added any exercises to your favorites yet.
@@ -181,8 +191,18 @@
     <div class="mobile-menu-wrapper none">
   <div class="mobile-menu-container">
     <div class="mobile-menu-header">
-      <a class="mobile-menu-logo" href="./index.html">energy.flow</a>
-      <button class="mobile-menu-cls-btn" type="button" data-modal-close>
+      <a
+        class="mobile-menu-logo"
+        href="./index.html"
+        aria-label="Home page link"
+        >energy.flow</a
+      >
+      <button
+        class="mobile-menu-cls-btn"
+        type="button"
+        aria-label="Close mobile menu"
+        data-modal-close
+      >
         <svg class="modal-svg-btn" width="28" height="28">
           <use href="/energy-flow-team-project/assets/sprite-32ec9a67.svg#icon-close-modal"></use>
         </svg>
@@ -191,14 +211,18 @@
     <div class="mobile-menu-body">
       <ul class="mobile-navigation-list">
         <li>
-          <a class="mobile-navigation-item home-mobile-page" href="./index.html"
+          <a
+            class="mobile-navigation-item home-mobile-page"
+            aria-label="Home page link"
+            href="./index.html"
             >Home</a
           >
         </li>
         <li>
           <a
             class="mobile-navigation-item favorites-mobile-page"
-            href="../page-2.html"
+            aria-label="Favorties page link"
+            href="./page-2.html"
             >Favorites</a
           >
         </li>
