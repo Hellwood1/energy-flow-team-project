@@ -10,6 +10,7 @@ import dumbbellImg from '../images/favorites/dumbbell.png';
 addListenersToRatingModal();
 // localStorage.clear()
 const exercisesCardList = document.querySelector('.favorites-list');
+exercisesCardList.innerHTML = `<span class="loader"></span>`;
 const listWithoutExercases = `<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
           src="${dumbbellImg}"
