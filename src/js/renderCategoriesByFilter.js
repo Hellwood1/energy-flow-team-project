@@ -44,6 +44,7 @@ export const initialRequest = async filter => {
 
   filter = document.querySelector('.current-category-btn').textContent.trim();
   try {
+    categoriesCardsContainer.innerHTML = `<span class="loader"></span>`;
     const response = await request.getCategoriesByFilter(
       filter,
       page,

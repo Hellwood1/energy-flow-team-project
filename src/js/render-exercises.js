@@ -25,6 +25,7 @@ export let isSearchByKey = false;
 export function renderExercises(e) {
   const ApiService = new EnergyFlowApiSevice();
   isSearchByKey = false;
+
   if (
     document.querySelector('.exercises-path-name').classList.contains('hidden')
   ) {
@@ -35,6 +36,7 @@ export function renderExercises(e) {
     exerciseCategory = renameFilter(e.target.dataset.filter);
     exerciseName = e.target.dataset.name;
   }
+  categoriesCardsContainer.innerHTML = `<span class="loader"></span>`;
   try {
     return ApiService.getExercisesByCategory(
       exerciseCategory,
@@ -42,6 +44,7 @@ export function renderExercises(e) {
       page,
       limit
     ).then(r => {
+      categoriesCardsContainer.innerHTML = `<span class="loader"></span>`;
       const cards = mapCards(r.results);
       renderPageList(r.totalPages, page, page);
       addExercisePath(capitalizeFirstLetter(exerciseName));
@@ -151,7 +154,7 @@ export function searchExercises() {
 
   const inputValue = exerciseSearchInput.firstElementChild.value;
   const ApiService = new EnergyFlowApiSevice();
-
+  categoriesCardsContainer.innerHTML = `<span class="loader"></span>`;
   ApiService.getExercisesByKeyWord(
     exerciseCategory,
     exerciseName,
@@ -166,6 +169,7 @@ export function searchExercises() {
       const onNotFound = `<li class="exercises-not-found-msg">${notFoundMessage}</li>`;
       return addCardsToList(onNotFound);
     }
+
     renderPageList(r.totalPages, page, page);
     const cards = mapCards(r.results);
     addCardsToList(cards);
