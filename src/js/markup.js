@@ -92,7 +92,7 @@ const exerciseCardMarkup = ({
       ${description}
     </p>
     <div class="exercise-modal-buttons">
-      <button type="button" class="exercise-favorite-add-btn" id="${_id}">
+      <button type="button" class="exercise-favorite-add-btn" data-name="exercise-favorite-btn" id="${_id}">
         Add to favorites
         <svg class="exercise-heart-icon" width="18" height="18">
           <use href="${spriteUrl}#icon-heart"></use>

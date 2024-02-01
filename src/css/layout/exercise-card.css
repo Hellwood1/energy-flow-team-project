@@ -245,7 +245,7 @@
 
   .favorites-list {
     gap: 28px 20px;
-    height: 479px;
+    /* height: 479px; */
   }
 
   .exercises-card-midle-part {
@@ -266,4 +266,9 @@
 
 ::-webkit-scrollbar-track {
   background-color: rgba(27, 27, 27, 0.1);
+}
+
+
+.remove-from-favorites {
+  background-color: red;
 }
