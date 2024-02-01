@@ -1,4 +1,4 @@
-import{d as p,m as h,c as f,b as m,E as S,r as y,e as u,f as L,i as d,g as w}from"./assets/header-modal-00c621ab.js";import"./assets/vendor-c4bdd18a.js";const x=document.querySelector(".favorites-page"),b=document.querySelector(".header-section");b.classList.add("header-section-favorites");x.classList.add("active-page");p();h();f();m();const n=document.querySelector(".favorites-list"),v=`<div class="favorites-no-results"><img
+import{d as p,m as h,c as f,b as m,E as S,r as y,e as u,f as L,i as d,g as w}from"./assets/header-modal-9889d592.js";import"./assets/vendor-c4bdd18a.js";const x=document.querySelector(".favorites-page"),b=document.querySelector(".header-section");b.classList.add("header-section-favorites");x.classList.add("active-page");p();h();f();m();const n=document.querySelector(".favorites-list"),v=`<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
           src="${L}"
           alt="dumbbell"
