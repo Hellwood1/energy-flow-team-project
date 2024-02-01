@@ -66,8 +66,6 @@ async function addToFavorites() {
   addToFavoritesButton.addEventListener('click', async () => {
     const exerciseId = addToFavoritesButton.id;
 
-    // changeAddToFavoritesButton();
-    // chackButtonStatus(addToFavoritesButton, "exercise-favorite-add-btn");
     try {
       const exerciseInfo = await request.getExerciseInfoById(exerciseId);
       const favoriteExerciseInfo = getFavoriteExerciseIds();
