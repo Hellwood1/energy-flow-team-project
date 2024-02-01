@@ -24,7 +24,6 @@ export async function sendMessage(e) {
     showMessageConflictRequest(
       `The subscription has already been sent to this email`
     );
-    console.log(error);
   }
 }
 

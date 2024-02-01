@@ -267,8 +267,3 @@
 ::-webkit-scrollbar-track {
   background-color: rgba(27, 27, 27, 0.1);
 }
-
-
-.remove-from-favorites {
-  background-color: red;
-}

@@ -11,8 +11,8 @@ import {
 } from './manageModals';
 import dumbbellImg from '../images/favorites/dumbbell.png';
 
-const LOCAL_STORAGE_KEY = "favoriteExerciseInfo";
-const favoritesList = document.querySelector(".favorites-list");
+const LOCAL_STORAGE_KEY = 'favoriteExerciseInfo';
+const favoritesList = document.querySelector('.favorites-list');
 
 // localStorage.clear()
 
@@ -22,7 +22,6 @@ export const renderExerciseModal = async id => {
   try {
     const response = await request.getExerciseInfoById(id);
     modalExercise.innerHTML = exerciseCardMarkup(response);
-    
 
     const ratings = document.querySelectorAll('.rating-container');
     document.querySelector('.send-rating-form').dataset.id = id;
@@ -60,8 +59,10 @@ export const renderExerciseModal = async id => {
 
 async function addToFavorites() {
   const request = new EnergyFlowApiSevice();
-  const addToFavoritesButton = document.querySelector('[data-name="exercise-favorite-btn"]');
-  
+  const addToFavoritesButton = document.querySelector(
+    '[data-name="exercise-favorite-btn"]'
+  );
+
   addToFavoritesButton.addEventListener('click', async () => {
     const exerciseId = addToFavoritesButton.id;
 
@@ -71,32 +72,33 @@ async function addToFavorites() {
       const exerciseInfo = await request.getExerciseInfoById(exerciseId);
       const favoriteExerciseInfo = getFavoriteExerciseIds();
 
-      const isAlreadyInFavorites = favoriteExerciseInfo.some(obj => obj._id === exerciseInfo._id);
-      checkButtonStatus(addToFavoritesButton, "exercise-favorite-add-btn");
+      const isAlreadyInFavorites = favoriteExerciseInfo.some(
+        obj => obj._id === exerciseInfo._id
+      );
+      checkButtonStatus(addToFavoritesButton);
 
       if (!isAlreadyInFavorites) {
         favoriteExerciseInfo.push(exerciseInfo);
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favoriteExerciseInfo));
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          JSON.stringify(favoriteExerciseInfo)
+        );
         showMessageOkRequest('This exercise is added to favorites');
       } else {
         let deleteObj = await request.getExerciseInfoById(exerciseId);
-      
+
         let savedIdList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
         let test = savedIdList.filter(e => e._id !== deleteObj._id);
-        console.log(savedIdList);
-        console.log(test);
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(test));
-        if(favoritesList){
-        updateInterfaceAfterRemoval(exerciseId);
+        if (favoritesList) {
+          updateInterfaceAfterRemoval(exerciseId);
         }
       }
     } catch (error) {
       console.error('Error fetching exercise info:', error);
     }
   });
-
 }
-
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   const cardToRemove = document.querySelector(
@@ -107,8 +109,7 @@ function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   }
 
   if (JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length === 0) {
-    favoritesList.innerHTML =
-     `<div class="favorites-no-results"><img
+    favoritesList.innerHTML = `<div class="favorites-no-results"><img
     class="favorites-div-without-cards-img"
     src="${dumbbellImg}"
     alt="dumbbell"
@@ -129,37 +130,39 @@ function getFavoriteExerciseIds() {
   return storedIds ? JSON.parse(storedIds) : [];
 }
 
-function changeToRemove(){
-  const addToFavoritesButton = document.querySelector('[data-name="exercise-favorite-btn"]');
-  addToFavoritesButton.classList.remove("exercise-favorite-add-btn");
-  addToFavoritesButton.classList.add("remove-from-favorites");
+function changeToRemove() {
+  const addToFavoritesButton = document.querySelector(
+    '[data-name="exercise-favorite-btn"]'
+  );
+  addToFavoritesButton.firstElementChild.textContent = 'Remove from';
 }
 
-function changeToAdd(){
-  const addToFavoritesButton = document.querySelector('[data-name="exercise-favorite-btn"]');
-  addToFavoritesButton.classList.add("exercise-favorite-add-btn");
-  addToFavoritesButton.classList.remove("remove-from-favorites");
+function changeToAdd() {
+  const addToFavoritesButton = document.querySelector(
+    '[data-name="exercise-favorite-btn"]'
+  );
+  addToFavoritesButton.firstElementChild.textContent = 'Add to favotites';
 }
 
-function checkButtonStatus(button, selector) {
-  if(button.classList.contains(selector)){
+function checkButtonStatus(button) {
+  if (button.firstElementChild.textContent === 'Add to favotites') {
     changeToRemove();
-  }else{
+  } else {
     changeToAdd();
   }
 }
 
 export async function changeAddToFavoritesButton(id) {
-
   const request = new EnergyFlowApiSevice();
   const exerciseInfo = await request.getExerciseInfoById(id);
   const favoriteExerciseInfo = getFavoriteExerciseIds();
-  
-  const isAlreadyInFavorites = favoriteExerciseInfo.some(obj => obj._id === exerciseInfo._id);
-  if(isAlreadyInFavorites){
+
+  const isAlreadyInFavorites = favoriteExerciseInfo.some(
+    obj => obj._id === exerciseInfo._id
+  );
+  if (isAlreadyInFavorites) {
     changeToRemove();
-  } else{
+  } else {
     changeToAdd();
   }
-
 }
