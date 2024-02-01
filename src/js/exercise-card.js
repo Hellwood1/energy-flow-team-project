@@ -109,8 +109,6 @@ async function deleteFavoriteCard(e) {
 
   let savedIdList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   let test = savedIdList.filter(e => e._id !== deleteObj._id);
-  console.log(savedIdList);
-  console.log(test);
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(test));
   totalFavoritesPages = Math.ceil(test.length / 8);
   updateInterfaceAfterRemoval(id);
@@ -119,26 +117,24 @@ async function deleteFavoriteCard(e) {
     document.querySelectorAll('.div-with-li').length === 0 &&
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length > 0
   ) {
-  const localStorageInfo = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (window.innerWidth < 768) {
-        currentPage = currentPage - 1;
-        addCardToList(test.slice(0, 8));
-        if(currentPage > 1){
-          renderPageList(totalFavoritesPages, currentPage, currentPage);
-          let pageList = document.querySelectorAll(
-            '.exercises-navigation-number'
-          );
-  
-          pageList[currentPage - 1].classList.add('pagination-current');
-          return;
-          } else {
-            document.querySelector(".exercises-navigation-list").innerHTML = "";
+    const localStorageInfo = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (window.innerWidth < 768) {
+      currentPage = currentPage - 1;
+      addCardToList(test.slice(0, 8));
+      if (currentPage > 1) {
+        renderPageList(totalFavoritesPages, currentPage, currentPage);
+        let pageList = document.querySelectorAll(
+          '.exercises-navigation-number'
+        );
 
-          }
+        pageList[currentPage - 1].classList.add('pagination-current');
+        return;
+      } else {
+        document.querySelector('.exercises-navigation-list').innerHTML = '';
       }
-    };
+    }
   }
-
+}
 
 function updateInterfaceAfterRemoval(exerciseIdToRemove) {
   const cardToRemove = document.querySelector(
@@ -167,21 +163,21 @@ function getFavoriteExerciseIds() {
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
+  if (window.innerWidth < 768) {
+    addCardToList(favoriteExerciseIdInLocalStorage.slice(0, 8));
 
-      if (window.innerWidth < 768) {
-        addCardToList(favoriteExerciseIdInLocalStorage.slice(0, 8));
-
-        totalFavoritesPages = Math.ceil(favoriteExerciseIdInLocalStorage.length / 8);
-        if(totalFavoritesPages > 1){
-        renderPageList(totalFavoritesPages, currentPage, currentPage);
-        }
-        document
-          .querySelector('.navigation-list-form')
-          .addEventListener('submit', paginationFavorite);
-      } else {
-        addCardToList(favoriteExerciseIdInLocalStorage);
-      }
-
+    totalFavoritesPages = Math.ceil(
+      favoriteExerciseIdInLocalStorage.length / 8
+    );
+    if (totalFavoritesPages > 1) {
+      renderPageList(totalFavoritesPages, currentPage, currentPage);
+    }
+    document
+      .querySelector('.navigation-list-form')
+      .addEventListener('submit', paginationFavorite);
+  } else {
+    addCardToList(favoriteExerciseIdInLocalStorage);
+  }
 } else {
   exercisesCardList.innerHTML = listWithoutExercases;
 }
@@ -194,8 +190,8 @@ function paginationFavorite(e) {
   let total = Math.ceil(ids.length / 8);
 
   addCardToList(ids.slice((currentPage - 1) * 8, currentPage * 8));
-    
-  if(total > 1){
+
+  if (total > 1) {
     renderPageList(total, currentPage, currentPage);
-    }
+  }
 }
