@@ -245,7 +245,7 @@
 
   .favorites-list {
     gap: 28px 20px;
-    height: 479px;
+    /* height: 479px; */
   }
 
   .exercises-card-midle-part {

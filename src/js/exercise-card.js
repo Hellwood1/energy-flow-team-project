@@ -8,7 +8,7 @@ import { addListenersToRatingModal } from './giveRating';
 import dumbbellImg from '../images/favorites/dumbbell.png';
 
 addListenersToRatingModal();
-
+// localStorage.clear()
 const exercisesCardList = document.querySelector('.favorites-list');
 const listWithoutExercases = `<div class="favorites-no-results"><img
           class="favorites-div-without-cards-img"
@@ -23,7 +23,7 @@ const listWithoutExercases = `<div class="favorites-no-results"><img
           for easier access in the future.
         </p></div>`;
 
-const LOCAL_STORAGE_KEY = 'favoriteExerciseIds';
+const LOCAL_STORAGE_KEY = 'favoriteExerciseInfo';
 const energyFlowApiService = new EnergyFlowApiSevice();
 let totalFavoritesPages = 1;
 let currentPage = 1;
@@ -95,21 +95,20 @@ async function onOpenFavorite(e) {
   let id = e.target.id;
 
   await renderExerciseModal(id);
-  document.querySelector('.exercise-favorite-add-btn').remove();
-  document.querySelector('.exercise-rating-give-btn').style.width = '100%';
 }
 
 // --------------delete button-----------------------//
 
-function deleteFavoriteCard(e) {
+async function deleteFavoriteCard(e) {
   if (!e.target.classList.contains('trash-icon')) {
     return;
   }
 
   let id = e.target.parentNode.id;
+  let deleteObj = await energyFlowApiService.getExerciseInfoById(id);
 
   let savedIdList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-  let test = savedIdList.filter(e => e !== id);
+  let test = savedIdList.filter(e => e._id !== deleteObj._id);
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(test));
   totalFavoritesPages = Math.ceil(test.length / 8);
   updateInterfaceAfterRemoval(id);
@@ -118,20 +117,22 @@ function deleteFavoriteCard(e) {
     document.querySelectorAll('.div-with-li').length === 0 &&
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)).length > 0
   ) {
-    fetchDataForIds(test).then(results => {
-      if (window.innerWidth < 768) {
-        currentPage = currentPage - 1;
-        addCardToList(results.slice(0, 8));
+    const localStorageInfo = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (window.innerWidth < 768) {
+      currentPage = currentPage - 1;
+      addCardToList(test.slice(0, 8));
+      if (currentPage > 1) {
         renderPageList(totalFavoritesPages, currentPage, currentPage);
-        console.log(currentPage);
         let pageList = document.querySelectorAll(
           '.exercises-navigation-number'
         );
 
         pageList[currentPage - 1].classList.add('pagination-current');
         return;
+      } else {
+        document.querySelector('.exercises-navigation-list').innerHTML = '';
       }
-    });
+    }
   }
 }
 
@@ -161,31 +162,22 @@ function getFavoriteExerciseIds() {
 // -------------------------Завантаження з улюблених-----------------------------------
 const favoriteExerciseIdInLocalStorage = getFavoriteExerciseIds();
 
-const fetchDataForIds = async ids => {
-  const promises = ids.map(id => energyFlowApiService.getExerciseInfoById(id));
-  return Promise.all(promises);
-};
-
 if (favoriteExerciseIdInLocalStorage.length !== 0) {
-  fetchDataForIds(favoriteExerciseIdInLocalStorage)
-    .then(results => {
-      if (window.innerWidth < 768) {
-        addCardToList(results.slice(0, 8));
+  if (window.innerWidth < 768) {
+    addCardToList(favoriteExerciseIdInLocalStorage.slice(0, 8));
 
-        totalFavoritesPages = Math.ceil(results.length / 8);
-        // console.log(totalFavoritesPages);
-        renderPageList(totalFavoritesPages, currentPage, currentPage);
-        document
-          .querySelector('.navigation-list-form')
-          .addEventListener('submit', paginationFavorite);
-      } else {
-        addCardToList(results);
-      }
-    })
-    .catch(error => {
-      showMessageBadRequest();
-      console.log(error);
-    });
+    totalFavoritesPages = Math.ceil(
+      favoriteExerciseIdInLocalStorage.length / 8
+    );
+    if (totalFavoritesPages > 1) {
+      renderPageList(totalFavoritesPages, currentPage, currentPage);
+    }
+    document
+      .querySelector('.navigation-list-form')
+      .addEventListener('submit', paginationFavorite);
+  } else {
+    addCardToList(favoriteExerciseIdInLocalStorage);
+  }
 } else {
   exercisesCardList.innerHTML = listWithoutExercases;
 }
@@ -194,16 +186,12 @@ function paginationFavorite(e) {
   e.preventDefault();
 
   currentPage = e.submitter.textContent;
-  const ids = JSON.parse(localStorage.getItem('favoriteExerciseIds'));
+  const ids = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   let total = Math.ceil(ids.length / 8);
 
-  fetchDataForIds(favoriteExerciseIdInLocalStorage)
-    .then(results => {
-      addCardToList(results.slice((currentPage - 1) * 8, currentPage * 8));
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+  addCardToList(ids.slice((currentPage - 1) * 8, currentPage * 8));
 
-  renderPageList(total, currentPage, currentPage);
+  if (total > 1) {
+    renderPageList(total, currentPage, currentPage);
+  }
 }
