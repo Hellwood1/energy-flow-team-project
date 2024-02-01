@@ -10,6 +10,10 @@
   transition: all 200ms ease-in-out;
 }
 
+body.modal-open{
+  max-height: 100vh;
+  overflow: hidden;
+}
 /* MOBILE */
 @media screen and (min-width: 375px) {
   .exercise-modal-backdrop {
